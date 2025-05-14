@@ -478,3 +478,14 @@ D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\obj\Debug\net9.0\refint\QLK
 D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\obj\Debug\net9.0\QLKhoHang.pdb
 D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\obj\Debug\net9.0\QLKhoHang.genruntimeconfig.cache
 D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\obj\Debug\net9.0\ref\QLKhoHang.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\EPPlus.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\EPPlus.Interfaces.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\Microsoft.Extensions.Configuration.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\Microsoft.Extensions.Configuration.Json.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\Microsoft.Extensions.FileProviders.Physical.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\Microsoft.IO.RecyclableMemoryStream.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\System.Security.Cryptography.Pkcs.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\System.Security.Cryptography.Xml.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\runtimes\win\lib\net9.0\System.Security.Cryptography.Pkcs.dll

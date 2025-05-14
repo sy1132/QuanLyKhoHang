@@ -46,5 +46,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhoHang.Controllers.SupplierController",
+    "Method": "Create",
+    "RelativePath": "create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "QLKhoHang.Controllers.SupplierModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
