@@ -1,0 +1,13 @@
+# HTTP Configuration
+@QLKhoHang_HTTP = http://localhost:5273
+
+# HTTPS Configuration (Use this for secure connections)
+@QLKhoHang_HTTPS = https://localhost:7189
+
+### Swagger UI (Use this for HTTPS access)
+GET {{QLKhoHang_HTTPS}}/swagger/index.html
+
+### API Documentation JSON (HTTPS)
+GET {{QLKhoHang_HTTPS}}/swagger/v1/swagger.json
+Accept: application/json
+
