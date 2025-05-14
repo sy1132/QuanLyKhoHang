@@ -11,9 +11,10 @@ using QLKhoHang.Data;
 
 namespace QLKhoHang.Controllers
 {
-    public class SupplierController : Controller
+    [Route("api/supplier")]
+    [ApiController]
+    public class SupplierController : ControllerBase
     {
-
         private readonly ApplicationDbContext _context;
 
         public SupplierController(ApplicationDbContext context)
@@ -22,8 +23,9 @@ namespace QLKhoHang.Controllers
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         }
 
-        // Hiển thị danh sách nhà cung cấp với tìm kiếm
-        public async Task<IActionResult> Index(string searchString)
+        // GET: Lấy danh sách nhà cung cấp với tìm kiếm
+        [HttpGet("list")]
+        public async Task<IActionResult> GetSuppliers(string searchString)
         {
             var suppliers = from s in _context.Suppliers
                             select s;
@@ -33,42 +35,41 @@ namespace QLKhoHang.Controllers
                 suppliers = suppliers.Where(s => s.Name.Contains(searchString));
             }
 
-            return View(await suppliers.ToListAsync());
+            return Ok(await suppliers.ToListAsync());
         }
 
-        // GET: Hiển thị form thêm nhà cung cấp
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Thêm nhà cung cấp từ form
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Supplier supplier)
+        // POST: Thêm nhà cung cấp
+        [HttpPost("create")]
+        public async Task<IActionResult> Create([FromBody] Supplier supplier)
         {
             if (!ModelState.IsValid)
             {
-                return View(supplier);
+                return BadRequest(ModelState);
             }
 
             supplier.CreatedAt = DateTime.Now;
             supplier.UpdatedAt = DateTime.Now;
-            _context.Add(supplier);
-            await _context.SaveChangesAsync();
-            TempData["Success"] = "Nhà cung cấp được tạo thành công.";
-            return RedirectToAction(nameof(Index));
+
+            try
+            {
+                _context.Suppliers.Add(supplier);
+                await _context.SaveChangesAsync();
+                return Ok(new { Message = "Nhà cung cấp được tạo thành công" });
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, $"Lỗi khi tạo nhà cung cấp: {ex.Message}");
+                return BadRequest(ModelState);
+            }
         }
 
-        // POST: Import file Excel từ form
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        // POST: Import file Excel
+        [HttpPost("import")]
         public async Task<IActionResult> Import(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
-                TempData["Error"] = "Vui lòng chọn file Excel.";
-                return RedirectToAction(nameof(Index));
+                return BadRequest(new { Message = "Vui lòng chọn file Excel." });
             }
 
             using (var stream = new MemoryStream())
@@ -81,8 +82,7 @@ namespace QLKhoHang.Controllers
 
                     if (rowCount < 2)
                     {
-                        TempData["Error"] = "File Excel không có dữ liệu.";
-                        return RedirectToAction(nameof(Index));
+                        return BadRequest(new { Message = "File Excel không có dữ liệu." });
                     }
 
                     for (int row = 2; row <= rowCount; row++)
@@ -108,13 +108,11 @@ namespace QLKhoHang.Controllers
                 }
             }
 
-            TempData["Success"] = "Nhập dữ liệu thành công.";
-            return RedirectToAction(nameof(Index));
+            return Ok(new { Message = "Nhập dữ liệu thành công." });
         }
 
-        // POST: Xuất file Excel khi nhấn nút
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        // GET: Xuất file Excel
+        [HttpGet("export")]
         public async Task<IActionResult> Export()
         {
             var suppliers = await _context.Suppliers.ToListAsync();

@@ -50,15 +50,57 @@
   {
     "ContainingType": "QLKhoHang.Controllers.SupplierController",
     "Method": "Create",
-    "RelativePath": "create",
+    "RelativePath": "api/supplier/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "QLKhoHang.Controllers.SupplierModel",
+        "Name": "supplier",
+        "Type": "QLKhoHang.Entities.Supplier",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhoHang.Controllers.SupplierController",
+    "Method": "Export",
+    "RelativePath": "api/supplier/export",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhoHang.Controllers.SupplierController",
+    "Method": "Import",
+    "RelativePath": "api/supplier/import",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhoHang.Controllers.SupplierController",
+    "Method": "GetSuppliers",
+    "RelativePath": "api/supplier/list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchString",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
