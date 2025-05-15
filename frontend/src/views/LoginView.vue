@@ -86,6 +86,8 @@ export default defineComponent({
         // Lưu thông tin người dùng nếu có
         if (result.userName) {
           localStorage.setItem("userName", result.userName);
+          localStorage.setItem("userName", result.userName);
+          this.$router.push("/"); // Chuyển về trang chủ
         }
         if (result.email) {
           localStorage.setItem("userEmail", result.email);
@@ -125,8 +127,8 @@ export default defineComponent({
   },
 
   mounted() {
-    // Kiểm tra trạng thái đăng nhập khi component được tạo
-    this.checkAuth();
+    // XÓA hoặc COMMENT đoạn này để không tự động chuyển hướng về trang chủ
+    // this.checkAuth();
   },
 });
 </script>
