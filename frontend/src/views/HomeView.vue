@@ -11,6 +11,7 @@
         <template v-if="!isLoggedIn">
           <router-link to="/login" class="login-btn">Đăng nhập</router-link>
           <router-link to="/register" class="register-btn">Đăng ký</router-link>
+          
         </template>
         <template v-else>
           <router-link to="/dashboard" class="dashboard-btn">
@@ -25,6 +26,7 @@
           <button @click="logout" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i> Đăng xuất
           </button>
+          <router-link to="/sup">SUP</router-link>
 
         </template>
 

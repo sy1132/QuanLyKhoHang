@@ -79,7 +79,19 @@
         }
       }
     },
-    "/api/supplier/list": {
+    "/api/supplier": {
+      "get": {
+        "tags": [
+          "Supplier"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/supplier/search": {
       "get": {
         "tags": [
           "Supplier"

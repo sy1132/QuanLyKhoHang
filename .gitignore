@@ -20,3 +20,5 @@ QLKhoHang/obj/QLKhoHang.csproj.nuget.dgspec.json
 *.exe
 *.dll
 *.json
+QLKhoHang/.vs/QLKhoHang/v17/DocumentLayout.backup.json
+*.json

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QLKhoHang.Entities;
-using OfficeOpenXml;
+using ClosedXML.Excel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,25 +20,33 @@ namespace QLKhoHang.Controllers
         public SupplierController(ApplicationDbContext context)
         {
             _context = context;
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
         }
 
         // GET: Lấy danh sách nhà cung cấp với tìm kiếm
-        [HttpGet("list")]
-        public async Task<IActionResult> GetSuppliers(string searchString)
+        // GET: Lấy toàn bộ danh sách nhà cung cấp (hiện ra luôn khi vào trang)
+        [HttpGet]
+        public async Task<IActionResult> GetAllSuppliers()
         {
-            var suppliers = from s in _context.Suppliers
-                            select s;
-
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                suppliers = suppliers.Where(s => s.Name.Contains(searchString));
-            }
-
-            return Ok(await suppliers.ToListAsync());
+            var suppliers = await _context.Suppliers.ToListAsync();
+            return Ok(suppliers);
         }
 
-        // POST: Thêm nhà cung cấp
+        // GET: Tìm kiếm nhà cung cấp theo tên
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchSuppliers(string searchString)
+        {
+            if (string.IsNullOrWhiteSpace(searchString))
+                return BadRequest(new { Message = "Vui lòng nhập từ khóa tìm kiếm." });
+
+            var suppliers = await _context.Suppliers
+                .Where(s => s.Name.Contains(searchString))
+                .ToListAsync();
+
+            return Ok(suppliers);
+        }
+
+        // POST: Thêm nhà cung cấp và lưu vào database
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] Supplier supplier)
         {
@@ -47,23 +55,26 @@ namespace QLKhoHang.Controllers
                 return BadRequest(ModelState);
             }
 
+            // Đặt thời gian tạo và cập nhật
             supplier.CreatedAt = DateTime.Now;
             supplier.UpdatedAt = DateTime.Now;
 
             try
             {
+                // Thêm nhà cung cấp vào DbSet
                 _context.Suppliers.Add(supplier);
+                // Lưu thay đổi vào database
                 await _context.SaveChangesAsync();
-                return Ok(new { Message = "Nhà cung cấp được tạo thành công" });
+                return Ok(new { Message = "Nhà cung cấp được tạo và lưu vào cơ sở dữ liệu thành công", SupplierId = supplier.Id });
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, $"Lỗi khi tạo nhà cung cấp: {ex.Message}");
+                ModelState.AddModelError(string.Empty, $"Lỗi khi lưu nhà cung cấp vào cơ sở dữ liệu: {ex.Message}");
                 return BadRequest(ModelState);
             }
         }
 
-        // POST: Import file Excel
+        // POST: Import file Excel và lưu vào database
         [HttpPost("import")]
         public async Task<IActionResult> Import(IFormFile file)
         {
@@ -75,10 +86,12 @@ namespace QLKhoHang.Controllers
             using (var stream = new MemoryStream())
             {
                 await file.CopyToAsync(stream);
-                using (var package = new ExcelPackage(stream))
+                stream.Position = 0; // Đảm bảo stream ở đầu
+
+                using (var workbook = new XLWorkbook(stream))
                 {
-                    var worksheet = package.Workbook.Worksheets[0];
-                    var rowCount = worksheet.Dimension?.Rows ?? 0;
+                    var worksheet = workbook.Worksheets.First();
+                    var rowCount = worksheet.LastRowUsed().RowNumber();
 
                     if (rowCount < 2)
                     {
@@ -89,11 +102,11 @@ namespace QLKhoHang.Controllers
                     {
                         var supplier = new Supplier
                         {
-                            Name = worksheet.Cells[row, 1].Value?.ToString() ?? string.Empty,
-                            Address = worksheet.Cells[row, 2].Value?.ToString() ?? string.Empty,
-                            Phone = worksheet.Cells[row, 3].Value?.ToString() ?? string.Empty,
-                            Email = worksheet.Cells[row, 4].Value?.ToString() ?? string.Empty,
-                            WarehouseId = int.TryParse(worksheet.Cells[row, 5].Value?.ToString() ?? "0", out int warehouseId) ? warehouseId : 0,
+                            Name = worksheet.Cell(row, 1).GetString() ?? string.Empty,
+                            Address = worksheet.Cell(row, 2).GetString() ?? string.Empty,
+                            Phone = worksheet.Cell(row, 3).GetString() ?? string.Empty,
+                            Email = worksheet.Cell(row, 4).GetString() ?? string.Empty,
+                            WarehouseId = int.TryParse(worksheet.Cell(row, 5).GetString(), out int warehouseId) ? warehouseId : 0,
                             CreatedAt = DateTime.Now,
                             UpdatedAt = DateTime.Now
                         };
@@ -108,7 +121,7 @@ namespace QLKhoHang.Controllers
                 }
             }
 
-            return Ok(new { Message = "Nhập dữ liệu thành công." });
+            return Ok(new { Message = "Dữ liệu từ file Excel đã được nhập và lưu vào cơ sở dữ liệu thành công." });
         }
 
         // GET: Xuất file Excel
@@ -117,33 +130,34 @@ namespace QLKhoHang.Controllers
         {
             var suppliers = await _context.Suppliers.ToListAsync();
 
-            using (var package = new ExcelPackage())
+            using (var workbook = new XLWorkbook())
             {
-                var worksheet = package.Workbook.Worksheets.Add("Suppliers");
+                var worksheet = workbook.Worksheets.Add("Suppliers");
 
                 // Tiêu đề cột
-                worksheet.Cells[1, 1].Value = "Tên";
-                worksheet.Cells[1, 2].Value = "Địa chỉ";
-                worksheet.Cells[1, 3].Value = "Số điện thoại";
-                worksheet.Cells[1, 4].Value = "Email";
-                worksheet.Cells[1, 5].Value = "Mã kho";
+                worksheet.Cell(1, 1).Value = "Tên";
+                worksheet.Cell(1, 2).Value = "Địa chỉ";
+                worksheet.Cell(1, 3).Value = "Số điện thoại";
+                worksheet.Cell(1, 4).Value = "Email";
+                worksheet.Cell(1, 5).Value = "Mã kho";
 
                 // Dữ liệu
                 for (int i = 0; i < suppliers.Count; i++)
                 {
-                    worksheet.Cells[i + 2, 1].Value = suppliers[i].Name ?? string.Empty;
-                    worksheet.Cells[i + 2, 2].Value = suppliers[i].Address ?? string.Empty;
-                    worksheet.Cells[i + 2, 3].Value = suppliers[i].Phone ?? string.Empty;
-                    worksheet.Cells[i + 2, 4].Value = suppliers[i].Email ?? string.Empty;
-                    worksheet.Cells[i + 2, 5].Value = suppliers[i].WarehouseId;
+                    worksheet.Cell(i + 2, 1).Value = suppliers[i].Name ?? string.Empty;
+                    worksheet.Cell(i + 2, 2).Value = suppliers[i].Address ?? string.Empty;
+                    worksheet.Cell(i + 2, 3).Value = suppliers[i].Phone ?? string.Empty;
+                    worksheet.Cell(i + 2, 4).Value = suppliers[i].Email ?? string.Empty;
+                    worksheet.Cell(i + 2, 5).Value = suppliers[i].WarehouseId;
                 }
 
-                var stream = new MemoryStream();
-                package.SaveAs(stream);
-                stream.Position = 0;
-
-                string excelName = $"Suppliers-{DateTime.Now:yyyyMMddHHmmss}.xlsx";
-                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    stream.Position = 0;
+                    string excelName = $"Suppliers-{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+                }
             }
         }
     }

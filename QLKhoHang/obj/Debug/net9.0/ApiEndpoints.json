@@ -49,6 +49,16 @@
   },
   {
     "ContainingType": "QLKhoHang.Controllers.SupplierController",
+    "Method": "GetAllSuppliers",
+    "RelativePath": "api/supplier",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "QLKhoHang.Controllers.SupplierController",
     "Method": "Create",
     "RelativePath": "api/supplier/create",
     "HttpMethod": "POST",
@@ -91,8 +101,8 @@
   },
   {
     "ContainingType": "QLKhoHang.Controllers.SupplierController",
-    "Method": "GetSuppliers",
-    "RelativePath": "api/supplier/list",
+    "Method": "SearchSuppliers",
+    "RelativePath": "api/supplier/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
