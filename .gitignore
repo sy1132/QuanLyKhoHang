@@ -16,3 +16,5 @@ QLKhoHang/obj/Debug/net9.0/QLKhoHang.GeneratedMSBuildEditorConfig.editorconfig
 QLKhoHang/obj/project.assets.json
 QLKhoHang/obj/project.nuget.cache
 QLKhoHang/obj/QLKhoHang.csproj.nuget.dgspec.json
+*.db
+*.db

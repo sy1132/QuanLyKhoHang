@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using ClosedXML.Excel;
 using System.IO;
-
+using QLKhoHang.Service;
+using QLKhoHang.Models;
 namespace QLKhoHang.Controllers
 {
     [ApiController]
@@ -14,10 +15,12 @@ namespace QLKhoHang.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly CloudinaryService _cloudiary;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context , CloudinaryService cloudinary)
         {
             _context = context;
+            _cloudiary = cloudinary;
         }
 
         // GET: api/Products/list
@@ -39,10 +42,30 @@ namespace QLKhoHang.Controllers
             return product;
         }
 
-        // POST: api/Products/create
         [HttpPost("create")]
-        public async Task<ActionResult<Products>> CreateProduct([FromBody] Products product)
+        public async Task<ActionResult<Products>> CreateProduct([FromForm] ProductsModel productModel)
         {
+            var product = new Products
+            {
+                Barcode = productModel.Barcode,
+                Name = productModel.Name,
+                CategoryID = productModel.CategoryID,
+                Brand = productModel.Brand,
+                Num = productModel.Num,
+                Cost = productModel.Cost,
+                Description = productModel.Description,
+                Status = productModel.Status,
+                WarehouseId = productModel.WarehouseId,
+                location = productModel.location
+            };
+
+            // Upload image if provided
+            if (productModel.Image != null && productModel.Image.Length > 0)
+            {
+                string imageUrl = await _cloudiary.UploadImageAsync(productModel.Image);
+                product.Image = imageUrl;
+            }
+
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
@@ -51,12 +74,40 @@ namespace QLKhoHang.Controllers
 
         // PUT: api/Products/update/5
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, [FromBody] Products product)
+        public async Task<IActionResult> UpdateProduct(int id, [FromForm] ProductsModel productModel)
         {
-            if (id != product.Id)
+            if (id != productModel.Id)
                 return BadRequest();
 
-            _context.Entry(product).State = EntityState.Modified;
+            var existingProduct = await _context.Products.FindAsync(id);
+            if (existingProduct == null)
+                return NotFound();
+
+            // Update product properties
+            existingProduct.Barcode = productModel.Barcode;
+            existingProduct.Name = productModel.Name;
+            existingProduct.CategoryID = productModel.CategoryID;
+            existingProduct.Brand = productModel.Brand;
+            existingProduct.Num = productModel.Num;
+            existingProduct.Cost = productModel.Cost;
+            existingProduct.Description = productModel.Description;
+            existingProduct.Status = productModel.Status;
+            existingProduct.WarehouseId = productModel.WarehouseId;
+            existingProduct.location = productModel.location;
+
+            // Handle image update
+            if (productModel.Image != null && productModel.Image.Length > 0)
+            {
+                // Delete existing image if there is one
+                if (!string.IsNullOrEmpty(existingProduct.Image))
+                {
+                    await _cloudiary.DeleteImageAsync(existingProduct.Image);
+                }
+
+                // Upload new image
+                string imageUrl = await _cloudiary.UploadImageAsync(productModel.Image);
+                existingProduct.Image = imageUrl;
+            }
 
             try
             {
@@ -180,6 +231,52 @@ namespace QLKhoHang.Controllers
                 }
             }
         }
+        // POST: api/Products/upload-image/5
+        [HttpPost("upload-image/{id}")]
+        public async Task<IActionResult> UploadProductImage(int id, IFormFile image)
+        {
+            if (image == null || image.Length == 0)
+                return BadRequest("No image uploaded.");
 
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+                return NotFound("Product not found.");
+
+            // Delete existing image if there is one
+            if (!string.IsNullOrEmpty(product.Image))
+            {
+                await _cloudiary.DeleteImageAsync(product.Image);
+            }
+
+            // Upload the new image
+            string imageUrl = await _cloudiary.UploadImageAsync(image);
+            product.Image = imageUrl;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { ImageUrl = imageUrl });
+        }
+
+        // DELETE: api/Products/delete-image/5
+        [HttpDelete("delete-image/{id}")]
+        public async Task<IActionResult> DeleteProductImage(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+                return NotFound("Product not found.");
+
+            // Check if product has an image
+            if (string.IsNullOrEmpty(product.Image))
+                return BadRequest("Product does not have an image.");
+
+            // Delete the image from Cloudinary
+            await _cloudiary.DeleteImageAsync(product.Image);
+
+            // Update the product
+            product.Image = null;
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Image deleted successfully." });
+        }
     }
 }
