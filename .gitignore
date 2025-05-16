@@ -20,3 +20,8 @@ QLKhoHang/obj/QLKhoHang.csproj.nuget.dgspec.json
 *.exe
 *.dll
 *.json
+*.bin
+*.db
+*.v2
+*.json
+*.cache
