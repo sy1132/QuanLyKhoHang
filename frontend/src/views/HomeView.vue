@@ -25,6 +25,10 @@
           <router-link to="/products" class="secondary-btn">
             <i class="fas fa-list"></i> Danh sách sản phẩm
           </router-link>
+          <!-- Nút chuyển sang trang quản lý nhà cung cấp -->
+          <router-link to="/SupplierManagementView" class="primary-btn">
+            <i class="fas fa-truck"></i> Quản lý nhà cung cấp
+          </router-link>
           <button @click="logout" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i> Đăng xuất
           </button>

@@ -19,6 +19,11 @@ const router = createRouter({
       path:"/sup",
       name:"sup",
       component : SupplierManagementView
+    },
+    {
+      path:"/SupplierManagementView",
+      name:"SupplierManagementView",
+      component : SupplierManagementView
     }
   ],
 });

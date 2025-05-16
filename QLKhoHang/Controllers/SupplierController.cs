@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using QLKhoHang.Data;
+using QLKhoHang.Models;
 
 namespace QLKhoHang.Controllers
 {
@@ -20,16 +21,14 @@ namespace QLKhoHang.Controllers
         public SupplierController(ApplicationDbContext context)
         {
             _context = context;
-
         }
 
-        // GET: Lấy danh sách nhà cung cấp với tìm kiếm
         // GET: Lấy toàn bộ danh sách nhà cung cấp (hiện ra luôn khi vào trang)
         [HttpGet]
         public async Task<IActionResult> GetAllSuppliers()
         {
             var suppliers = await _context.Suppliers.ToListAsync();
-            return Ok(suppliers);
+            return Ok(new ApiResult { Data = suppliers });
         }
 
         // GET: Tìm kiếm nhà cung cấp theo tên
@@ -37,13 +36,13 @@ namespace QLKhoHang.Controllers
         public async Task<IActionResult> SearchSuppliers(string searchString)
         {
             if (string.IsNullOrWhiteSpace(searchString))
-                return BadRequest(new { Message = "Vui lòng nhập từ khóa tìm kiếm." });
+                return BadRequest(new ApiResult { Message = "Vui lòng nhập từ khóa tìm kiếm." });
 
             var suppliers = await _context.Suppliers
                 .Where(s => s.Name.Contains(searchString))
                 .ToListAsync();
 
-            return Ok(suppliers);
+            return Ok(new ApiResult { Data = suppliers });
         }
 
         // POST: Thêm nhà cung cấp và lưu vào database
@@ -52,41 +51,59 @@ namespace QLKhoHang.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest(new ApiResult { Message = "Dữ liệu không hợp lệ.", Data = ModelState });
             }
 
-            // Đặt thời gian tạo và cập nhật
             supplier.CreatedAt = DateTime.Now;
             supplier.UpdatedAt = DateTime.Now;
 
             try
             {
-                // Thêm nhà cung cấp vào DbSet
                 _context.Suppliers.Add(supplier);
-                // Lưu thay đổi vào database
                 await _context.SaveChangesAsync();
-                return Ok(new { Message = "Nhà cung cấp được tạo và lưu vào cơ sở dữ liệu thành công", SupplierId = supplier.Id });
+                return Ok(new ApiResult { Data = new { SupplierId = supplier.Id }, Message = "Nhà cung cấp được tạo và lưu vào cơ sở dữ liệu thành công" });
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, $"Lỗi khi lưu nhà cung cấp vào cơ sở dữ liệu: {ex.Message}");
-                return BadRequest(ModelState);
+                return BadRequest(new ApiResult { Message = $"Lỗi khi lưu nhà cung cấp vào cơ sở dữ liệu: {ex.Message}" });
             }
         }
+        [HttpGet("search-by-warehouse")]
+        public async Task<IActionResult> SearchByWarehouse(int warehouseId)
+        {
+            var suppliers = await _context.Suppliers
+                .Where(s => s.WarehouseId == warehouseId)
+                .ToListAsync();
 
+            return Ok(new ApiResult { Data = suppliers });
+        }
+
+        // GET: Tìm kiếm nhà cung cấp theo khoảng thời gian tạo
+        [HttpGet("search-by-date")]
+        public async Task<IActionResult> SearchByDate(DateTime? fromDate, DateTime? toDate)
+        {
+            if (fromDate == null || toDate == null)
+                return BadRequest(new ApiResult { Message = "Vui lòng nhập đầy đủ khoảng thời gian." });
+
+            var suppliers = await _context.Suppliers
+                .Where(s => s.CreatedAt >= fromDate && s.CreatedAt <= toDate)
+                .ToListAsync();
+
+            return Ok(new ApiResult { Data = suppliers });
+        }
         // POST: Import file Excel và lưu vào database
         [HttpPost("import")]
         public async Task<IActionResult> Import(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
-                return BadRequest(new { Message = "Vui lòng chọn file Excel." });
+                return BadRequest(new ApiResult { Message = "Vui lòng chọn file Excel." });
             }
 
             using (var stream = new MemoryStream())
             {
                 await file.CopyToAsync(stream);
-                stream.Position = 0; // Đảm bảo stream ở đầu
+                stream.Position = 0;
 
                 using (var workbook = new XLWorkbook(stream))
                 {
@@ -95,7 +112,7 @@ namespace QLKhoHang.Controllers
 
                     if (rowCount < 2)
                     {
-                        return BadRequest(new { Message = "File Excel không có dữ liệu." });
+                        return BadRequest(new ApiResult { Message = "File Excel không có dữ liệu." });
                     }
 
                     for (int row = 2; row <= rowCount; row++)
@@ -121,7 +138,7 @@ namespace QLKhoHang.Controllers
                 }
             }
 
-            return Ok(new { Message = "Dữ liệu từ file Excel đã được nhập và lưu vào cơ sở dữ liệu thành công." });
+            return Ok(new ApiResult { Message = "Dữ liệu từ file Excel đã được nhập và lưu vào cơ sở dữ liệu thành công." });
         }
 
         // GET: Xuất file Excel
@@ -134,14 +151,12 @@ namespace QLKhoHang.Controllers
             {
                 var worksheet = workbook.Worksheets.Add("Suppliers");
 
-                // Tiêu đề cột
                 worksheet.Cell(1, 1).Value = "Tên";
                 worksheet.Cell(1, 2).Value = "Địa chỉ";
                 worksheet.Cell(1, 3).Value = "Số điện thoại";
                 worksheet.Cell(1, 4).Value = "Email";
                 worksheet.Cell(1, 5).Value = "Mã kho";
 
-                // Dữ liệu
                 for (int i = 0; i < suppliers.Count; i++)
                 {
                     worksheet.Cell(i + 2, 1).Value = suppliers[i].Name ?? string.Empty;
@@ -156,6 +171,7 @@ namespace QLKhoHang.Controllers
                     workbook.SaveAs(stream);
                     stream.Position = 0;
                     string excelName = $"Suppliers-{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+                    // Xuất file Excel không cần bọc ApiResult
                     return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
                 }
             }

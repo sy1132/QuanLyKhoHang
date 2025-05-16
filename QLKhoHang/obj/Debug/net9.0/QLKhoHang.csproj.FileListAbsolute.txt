@@ -752,3 +752,11 @@ D:\QLKHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\ExcelNumberFormat.dll
 D:\QLKHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\RBush.dll
 D:\QLKHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\SixLabors.Fonts.dll
 D:\QLKHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\System.IO.Packaging.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\ClosedXML.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\ClosedXML.Parser.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\DocumentFormat.OpenXml.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\DocumentFormat.OpenXml.Framework.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\ExcelNumberFormat.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\RBush.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\SixLabors.Fonts.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\System.IO.Packaging.dll
