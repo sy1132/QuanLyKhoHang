@@ -12,6 +12,8 @@
         public string Description { get; set; }
         public string Status { get; set; }
         public int WarehouseId { get; set; }
+        public string Image { get; set; }
+        public string location { get; set; }
 
     }
 }

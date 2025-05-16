@@ -48,35 +48,77 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "QLKhoHang.Controllers.SupplierController",
-    "Method": "GetAllSuppliers",
-    "RelativePath": "api/supplier",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "QLKhoHang.Controllers.SupplierController",
-    "Method": "Create",
-    "RelativePath": "api/supplier/create",
+    "ContainingType": "QLKhoHang.Controllers.ProductsController",
+    "Method": "CreateProduct",
+    "RelativePath": "api/Products/create",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "supplier",
-        "Type": "QLKhoHang.Entities.Supplier",
+        "Name": "product",
+        "Type": "QLKhoHang.Entities.Products",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "QLKhoHang.Entities.Products",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QLKhoHang.Controllers.ProductsController",
+    "Method": "DeleteProduct",
+    "RelativePath": "api/Products/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "QLKhoHang.Controllers.SupplierController",
-    "Method": "Export",
-    "RelativePath": "api/supplier/export",
+    "ContainingType": "QLKhoHang.Controllers.ProductsController",
+    "Method": "GetProduct",
+    "RelativePath": "api/Products/detail/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "QLKhoHang.Entities.Products",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QLKhoHang.Controllers.ProductsController",
+    "Method": "ExportProductsToExcel",
+    "RelativePath": "api/Products/export-excel",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -84,9 +126,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "QLKhoHang.Controllers.SupplierController",
-    "Method": "Import",
-    "RelativePath": "api/supplier/import",
+    "ContainingType": "QLKhoHang.Controllers.ProductsController",
+    "Method": "ImportProductsFromExcel",
+    "RelativePath": "api/Products/import-excel",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -100,17 +142,42 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "QLKhoHang.Controllers.SupplierController",
-    "Method": "SearchSuppliers",
-    "RelativePath": "api/supplier/search",
+    "ContainingType": "QLKhoHang.Controllers.ProductsController",
+    "Method": "GetProducts",
+    "RelativePath": "api/Products/list",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QLKhoHang.Entities.Products, QLKhoHang, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "QLKhoHang.Controllers.ProductsController",
+    "Method": "UpdateProduct",
+    "RelativePath": "api/Products/update/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "searchString",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "product",
+        "Type": "QLKhoHang.Entities.Products",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

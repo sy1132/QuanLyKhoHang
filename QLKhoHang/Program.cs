@@ -75,7 +75,7 @@ builder.Services.AddSwaggerGen(c =>
         Title = "QuanLyKhoHang API",
         Version = "v1"
     });
-
+    
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
