@@ -8,11 +8,14 @@
 
       <div class="action-buttons">
         <!-- Hiển thị nút dựa trên trạng thái đăng nhập -->
-        <template v-if="!isLoggedIn">
+        <template v-if="!userName">
           <router-link to="/login" class="login-btn">Đăng nhập</router-link>
           <router-link to="/register" class="register-btn">Đăng ký</router-link>
         </template>
         <template v-else>
+          <span style="margin-right: 12px; font-weight: 600;">
+            Xin chào, {{ userName }}
+          </span>
           <router-link to="/dashboard" class="dashboard-btn">
             <i class="fas fa-tachometer-alt"></i> Bảng điều khiển
           </router-link>
@@ -25,11 +28,7 @@
           <button @click="logout" class="logout-btn">
             <i class="fas fa-sign-out-alt"></i> Đăng xuất
           </button>
-
         </template>
-
-
-        
       </div>
     </div>
 
@@ -99,13 +98,11 @@
 </template>
 
 <script>
-import authApi from "@/api/auth.api";
-
 export default {
   name: "HomeView",
   data() {
     return {
-      isLoggedIn: false,
+      userName: "",
       stats: {
         totalProducts: 0,
         lowStock: 0,
@@ -115,23 +112,16 @@ export default {
     };
   },
   methods: {
-    checkLoginStatus() {
-      const token = localStorage.getItem("authToken");
-      this.isLoggedIn = !!token;
-
-      if (this.isLoggedIn) {
-        this.fetchDashboardStats();
-      }
+    syncUser() {
+      this.userName = localStorage.getItem("userName") || "";
     },
     async logout() {
-      try {
-        localStorage.removeItem("authToken");
-        localStorage.removeItem("user");
-        this.isLoggedIn = false;
-        this.$router.push("/login");
-      } catch (error) {
-        console.error("Logout error:", error);
-      }
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("user");
+      localStorage.removeItem("userName");
+      this.syncUser();
+      window.dispatchEvent(new Event("storage"));
+      this.$router.push("/login");
     },
     async fetchDashboardStats() {
       try {
@@ -148,9 +138,18 @@ export default {
         console.error("Error fetching dashboard stats:", error);
       }
     },
+    async loginSuccess(result) {
+      localStorage.setItem("userName", result.userName);
+      window.dispatchEvent(new Event("storage"));
+      this.$router.push("/");
+    },
   },
   mounted() {
-    this.checkLoginStatus();
+    this.syncUser();
+    window.addEventListener("storage", this.syncUser);
+  },
+  beforeUnmount() {
+    window.removeEventListener("storage", this.syncUser);
   },
 };
 </script>
