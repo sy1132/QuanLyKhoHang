@@ -78,6 +78,7 @@ namespace QLKhoHang.Controllers
             return Ok(new ApiResult { Data = suppliers });
         }
 
+
         // GET: Tìm kiếm nhà cung cấp theo khoảng thời gian tạo
         [HttpGet("search-by-date")]
         public async Task<IActionResult> SearchByDate(DateTime? fromDate, DateTime? toDate)
