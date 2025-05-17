@@ -1,99 +1,204 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QLKhoHang.Entities;
-using OfficeOpenXml;
+using ClosedXML.Excel;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using QLKhoHang.Data;
+using QLKhoHang.Models;
 
 namespace QLKhoHang.Controllers
 {
-    public class SupplierController : Controller
+    [Route("api/supplier")]
+    [ApiController]
+    public class SupplierController : ControllerBase
     {
-
         private readonly ApplicationDbContext _context;
 
         public SupplierController(ApplicationDbContext context)
         {
             _context = context;
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         }
 
-        // Hiển thị danh sách nhà cung cấp với tìm kiếm
-        public async Task<IActionResult> Index(string searchString)
+        // GET: Lấy toàn bộ danh sách nhà cung cấp (hiện ra luôn khi vào trang)
+        [HttpGet]
+        public async Task<IActionResult> GetAllSuppliers()
         {
-            var suppliers = from s in _context.Suppliers
-                            select s;
+            var suppliers = await _context.Suppliers
+                .Join(
+                    _context.Warehouse,
+                    s => s.WarehouseId,
+                    w => w.Id,
+                    (s, w) => new
+                    {
+                        s.Id,
+                        s.Name,
+                        s.Address,
+                        s.Phone,
+                        s.Email,
+                        s.CreatedAt,
+                        s.UpdatedAt,
+                        WarehouseId = w.Id,
+                        WarehouseName = w.Name
+                    }
+                )
+                .ToListAsync();
 
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                suppliers = suppliers.Where(s => s.Name.Contains(searchString));
-            }
-
-            return View(await suppliers.ToListAsync());
+            return Ok(new ApiResult { Data = suppliers });
         }
 
-        // GET: Hiển thị form thêm nhà cung cấp
-        public IActionResult Create()
+        // GET: Tìm kiếm nhà cung cấp theo tên
+        // GET: Tìm kiếm nhà cung cấp theo tên
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchSuppliers(string searchString)
         {
-            return View();
+            if (string.IsNullOrWhiteSpace(searchString))
+                return BadRequest(new ApiResult { Message = "Vui lòng nhập từ khóa tìm kiếm." });
+
+            var suppliers = await _context.Suppliers
+                .Where(s => s.Name.Contains(searchString))
+                .Join(
+                    _context.Warehouse,
+                    s => s.WarehouseId,
+                    w => w.Id,
+                    (s, w) => new
+                    {
+                        s.Id,
+                        s.Name,
+                        s.Address,
+                        s.Phone,
+                        s.Email,
+                        s.CreatedAt,
+                        s.UpdatedAt,
+                        WarehouseId = w.Id,
+                        WarehouseName = w.Name
+                    }
+                )
+                .ToListAsync();
+
+            return Ok(new ApiResult { Data = suppliers });
         }
 
-        // POST: Thêm nhà cung cấp từ form
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Supplier supplier)
+        // GET: Tìm kiếm nhà cung cấp theo mã kho
+        [HttpGet("search-by-warehouse-name")]
+        public async Task<IActionResult> SearchByWarehouseName(string warehouseName)
+        {
+            if (string.IsNullOrWhiteSpace(warehouseName))
+                return BadRequest(new ApiResult { Message = "Vui lòng nhập tên kho." });
+
+            var suppliers = await _context.Suppliers
+                .Join(
+                    _context.Warehouse,
+                    s => s.WarehouseId,
+                    w => w.Id,
+                    (s, w) => new
+                    {
+                        s.Id,
+                        s.Name,
+                        s.Address,
+                        s.Phone,
+                        s.Email,
+                        s.CreatedAt,
+                        s.UpdatedAt,
+                        WarehouseId = w.Id,
+                        WarehouseName = w.Name
+                    }
+                )
+                .Where(sw => sw.WarehouseName.Contains(warehouseName))
+                .ToListAsync();
+
+            return Ok(new ApiResult { Data = suppliers });
+        }
+        // GET: Tìm kiếm nhà cung cấp theo khoảng thời gian tạo
+        [HttpGet("search-by-date")]
+        public async Task<IActionResult> SearchByDate(DateTime? fromDate, DateTime? toDate)
+        {
+            if (fromDate == null || toDate == null)
+                return BadRequest(new ApiResult { Message = "Vui lòng nhập đầy đủ khoảng thời gian." });
+
+            var suppliers = await _context.Suppliers
+                .Where(s => s.CreatedAt >= fromDate && s.CreatedAt <= toDate)
+                .Join(
+                    _context.Warehouse,
+                    s => s.WarehouseId,
+                    w => w.Id,
+                    (s, w) => new
+                    {
+                        s.Id,
+                        s.Name,
+                        s.Address,
+                        s.Phone,
+                        s.Email,
+                        s.CreatedAt,
+                        s.UpdatedAt,
+                        WarehouseId = w.Id,
+                        WarehouseName = w.Name
+                    }
+                )
+                .ToListAsync();
+
+            return Ok(new ApiResult { Data = suppliers });
+        }
+        // POST: Thêm nhà cung cấp và lưu vào database
+        [HttpPost("create")]
+        public async Task<IActionResult> Create([FromBody] Supplier supplier)
         {
             if (!ModelState.IsValid)
             {
-                return View(supplier);
+                return BadRequest(new ApiResult { Message = "Dữ liệu không hợp lệ.", Data = ModelState });
             }
 
             supplier.CreatedAt = DateTime.Now;
             supplier.UpdatedAt = DateTime.Now;
-            _context.Add(supplier);
-            await _context.SaveChangesAsync();
-            TempData["Success"] = "Nhà cung cấp được tạo thành công.";
-            return RedirectToAction(nameof(Index));
-        }
 
-        // POST: Import file Excel từ form
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+            try
+            {
+                _context.Suppliers.Add(supplier);
+                await _context.SaveChangesAsync();
+                return Ok(new ApiResult { Data = new { SupplierId = supplier.Id }, Message = "Nhà cung cấp được tạo và lưu vào cơ sở dữ liệu thành công" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiResult { Message = $"Lỗi khi lưu nhà cung cấp vào cơ sở dữ liệu: {ex.Message}" });
+            }
+        }
+        
+        // POST: Import file Excel và lưu vào database
+        [HttpPost("import")]
         public async Task<IActionResult> Import(IFormFile file)
         {
             if (file == null || file.Length == 0)
             {
-                TempData["Error"] = "Vui lòng chọn file Excel.";
-                return RedirectToAction(nameof(Index));
+                return BadRequest(new ApiResult { Message = "Vui lòng chọn file Excel." });
             }
 
             using (var stream = new MemoryStream())
             {
                 await file.CopyToAsync(stream);
-                using (var package = new ExcelPackage(stream))
+                stream.Position = 0;
+
+                using (var workbook = new XLWorkbook(stream))
                 {
-                    var worksheet = package.Workbook.Worksheets[0];
-                    var rowCount = worksheet.Dimension?.Rows ?? 0;
+                    var worksheet = workbook.Worksheets.First();
+                    var rowCount = worksheet.LastRowUsed().RowNumber();
 
                     if (rowCount < 2)
                     {
-                        TempData["Error"] = "File Excel không có dữ liệu.";
-                        return RedirectToAction(nameof(Index));
+                        return BadRequest(new ApiResult { Message = "File Excel không có dữ liệu." });
                     }
 
                     for (int row = 2; row <= rowCount; row++)
                     {
                         var supplier = new Supplier
                         {
-                            Name = worksheet.Cells[row, 1].Value?.ToString() ?? string.Empty,
-                            Address = worksheet.Cells[row, 2].Value?.ToString() ?? string.Empty,
-                            Phone = worksheet.Cells[row, 3].Value?.ToString() ?? string.Empty,
-                            Email = worksheet.Cells[row, 4].Value?.ToString() ?? string.Empty,
-                            WarehouseId = int.TryParse(worksheet.Cells[row, 5].Value?.ToString() ?? "0", out int warehouseId) ? warehouseId : 0,
+                            Name = worksheet.Cell(row, 1).GetString() ?? string.Empty,
+                            Address = worksheet.Cell(row, 2).GetString() ?? string.Empty,
+                            Phone = worksheet.Cell(row, 3).GetString() ?? string.Empty,
+                            Email = worksheet.Cell(row, 4).GetString() ?? string.Empty,
+                            WarehouseId = int.TryParse(worksheet.Cell(row, 5).GetString(), out int warehouseId) ? warehouseId : 0,
                             CreatedAt = DateTime.Now,
                             UpdatedAt = DateTime.Now
                         };
@@ -108,44 +213,42 @@ namespace QLKhoHang.Controllers
                 }
             }
 
-            TempData["Success"] = "Nhập dữ liệu thành công.";
-            return RedirectToAction(nameof(Index));
+            return Ok(new ApiResult { Message = "Dữ liệu từ file Excel đã được nhập và lưu vào cơ sở dữ liệu thành công." });
         }
 
-        // POST: Xuất file Excel khi nhấn nút
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        // GET: Xuất file Excel
+        [HttpGet("export")]
         public async Task<IActionResult> Export()
         {
             var suppliers = await _context.Suppliers.ToListAsync();
 
-            using (var package = new ExcelPackage())
+            using (var workbook = new XLWorkbook())
             {
-                var worksheet = package.Workbook.Worksheets.Add("Suppliers");
+                var worksheet = workbook.Worksheets.Add("Suppliers");
 
-                // Tiêu đề cột
-                worksheet.Cells[1, 1].Value = "Tên";
-                worksheet.Cells[1, 2].Value = "Địa chỉ";
-                worksheet.Cells[1, 3].Value = "Số điện thoại";
-                worksheet.Cells[1, 4].Value = "Email";
-                worksheet.Cells[1, 5].Value = "Mã kho";
+                worksheet.Cell(1, 1).Value = "Tên";
+                worksheet.Cell(1, 2).Value = "Địa chỉ";
+                worksheet.Cell(1, 3).Value = "Số điện thoại";
+                worksheet.Cell(1, 4).Value = "Email";
+                worksheet.Cell(1, 5).Value = "Mã kho";
 
-                // Dữ liệu
                 for (int i = 0; i < suppliers.Count; i++)
                 {
-                    worksheet.Cells[i + 2, 1].Value = suppliers[i].Name ?? string.Empty;
-                    worksheet.Cells[i + 2, 2].Value = suppliers[i].Address ?? string.Empty;
-                    worksheet.Cells[i + 2, 3].Value = suppliers[i].Phone ?? string.Empty;
-                    worksheet.Cells[i + 2, 4].Value = suppliers[i].Email ?? string.Empty;
-                    worksheet.Cells[i + 2, 5].Value = suppliers[i].WarehouseId;
+                    worksheet.Cell(i + 2, 1).Value = suppliers[i].Name ?? string.Empty;
+                    worksheet.Cell(i + 2, 2).Value = suppliers[i].Address ?? string.Empty;
+                    worksheet.Cell(i + 2, 3).Value = suppliers[i].Phone ?? string.Empty;
+                    worksheet.Cell(i + 2, 4).Value = suppliers[i].Email ?? string.Empty;
+                    worksheet.Cell(i + 2, 5).Value = suppliers[i].WarehouseId;
                 }
 
-                var stream = new MemoryStream();
-                package.SaveAs(stream);
-                stream.Position = 0;
-
-                string excelName = $"Suppliers-{DateTime.Now:yyyyMMddHHmmss}.xlsx";
-                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+                using (var stream = new MemoryStream())
+                {
+                    workbook.SaveAs(stream);
+                    stream.Position = 0;
+                    string excelName = $"Suppliers-{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+                    // Xuất file Excel không cần bọc ApiResult
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", excelName);
+                }
             }
         }
     }

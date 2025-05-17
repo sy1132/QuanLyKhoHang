@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
+import Navbar from "./components/Navbar.vue"; // Thêm dòng này
 </script>
 <template>
+  <Navbar /> <!-- Thêm dòng này -->
   <div class="app-container">
     <div class="cosmo-content">
       <RouterView />

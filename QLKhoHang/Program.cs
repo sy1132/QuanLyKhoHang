@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -8,20 +8,16 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
-
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
-
 
 var jwtKey = builder.Configuration["Jwt:Key"];
 var jwtIssuer = builder.Configuration["Jwt:Issuer"];
@@ -71,7 +67,6 @@ builder.Services.AddCors(options =>
     });
 });
 
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -80,7 +75,7 @@ builder.Services.AddSwaggerGen(c =>
         Title = "QuanLyKhoHang API",
         Version = "v1"
     });
-
+    
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -107,11 +102,9 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
-
 
 if (app.Environment.IsDevelopment())
 {
@@ -122,10 +115,8 @@ if (app.Environment.IsDevelopment())
         c.RoutePrefix = string.Empty;
     });
 
-   
     app.MapGet("/", () => Results.Redirect("/swagger"));
 }
-
 
 app.Use(async (context, next) =>
 {
