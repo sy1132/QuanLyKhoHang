@@ -20,5 +20,12 @@ QLKhoHang/obj/QLKhoHang.csproj.nuget.dgspec.json
 *.exe
 *.dll
 *.json
-QLKhoHang/.vs/QLKhoHang/v17/DocumentLayout.backup.json
+*.bin
+*.db
+*.v2
 *.json
+*.cache
+*.cache
+QLKhoHang/obj/Debug/net9.0/QLKhoHang.AssemblyInfoInputs.cache
+QLKhoHang/obj/Debug/net9.0/QLKhoHang.assets.cache
+QLKhoHang/obj/Debug/net9.0/QLKhoHang.AssemblyInfo.cs
