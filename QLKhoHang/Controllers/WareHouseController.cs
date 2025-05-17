@@ -29,7 +29,7 @@ namespace QLKhoHang.Controllers
             return await _context.Warehouse.ToListAsync();
         }
 
-        // GET: Lấy danh sách kho hàng với tìm kiếm
+        
         [HttpGet("list")]
         public async Task<IActionResult> GetWarehouses(string searchString)
         {
@@ -105,7 +105,6 @@ namespace QLKhoHang.Controllers
             try
             {
                 _context.Entry(warehouse).State = EntityState.Modified;
-                // Không cập nhật CreatedAt
                 _context.Entry(warehouse).Property(x => x.CreatedAt).IsModified = false;
 
                 await _context.SaveChangesAsync();

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QLKhoHang")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ddb63d9f54eb53e688fa29417b41b167c423a7c6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+338e109022832ff8ae3f078be94159f12d2507d8")]
 [assembly: System.Reflection.AssemblyProductAttribute("QLKhoHang")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QLKhoHang")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

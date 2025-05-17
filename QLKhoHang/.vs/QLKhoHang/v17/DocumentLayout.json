@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\thuchanhkientruc\\quanlykhohang\\qlkhohang\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\thuchanhkientruc\\quanlykhohang\\qlkhohang\\controllers\\warehousecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:controllers\\warehousecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\thuchanhkientruc\\quanlykhohang\\qlkhohang\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\thuchanhkientruc\\quanlykhohang\\qlkhohang\\entities\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,6 +49,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\thuchanhkientruc\\quanlykhohang\\qlkhohang\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\thuchanhkientruc\\quanlykhohang\\qlkhohang\\migrations\\20250516062257_lamlamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:migrations\\20250516062257_lamlamo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,7 +106,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
+              "Title": "Report.cs",
+              "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Entities\\Report.cs",
+              "RelativeDocumentMoniker": "Entities\\Report.cs",
+              "ToolTip": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Entities\\Report.cs",
+              "RelativeToolTip": "Entities\\Report.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T08:24:51.644Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-16T06:23:15.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20250516062257_lamlamo.cs",
+              "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250516062257_lamlamo.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250516062257_lamlamo.cs",
+              "ToolTip": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250516062257_lamlamo.cs",
+              "RelativeToolTip": "Migrations\\20250516062257_lamlamo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T06:22:58.007Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "ImportController.cs",
               "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ImportController.cs",
               "RelativeDocumentMoniker": "Controllers\\ImportController.cs",
@@ -106,20 +156,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "WareHouseController.cs",
               "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Controllers\\WareHouseController.cs",
               "RelativeDocumentMoniker": "Controllers\\WareHouseController.cs",
               "ToolTip": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Controllers\\WareHouseController.cs",
               "RelativeToolTip": "Controllers\\WareHouseController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAxwAsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAowGYAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T07:46:16.177Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Products.cs",
               "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Entities\\Products.cs",
               "RelativeDocumentMoniker": "Entities\\Products.cs",
@@ -131,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "AuthController.cs",
               "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
@@ -143,7 +193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
@@ -155,7 +205,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "Supplier.cs",
               "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Entities\\Supplier.cs",
               "RelativeDocumentMoniker": "Entities\\Supplier.cs",
@@ -167,7 +217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Warehouse.cs",
               "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Entities\\Warehouse.cs",
               "RelativeDocumentMoniker": "Entities\\Warehouse.cs",
@@ -175,12 +225,11 @@
               "RelativeToolTip": "Entities\\Warehouse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T06:34:52.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T06:34:52.7Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Dbcontext.cs",
               "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Dbcontext.cs",
               "RelativeDocumentMoniker": "Dbcontext.cs",
@@ -192,7 +241,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "20250514064739_lambeo1.cs",
               "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250514064739_lambeo1.cs",
               "RelativeDocumentMoniker": "Migrations\\20250514064739_lambeo1.cs",
@@ -204,7 +253,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\ThucHanhKIenTruc\\QuanLyKhoHang\\QLKhoHang\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
