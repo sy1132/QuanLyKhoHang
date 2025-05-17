@@ -1015,3 +1015,11 @@ E:\ThucHanhKIenTruc\QuanLyKhoHang\QLKhoHang\obj\Debug\net9.0\refint\QLKhoHang.dl
 E:\ThucHanhKIenTruc\QuanLyKhoHang\QLKhoHang\obj\Debug\net9.0\QLKhoHang.pdb
 E:\ThucHanhKIenTruc\QuanLyKhoHang\QLKhoHang\obj\Debug\net9.0\QLKhoHang.genruntimeconfig.cache
 E:\ThucHanhKIenTruc\QuanLyKhoHang\QLKhoHang\obj\Debug\net9.0\ref\QLKhoHang.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\ClosedXML.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\ClosedXML.Parser.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\DocumentFormat.OpenXml.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\DocumentFormat.OpenXml.Framework.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\ExcelNumberFormat.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\RBush.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\SixLabors.Fonts.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\System.IO.Packaging.dll

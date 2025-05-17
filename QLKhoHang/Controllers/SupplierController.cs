@@ -27,10 +27,30 @@ namespace QLKhoHang.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllSuppliers()
         {
-            var suppliers = await _context.Suppliers.ToListAsync();
+            var suppliers = await _context.Suppliers
+                .Join(
+                    _context.Warehouse,
+                    s => s.WarehouseId,
+                    w => w.Id,
+                    (s, w) => new
+                    {
+                        s.Id,
+                        s.Name,
+                        s.Address,
+                        s.Phone,
+                        s.Email,
+                        s.CreatedAt,
+                        s.UpdatedAt,
+                        WarehouseId = w.Id,
+                        WarehouseName = w.Name
+                    }
+                )
+                .ToListAsync();
+
             return Ok(new ApiResult { Data = suppliers });
         }
 
+        // GET: Tìm kiếm nhà cung cấp theo tên
         // GET: Tìm kiếm nhà cung cấp theo tên
         [HttpGet("search")]
         public async Task<IActionResult> SearchSuppliers(string searchString)
@@ -40,11 +60,88 @@ namespace QLKhoHang.Controllers
 
             var suppliers = await _context.Suppliers
                 .Where(s => s.Name.Contains(searchString))
+                .Join(
+                    _context.Warehouse,
+                    s => s.WarehouseId,
+                    w => w.Id,
+                    (s, w) => new
+                    {
+                        s.Id,
+                        s.Name,
+                        s.Address,
+                        s.Phone,
+                        s.Email,
+                        s.CreatedAt,
+                        s.UpdatedAt,
+                        WarehouseId = w.Id,
+                        WarehouseName = w.Name
+                    }
+                )
                 .ToListAsync();
 
             return Ok(new ApiResult { Data = suppliers });
         }
 
+        // GET: Tìm kiếm nhà cung cấp theo mã kho
+        [HttpGet("search-by-warehouse-name")]
+        public async Task<IActionResult> SearchByWarehouseName(string warehouseName)
+        {
+            if (string.IsNullOrWhiteSpace(warehouseName))
+                return BadRequest(new ApiResult { Message = "Vui lòng nhập tên kho." });
+
+            var suppliers = await _context.Suppliers
+                .Join(
+                    _context.Warehouse,
+                    s => s.WarehouseId,
+                    w => w.Id,
+                    (s, w) => new
+                    {
+                        s.Id,
+                        s.Name,
+                        s.Address,
+                        s.Phone,
+                        s.Email,
+                        s.CreatedAt,
+                        s.UpdatedAt,
+                        WarehouseId = w.Id,
+                        WarehouseName = w.Name
+                    }
+                )
+                .Where(sw => sw.WarehouseName.Contains(warehouseName))
+                .ToListAsync();
+
+            return Ok(new ApiResult { Data = suppliers });
+        }
+        // GET: Tìm kiếm nhà cung cấp theo khoảng thời gian tạo
+        [HttpGet("search-by-date")]
+        public async Task<IActionResult> SearchByDate(DateTime? fromDate, DateTime? toDate)
+        {
+            if (fromDate == null || toDate == null)
+                return BadRequest(new ApiResult { Message = "Vui lòng nhập đầy đủ khoảng thời gian." });
+
+            var suppliers = await _context.Suppliers
+                .Where(s => s.CreatedAt >= fromDate && s.CreatedAt <= toDate)
+                .Join(
+                    _context.Warehouse,
+                    s => s.WarehouseId,
+                    w => w.Id,
+                    (s, w) => new
+                    {
+                        s.Id,
+                        s.Name,
+                        s.Address,
+                        s.Phone,
+                        s.Email,
+                        s.CreatedAt,
+                        s.UpdatedAt,
+                        WarehouseId = w.Id,
+                        WarehouseName = w.Name
+                    }
+                )
+                .ToListAsync();
+
+            return Ok(new ApiResult { Data = suppliers });
+        }
         // POST: Thêm nhà cung cấp và lưu vào database
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] Supplier supplier)
@@ -68,30 +165,7 @@ namespace QLKhoHang.Controllers
                 return BadRequest(new ApiResult { Message = $"Lỗi khi lưu nhà cung cấp vào cơ sở dữ liệu: {ex.Message}" });
             }
         }
-        [HttpGet("search-by-warehouse")]
-        public async Task<IActionResult> SearchByWarehouse(int warehouseId)
-        {
-            var suppliers = await _context.Suppliers
-                .Where(s => s.WarehouseId == warehouseId)
-                .ToListAsync();
-
-            return Ok(new ApiResult { Data = suppliers });
-        }
-
-
-        // GET: Tìm kiếm nhà cung cấp theo khoảng thời gian tạo
-        [HttpGet("search-by-date")]
-        public async Task<IActionResult> SearchByDate(DateTime? fromDate, DateTime? toDate)
-        {
-            if (fromDate == null || toDate == null)
-                return BadRequest(new ApiResult { Message = "Vui lòng nhập đầy đủ khoảng thời gian." });
-
-            var suppliers = await _context.Suppliers
-                .Where(s => s.CreatedAt >= fromDate && s.CreatedAt <= toDate)
-                .ToListAsync();
-
-            return Ok(new ApiResult { Data = suppliers });
-        }
+        
         // POST: Import file Excel và lưu vào database
         [HttpPost("import")]
         public async Task<IActionResult> Import(IFormFile file)

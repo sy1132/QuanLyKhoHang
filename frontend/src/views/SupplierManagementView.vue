@@ -55,10 +55,11 @@
             <form @submit.prevent="filterByWarehouse">
               <div class="mb-2">
                 <label class="form-label mb-0">Chọn kho</label>
+                <!-- Dropdown chọn kho -->
                 <select v-model="selectedWarehouse" class="form-select">
                   <option value="">Tất cả</option>
-                  <option v-for="wid in uniqueWarehouses" :key="wid" :value="wid">
-                    Kho {{ wid }}
+                  <option v-for="w in uniqueWarehouses" :key="w.id" :value="w.id">
+                    {{ w.name }}
                   </option>
                 </select>
               </div>
@@ -78,7 +79,8 @@
                 <th>Địa chỉ</th>
                 <th>Điện thoại</th>
                 <th>Email</th>
-                <th>Mã kho</th>
+                <!-- <th>Mã kho</th> -->
+                <th>Tên kho</th>
                 <th>Ngày tạo</th>
                 <th>Ngày cập nhật</th>
               </tr>
@@ -92,7 +94,8 @@
                 <td>{{ s.address }}</td>
                 <td>{{ s.phone }}</td>
                 <td>{{ s.email }}</td>
-                <td>{{ s.warehouseId }}</td>
+                <!-- <td>{{ s.warehouseId }}</td> -->
+                <td>{{ s.warehouseName }}</td>
                 <td>{{ new Date(s.createdAt).toLocaleString() }}</td>
                 <td>{{ new Date(s.updatedAt).toLocaleString() }}</td>
               </tr>
@@ -127,8 +130,13 @@
                     <input type="text" id="address" v-model="newSupplier.address" class="form-control" />
                   </div>
                   <div class="mb-2">
-                    <label for="warehouseId">Mã kho:</label>
-                    <input type="number" id="warehouseId" v-model="newSupplier.warehouseId" class="form-control" required />
+                    <label for="warehouseId">Kho:</label>
+                    <select id="warehouseId" v-model="newSupplier.warehouseId" class="form-control" required>
+                      <option value="" disabled>Chọn kho</option>
+                      <option v-for="w in uniqueWarehouses" :key="w.id" :value="w.id">
+                        {{ w.name }}
+                      </option>
+                    </select>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -224,10 +232,17 @@ export default {
           response = await axios.get("https://localhost:7189/api/supplier");
         }
         this.suppliers = response.data.data || response.data;
-        // Lưu lại tất cả mã kho duy nhất khi load dữ liệu gốc
+        // Lưu lại tất cả kho duy nhất (id + name)
         if (!searchString) {
-          const ids = this.suppliers.map(s => s.warehouseId).filter(id => id !== null && id !== undefined);
-          this.allWarehouses = [...new Set(ids)];
+          const warehouses = [];
+          this.suppliers.forEach(s => {
+            if (s.warehouseId && s.warehouseName) {
+              if (!warehouses.some(w => w.id === s.warehouseId)) {
+                warehouses.push({ id: s.warehouseId, name: s.warehouseName });
+              }
+            }
+          });
+          this.allWarehouses = warehouses;
         }
       } catch (error) {
         alert("Lỗi khi tải danh sách nhà cung cấp: " + (error.response?.data?.message || error.message));
@@ -308,9 +323,12 @@ export default {
         this.loadSuppliers();
         return;
       }
+      // Tìm tên kho theo id đã chọn
+      const warehouse = this.allWarehouses.find(w => w.id == this.selectedWarehouse);
+      const warehouseName = warehouse ? warehouse.name : "";
       try {
-        const response = await axios.get("https://localhost:7189/api/supplier/search-by-warehouse", {
-          params: { warehouseId: this.selectedWarehouse },
+        const response = await axios.get("https://localhost:7189/api/supplier/search-by-warehouse-name", {
+          params: { warehouseName }
         });
         this.suppliers = response.data.data || response.data;
       } catch (error) {
