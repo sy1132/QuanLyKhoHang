@@ -153,6 +153,9 @@ namespace QLKhoHang.Controllers
 
             supplier.CreatedAt = DateTime.Now;
             supplier.UpdatedAt = DateTime.Now;
+  
+
+
 
             try
             {
