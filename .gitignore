@@ -17,3 +17,14 @@ QLKhoHang/obj/project.assets.json
 QLKhoHang/obj/project.nuget.cache
 QLKhoHang/obj/QLKhoHang.csproj.nuget.dgspec.json
 *.db
+*.json
+*.bin
+*.cache
+QLKhoHang/.vs/ProjectEvaluation/qlkhohang.metadata.v9.bin
+QLKhoHang/.vs/ProjectEvaluation/qlkhohang.projects.v9.bin
+QLKhoHang/.vs/ProjectEvaluation/qlkhohang.strings.v9.bin
+QLKhoHang/.vs/QLKhoHang/v17/.suo
+QLKhoHang/.vs/QLKhoHang/v17/DocumentLayout.backup.json
+QLKhoHang/.vs/QLKhoHang/v17/DocumentLayout.json
+QLKhoHang/obj/Debug/net9.0/QLKhoHang.AssemblyInfo.cs
+QLKhoHang/obj/Debug/net9.0/QLKhoHang.AssemblyInfoInputs.cache
