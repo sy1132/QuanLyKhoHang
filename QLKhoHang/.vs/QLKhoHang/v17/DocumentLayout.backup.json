@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -41,10 +45,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\models\\apiresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:models\\apiresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -118,7 +118,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 354,
-          "SelectedChildIndex": 23,
+          "SelectedChildIndex": 25,
           "Children": [
             {
               "$type": "Bookmark",
@@ -145,8 +145,16 @@
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "20250517141944_hehehe.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250517141944_hehehe.cs",
               "RelativeDocumentMoniker": "Migrations\\20250517141944_hehehe.cs",
@@ -154,12 +162,11 @@
               "RelativeToolTip": "Migrations\\20250517141944_hehehe.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:08:32.206Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:08:32.206Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "20250516062257_lamlamo.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250516062257_lamlamo.cs",
               "RelativeDocumentMoniker": "Migrations\\20250516062257_lamlamo.cs",
@@ -167,12 +174,11 @@
               "RelativeToolTip": "Migrations\\20250516062257_lamlamo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:08:30.891Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:08:30.891Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "20250514091220_luom.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250514091220_luom.cs",
               "RelativeDocumentMoniker": "Migrations\\20250514091220_luom.cs",
@@ -180,12 +186,11 @@
               "RelativeToolTip": "Migrations\\20250514091220_luom.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:08:28.819Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:08:28.819Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "20250507082048_sybeo.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250507082048_sybeo.cs",
               "RelativeDocumentMoniker": "Migrations\\20250507082048_sybeo.cs",
@@ -193,12 +198,11 @@
               "RelativeToolTip": "Migrations\\20250507082048_sybeo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:08:25.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:08:25.871Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "RegisterModel.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\RegisterModel.cs",
               "RelativeDocumentMoniker": "Models\\RegisterModel.cs",
@@ -206,12 +210,11 @@
               "RelativeToolTip": "Models\\RegisterModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:08:22.309Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:08:22.309Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "LoginModel.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\LoginModel.cs",
               "RelativeDocumentMoniker": "Models\\LoginModel.cs",
@@ -219,12 +222,11 @@
               "RelativeToolTip": "Models\\LoginModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:08:21.001Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:08:21.001Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ApiResult.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\ApiResult.cs",
               "RelativeDocumentMoniker": "Models\\ApiResult.cs",
@@ -232,8 +234,7 @@
               "RelativeToolTip": "Models\\ApiResult.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:08:19.695Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:08:19.695Z"
             },
             {
               "$type": "Document",
@@ -245,8 +246,7 @@
               "RelativeToolTip": "appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-17T16:08:16.022Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:08:16.022Z"
             },
             {
               "$type": "Document",
@@ -258,8 +258,7 @@
               "RelativeToolTip": "Controllers\\WareHouseController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:08:05.383Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:08:05.383Z"
             },
             {
               "$type": "Document",
@@ -271,8 +270,7 @@
               "RelativeToolTip": "Controllers\\ProductsController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:07:59.87Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:07:59.87Z"
             },
             {
               "$type": "Document",
@@ -284,8 +282,7 @@
               "RelativeToolTip": "Controllers\\BaseController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:07:54.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:07:54.948Z"
             },
             {
               "$type": "Document",
@@ -297,8 +294,7 @@
               "RelativeToolTip": "Entities\\Report.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:07:27.108Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-17T16:07:27.108Z"
             },
             {
               "$type": "Document",
@@ -310,20 +306,11 @@
               "RelativeToolTip": "Entities\\Category.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-17T16:07:11.076Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "WhenOpened": "2025-05-17T16:07:11.076Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "20250514091741_ImportDetail.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250514091741_ImportDetail.cs",
               "RelativeDocumentMoniker": "Migrations\\20250514091741_ImportDetail.cs",
@@ -331,8 +318,7 @@
               "RelativeToolTip": "Migrations\\20250514091741_ImportDetail.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T09:17:41.992Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T09:17:41.992Z"
             },
             {
               "$type": "Document",
@@ -344,12 +330,11 @@
               "RelativeToolTip": "Entities\\ImportDetail.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T09:06:51.01Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T09:06:51.01Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ApplicationDbContextModelSnapshot.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Migrations\\ApplicationDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "Migrations\\ApplicationDbContextModelSnapshot.cs",
@@ -370,12 +355,11 @@
               "RelativeToolTip": "Entities\\Import.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T08:25:36.989Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T08:25:36.989Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -396,8 +380,7 @@
               "RelativeToolTip": "Controllers\\ImportController.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAmwBMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T08:06:59.581Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T08:06:59.581Z"
             },
             {
               "$type": "Document",
@@ -409,8 +392,7 @@
               "RelativeToolTip": "Controllers\\SupplierController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T07:33:45.681Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T07:33:45.681Z"
             },
             {
               "$type": "Document",
@@ -422,8 +404,7 @@
               "RelativeToolTip": "Entities\\Supplier.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T06:32:27.394Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T06:32:27.394Z"
             },
             {
               "$type": "Document",
@@ -435,8 +416,7 @@
               "RelativeToolTip": "Entities\\Products.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T06:25:45.486Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T06:25:45.486Z"
             },
             {
               "$type": "Document",
@@ -448,8 +428,7 @@
               "RelativeToolTip": "Entities\\Warehouse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T06:34:52.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T06:34:52.7Z"
             },
             {
               "$type": "Document",
@@ -461,8 +440,7 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAE0AAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T07:02:35.785Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T07:02:35.785Z"
             },
             {
               "$type": "Document",
@@ -474,12 +452,11 @@
               "RelativeToolTip": "Dbcontext.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwBAAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T09:19:26.256Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T09:19:26.256Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "20250514064739_lambeo1.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250514064739_lambeo1.cs",
               "RelativeDocumentMoniker": "Migrations\\20250514064739_lambeo1.cs",
@@ -487,8 +464,7 @@
               "RelativeToolTip": "Migrations\\20250514064739_lambeo1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T06:47:39.689Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T06:47:39.689Z"
             },
             {
               "$type": "Document",
@@ -500,8 +476,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T08:41:18.584Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T08:41:18.584Z"
             }
           ]
         },
