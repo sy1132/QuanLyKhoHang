@@ -3,10 +3,10 @@
     public class Import
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public float Cotst { get; set; }
-        public int Quanty { get; set; }
-
+        public string Status{ get; set; }
+        public decimal Cost { get; set; }
+        public DateTime DateInput { get; set; }
+        public int WarehouseId { get; set; }
 
     }
 }
