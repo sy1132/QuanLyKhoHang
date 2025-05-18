@@ -1,6 +1,6 @@
-﻿namespace QLKhoHang.Entities
+﻿namespace QLKhoHang.Models
 {
-    public class Products
+    public class ProductsModel
     {
         public int Id { get; set; }
         public string Barcode { get; set; }
@@ -12,9 +12,7 @@
         public string Description { get; set; }
         public string Status { get; set; }
         public int WarehouseId { get; set; }
-        public string Image { get; set; }
+        public IFormFile Image { get; set; }
         public string location { get; set; }
-        public DateTime createdDate { get; set; }
-        public DateTime finaldDate { get; set; }
     }
 }

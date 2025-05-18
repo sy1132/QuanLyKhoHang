@@ -152,19 +152,89 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Products"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products"
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Barcode": {
+                    "type": "string"
+                  },
+                  "Name": {
+                    "type": "string"
+                  },
+                  "CategoryID": {
+                    "type": "string"
+                  },
+                  "Brand": {
+                    "type": "string"
+                  },
+                  "Price": {
+                    "type": "string"
+                  },
+                  "Cost": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Status": {
+                    "type": "string"
+                  },
+                  "WarehouseId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Image": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "location": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Id": {
+                  "style": "form"
+                },
+                "Barcode": {
+                  "style": "form"
+                },
+                "Name": {
+                  "style": "form"
+                },
+                "CategoryID": {
+                  "style": "form"
+                },
+                "Brand": {
+                  "style": "form"
+                },
+                "Price": {
+                  "style": "form"
+                },
+                "Cost": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Status": {
+                  "style": "form"
+                },
+                "WarehouseId": {
+                  "style": "form"
+                },
+                "Image": {
+                  "style": "form"
+                },
+                "location": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -211,19 +281,89 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Products"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Products"
+                "type": "object",
+                "properties": {
+                  "Id": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Barcode": {
+                    "type": "string"
+                  },
+                  "Name": {
+                    "type": "string"
+                  },
+                  "CategoryID": {
+                    "type": "string"
+                  },
+                  "Brand": {
+                    "type": "string"
+                  },
+                  "Price": {
+                    "type": "string"
+                  },
+                  "Cost": {
+                    "type": "number",
+                    "format": "float"
+                  },
+                  "Description": {
+                    "type": "string"
+                  },
+                  "Status": {
+                    "type": "string"
+                  },
+                  "WarehouseId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Image": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "location": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "Id": {
+                  "style": "form"
+                },
+                "Barcode": {
+                  "style": "form"
+                },
+                "Name": {
+                  "style": "form"
+                },
+                "CategoryID": {
+                  "style": "form"
+                },
+                "Brand": {
+                  "style": "form"
+                },
+                "Price": {
+                  "style": "form"
+                },
+                "Cost": {
+                  "style": "form"
+                },
+                "Description": {
+                  "style": "form"
+                },
+                "Status": {
+                  "style": "form"
+                },
+                "WarehouseId": {
+                  "style": "form"
+                },
+                "Image": {
+                  "style": "form"
+                },
+                "location": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -294,6 +434,72 @@
       "get": {
         "tags": [
           "Products"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Products/upload-image/{id}": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "image": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Products/delete-image/{id}": {
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -766,7 +972,7 @@
             "type": "string",
             "nullable": true
           },
-          "num": {
+          "price": {
             "type": "string",
             "nullable": true
           },
@@ -793,6 +999,14 @@
           "location": {
             "type": "string",
             "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "finaldDate": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
