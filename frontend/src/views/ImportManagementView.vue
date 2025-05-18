@@ -42,9 +42,7 @@
         </router-link>
       </div>
       <div>
-        <button @click="showCreateModal" class="btn btn-success">
-          <i class="fas fa-plus"></i> Tạo phiếu nhập mới
-        </button>
+        <ImportAdd @import-added="loadImports" />
       </div>
     </div>
 
@@ -121,85 +119,100 @@
             <button type="button" class="btn-close" @click="cancelModal"></button>
           </div>
           <div class="modal-body">
-            <div class="form-group mb-3">
-              <label>Kho nhập:</label>
-              <select v-model="currentImport.warehouseId" class="form-select">
-                <option v-for="warehouse in warehouses" :key="warehouse.id" :value="warehouse.id">
-                  {{ warehouse.name }}
-                </option>
-              </select>
+            <!-- Hiển thị Loading khi đang tải dữ liệu -->
+            <div v-if="isLoading" class="text-center my-3">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Đang tải...</span>
+              </div>
+              <p class="mt-2">Đang xử lý dữ liệu...</p>
             </div>
             
-            <h5 class="mt-4">Chi tiết phiếu nhập</h5>
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead class="table-light">
-                  <tr>
-                    <th>Sản phẩm</th>
-                    <th>Nhà cung cấp</th>
-                    <th>Số lượng</th>
-                    <th>Đơn giá</th>
-                    <th>Thành tiền</th>
-                    <th>Ghi chú</th>
-                    <th>Thao tác</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(detail, index) in currentImport.details" :key="index">
-                    <td>
-                      <select v-model="detail.idProduct" class="form-select form-select-sm">
-                        <option v-for="product in products" :key="product.id" :value="product.id">
-                          {{ product.name }}
-                        </option>
-                      </select>
-                    </td>
-                    <td>
-                      <select v-model="detail.idSupplier" class="form-select form-select-sm">
-                        <option v-for="supplier in suppliers" :key="supplier.id" :value="supplier.id">
-                          {{ supplier.name }}
-                        </option>
-                      </select>
-                    </td>
-                    <td>
-                      <input type="number" v-model="detail.quantity" min="1" class="form-control form-control-sm">
-                    </td>
-                    <td>
-                      <input type="number" v-model="detail.cost" min="0" class="form-control form-control-sm">
-                    </td>
-                    <td>{{ formatCurrency(detail.quantity * detail.cost) }}</td>
-                    <td>
-                      <input type="text" v-model="detail.note" class="form-control form-control-sm">
-                    </td>
-                    <td>
-                      <button @click="removeDetail(index)" class="btn btn-danger btn-sm">
-                        <i class="fas fa-trash"></i>
-                      </button>
-                    </td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td colspan="7">
-                      <button @click="addDetail" class="btn btn-primary btn-sm">
-                        <i class="fas fa-plus"></i> Thêm sản phẩm
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="4" class="text-end"><strong>Tổng giá trị:</strong></td>
-                    <td colspan="3">{{ formatCurrency(calculateTotal()) }}</td>
-                  </tr>
-                </tfoot>
-              </table>
-            </div>
-            
-            <div v-if="errorMessage" class="alert alert-danger mt-3">
-              {{ errorMessage }}
+            <!-- Nội dung form -->
+            <div v-else>
+              <div class="form-group mb-3">
+                <label>Kho nhập:</label>
+                <select v-model="currentImport.warehouseId" class="form-select">
+                  <option v-if="warehouses.length === 0" value="" disabled>Đang tải danh sách kho...</option>
+                  <option v-for="warehouse in warehouses" :key="warehouse.id" :value="warehouse.id">
+                    {{ warehouse.name }}
+                  </option>
+                </select>
+              </div>
+              
+              <h5 class="mt-4">Chi tiết phiếu nhập</h5>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Sản phẩm</th>
+                      <th>Nhà cung cấp</th>
+                      <th>Số lượng</th>
+                      <th>Đơn giá</th>
+                      <th>Thành tiền</th>
+                      <th>Ghi chú</th>
+                      <th>Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(detail, index) in currentImport.details" :key="index">
+                      <td>
+                        <select v-model="detail.idProduct" class="form-select form-select-sm">
+                          <option v-for="product in products" :key="product.id" :value="product.id">
+                            {{ product.name }}
+                          </option>
+                        </select>
+                      </td>
+                      <td>
+                        <select v-model="detail.idSupplier" class="form-select form-select-sm">
+                          <option v-for="supplier in suppliers" :key="supplier.id" :value="supplier.id">
+                            {{ supplier.name }}
+                          </option>
+                        </select>
+                      </td>
+                      <td>
+                        <input type="number" v-model="detail.quantity" min="1" class="form-control form-control-sm">
+                      </td>
+                      <td>
+                        <input type="number" v-model="detail.cost" min="0" class="form-control form-control-sm">
+                      </td>
+                      <td>{{ formatCurrency(detail.quantity * detail.cost) }}</td>
+                      <td>
+                        <input type="text" v-model="detail.note" class="form-control form-control-sm">
+                      </td>
+                      <td>
+                        <button @click="removeDetail(index)" class="btn btn-danger btn-sm">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td colspan="7">
+                        <button @click="addDetail" class="btn btn-primary btn-sm">
+                          <i class="fas fa-plus"></i> Thêm sản phẩm
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="4" class="text-end"><strong>Tổng giá trị:</strong></td>
+                      <td colspan="3">{{ formatCurrency(calculateTotal()) }}</td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+              
+              <div v-if="errorMessage" class="alert alert-danger mt-3">
+                {{ errorMessage }}
+              </div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" @click="cancelModal">Hủy</button>
-            <button type="button" class="btn btn-primary" @click="saveImport">Lưu</button>
+            <button type="button" class="btn btn-primary" @click="saveImport" :disabled="isLoading">
+              <span v-if="isLoading" class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+              {{ isLoading ? 'Đang lưu...' : 'Lưu' }}
+            </button>
           </div>
         </div>
       </div>
@@ -292,10 +305,16 @@
 
 <script>
 import axios from 'axios';
-import { importApi } from '../api/improt.api';
+import { importApi } from '../api/import.api';
+import ImportAdd from './ImportAdd.vue';
+
+const BASE_URL = 'https://localhost:7189/api';
 
 export default {
   name: 'ImportManagementView',
+  components: {
+    ImportAdd
+  },
   data() {
     return {
       imports: [],
@@ -365,37 +384,49 @@ export default {
     
     async loadWarehouses() {
       try {
-        const response = await axios.get('/api/warehouse');
-        if (response.data && response.data.data) {
-          this.warehouses = response.data.data;
+        const response = await axios.get(`${BASE_URL}/warehouse`);
+        if (response.data && (response.data.data || response.data.result?.data)) {
+          this.warehouses = response.data.data || response.data.result.data;
           console.log('Warehouses loaded:', this.warehouses);
+        } else {
+          console.error('Invalid warehouse data format:', response.data);
+          this.warehouses = [];
         }
       } catch (error) {
         console.error('Error loading warehouses:', error);
+        this.warehouses = [];
       }
     },
     
     async loadProducts() {
       try {
-        const response = await axios.get('/api/product');
-        if (response.data && response.data.data) {
-          this.products = response.data.data;
+        const response = await axios.get(`${BASE_URL}/Products`);
+        if (response.data && (response.data.data || response.data.result?.data)) {
+          this.products = response.data.data || response.data.result.data;
           console.log('Products loaded:', this.products);
+        } else {
+          console.error('Invalid product data format:', response.data);
+          this.products = [];
         }
       } catch (error) {
         console.error('Error loading products:', error);
+        this.products = [];
       }
     },
     
     async loadSuppliers() {
       try {
-        const response = await axios.get('/api/supplier');
-        if (response.data && response.data.data) {
-          this.suppliers = response.data.data;
+        const response = await axios.get(`${BASE_URL}/supplier`);
+        if (response.data && (response.data.data || response.data.result?.data)) {
+          this.suppliers = response.data.data || response.data.result.data;
           console.log('Suppliers loaded:', this.suppliers);
+        } else {
+          console.error('Invalid supplier data format:', response.data);
+          this.suppliers = [];
         }
       } catch (error) {
         console.error('Error loading suppliers:', error);
+        this.suppliers = [];
       }
     },
     
@@ -425,10 +456,24 @@ export default {
     showCreateModal() {
       console.log('Showing create modal');
       this.isEditing = false;
+      
+      // Đảm bảo đã tải dữ liệu cần thiết
+      if (this.warehouses.length === 0) {
+        this.loadWarehouses();
+      }
+      if (this.products.length === 0) {
+        this.loadProducts();
+      }
+      if (this.suppliers.length === 0) {
+        this.loadSuppliers();
+      }
+      
+      // Khởi tạo phiếu nhập mới với giá trị mặc định
       this.currentImport = {
         warehouseId: this.warehouses.length > 0 ? this.warehouses[0].id : null,
         details: [this.createEmptyDetail()]
       };
+      
       this.errorMessage = '';
       this.showImportModal = true;
       console.log('Modal state:', this.showImportModal);
@@ -499,57 +544,71 @@ export default {
         
         this.isLoading = true;
         
+        const importData = {
+          warehouseId: this.currentImport.warehouseId,
+          details: this.currentImport.details.map(detail => ({
+            idProduct: detail.idProduct,
+            idSupplier: detail.idSupplier,
+            quantity: Number(detail.quantity),
+            cost: Number(detail.cost),
+            note: detail.note || ''
+          }))
+        };
+        
         if (this.isEditing) {
-          await importApi.updateImport(this.currentImport.id, {
-            id: this.currentImport.id,
-            warehouseId: this.currentImport.warehouseId,
-            details: this.currentImport.details
-          });
-          
+          importData.id = this.currentImport.id;
+          await importApi.updateImport(this.currentImport.id, importData);
           alert('Cập nhật phiếu nhập thành công');
         } else {
-          await importApi.createImport({
-            warehouseId: this.currentImport.warehouseId,
-            details: this.currentImport.details
-          });
-          
+          await importApi.createImport(importData);
           alert('Tạo phiếu nhập thành công');
         }
         
         this.showImportModal = false;
-        this.loadImports();
+        this.loadImports(); // Tải lại danh sách phiếu nhập
       } catch (error) {
         console.error('Error saving import:', error);
-        this.errorMessage = error.response?.data?.message || 'Không thể lưu phiếu nhập';
+        this.errorMessage = error.response?.data?.message || 
+                            'Không thể lưu phiếu nhập. Vui lòng kiểm tra kết nối và thử lại.';
       } finally {
         this.isLoading = false;
       }
     },
     
     validateImport() {
+      // Kiểm tra kho
       if (!this.currentImport.warehouseId) {
         this.errorMessage = 'Vui lòng chọn kho nhập';
         return false;
       }
       
-      for (const detail of this.currentImport.details) {
+      // Kiểm tra xem có chi tiết nào không
+      if (this.currentImport.details.length === 0) {
+        this.errorMessage = 'Phiếu nhập phải có ít nhất một sản phẩm';
+        return false;
+      }
+      
+      // Kiểm tra từng chi tiết
+      for (let i = 0; i < this.currentImport.details.length; i++) {
+        const detail = this.currentImport.details[i];
+        
         if (!detail.idProduct) {
-          this.errorMessage = 'Vui lòng chọn sản phẩm';
+          this.errorMessage = `Vui lòng chọn sản phẩm ở dòng ${i+1}`;
           return false;
         }
         
         if (!detail.idSupplier) {
-          this.errorMessage = 'Vui lòng chọn nhà cung cấp';
+          this.errorMessage = `Vui lòng chọn nhà cung cấp ở dòng ${i+1}`;
           return false;
         }
         
-        if (!detail.quantity || detail.quantity <= 0) {
-          this.errorMessage = 'Số lượng sản phẩm phải lớn hơn 0';
+        if (!detail.quantity || isNaN(detail.quantity) || detail.quantity <= 0) {
+          this.errorMessage = `Số lượng sản phẩm ở dòng ${i+1} phải lớn hơn 0`;
           return false;
         }
         
-        if (detail.cost < 0) {
-          this.errorMessage = 'Đơn giá không được âm';
+        if (detail.cost < 0 || isNaN(detail.cost)) {
+          this.errorMessage = `Đơn giá ở dòng ${i+1} không hợp lệ`;
           return false;
         }
       }
