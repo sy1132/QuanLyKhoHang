@@ -6,6 +6,7 @@ import WarehouseView from "@/views/WarehouseView.vue";
 import ProductIndex from "@/views/ProductIndex.vue";
 import ProductAdd from "@/views/ProductAdd.vue"; // Thêm dòng này
 import ProductDetail from "@/views/ProductDetail.vue";
+import ImportManagementView from "@/views/ImportManagementView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,6 +42,12 @@ const router = createRouter({
       component: ProductAdd,
     },
     { path: "/ProductDetail/:id", component: ProductDetail },
+    {
+      path: "/import",
+      name: "import",
+      component: ImportManagementView,
+    },
+    
   ],
 });
 

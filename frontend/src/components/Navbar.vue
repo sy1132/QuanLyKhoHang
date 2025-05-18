@@ -8,7 +8,7 @@
         <router-link class="nav-item" to="/products"
           ><i class="fas fa-th-list"></i> Danh mục</router-link
         >
-        <router-link class="nav-item" to="/imports"
+        <router-link class="nav-item" to="/import"
           ><i class="fas fa-download"></i> Nhập hàng</router-link
         >
         <router-link class="nav-item" to="/Supplier"

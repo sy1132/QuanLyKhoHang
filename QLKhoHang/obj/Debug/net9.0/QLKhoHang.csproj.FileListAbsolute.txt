@@ -1284,3 +1284,5 @@ E:\QLKH\QuanLyKhoHang\QLKhoHang\obj\Debug\net9.0\QLKhoHang.genruntimeconfig.cach
 E:\QLKH\QuanLyKhoHang\QLKhoHang\obj\Debug\net9.0\ref\QLKhoHang.dll
 E:\ThucHanhKIenTruc\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\CloudinaryDotNet.dll
 E:\ThucHanhKIenTruc\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\Newtonsoft.Json.dll
+E:\QLKH\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\CloudinaryDotNet.dll
+E:\QLKH\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\Newtonsoft.Json.dll
