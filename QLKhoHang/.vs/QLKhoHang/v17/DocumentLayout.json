@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\entities\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\entities\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\models\\productsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:models\\productsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250518104041_AddfinalDateToProducts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250518104041_AddfinalDateToProducts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\models\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:models\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250518104022_AddPriceToProducts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250518104022_AddPriceToProducts.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\entities\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -31,16 +39,24 @@
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:controllers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:controllers\\importcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\entities\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\entities\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,43 +70,69 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Products.cs",
-              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Entities\\Products.cs",
-              "RelativeDocumentMoniker": "Entities\\Products.cs",
-              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Entities\\Products.cs",
-              "RelativeToolTip": "Entities\\Products.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAA5wAoAAAAnAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "RegisterModel.cs",
+              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Models\\RegisterModel.cs",
+              "RelativeDocumentMoniker": "Models\\RegisterModel.cs",
+              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Models\\RegisterModel.cs",
+              "RelativeToolTip": "Models\\RegisterModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T06:25:45.486Z",
+              "WhenOpened": "2025-05-18T10:43:16.243Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ImportController.cs",
-              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ImportController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ImportController.cs",
-              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ImportController.cs",
-              "RelativeToolTip": "Controllers\\ImportController.cs",
-              "ViewState": "AgIAAAAAAADAuLZBHgAcwBMAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "Entities\\Category.cs",
+              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Entities\\Category.cs",
+              "RelativeToolTip": "Entities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T07:45:04.666Z",
+              "WhenOpened": "2025-05-18T10:42:52.523Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "20250518104041_AddfinalDateToProducts.cs",
+              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250518104041_AddfinalDateToProducts.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250518104041_AddfinalDateToProducts.cs",
+              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250518104041_AddfinalDateToProducts.cs",
+              "RelativeToolTip": "Migrations\\20250518104041_AddfinalDateToProducts.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T10:40:41.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductsModel.cs",
+              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Models\\ProductsModel.cs",
+              "RelativeDocumentMoniker": "Models\\ProductsModel.cs",
+              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Models\\ProductsModel.cs",
+              "RelativeToolTip": "Models\\ProductsModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T06:51:24.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
               "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ProductsController.cs",
               "RelativeToolTip": "Controllers\\ProductsController.cs",
-              "ViewState": "AgIAAL4AAAAAAAAAAADwv2MAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACUBAAAAAAAAAAAAAHIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T07:46:08.179Z",
               "EditorCaption": ""
@@ -98,6 +140,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "20250518104022_AddPriceToProducts.cs",
+              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250518104022_AddPriceToProducts.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250518104022_AddPriceToProducts.cs",
+              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250518104022_AddPriceToProducts.cs",
+              "RelativeToolTip": "Migrations\\20250518104022_AddPriceToProducts.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T10:40:22.397Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Products.cs",
+              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Entities\\Products.cs",
+              "RelativeDocumentMoniker": "Entities\\Products.cs",
+              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Entities\\Products.cs",
+              "RelativeToolTip": "Entities\\Products.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAYwAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T06:25:45.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -105,11 +173,12 @@
               "RelativeToolTip": "appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-16T06:23:15.954Z"
+              "WhenOpened": "2025-05-16T06:23:15.954Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "SupplierController.cs",
               "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Controllers\\SupplierController.cs",
               "RelativeDocumentMoniker": "Controllers\\SupplierController.cs",
@@ -117,11 +186,37 @@
               "RelativeToolTip": "Controllers\\SupplierController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T06:31:07.494Z"
+              "WhenOpened": "2025-05-16T06:31:07.494Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAGQAAAAAAAAAAAAkwHAAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-09T08:41:18.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ImportController.cs",
+              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ImportController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ImportController.cs",
+              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ImportController.cs",
+              "RelativeToolTip": "Controllers\\ImportController.cs",
+              "ViewState": "AgIAAAAAAADAuLZBHgAcwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T07:45:04.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "Supplier.cs",
               "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Entities\\Supplier.cs",
               "RelativeDocumentMoniker": "Entities\\Supplier.cs",
@@ -133,19 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProductsModel.cs",
-              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Models\\ProductsModel.cs",
-              "RelativeDocumentMoniker": "Models\\ProductsModel.cs",
-              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Models\\ProductsModel.cs",
-              "RelativeToolTip": "Models\\ProductsModel.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAxwA8AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T06:51:24.267Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
@@ -157,7 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "Warehouse.cs",
               "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Entities\\Warehouse.cs",
               "RelativeDocumentMoniker": "Entities\\Warehouse.cs",
@@ -169,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "Dbcontext.cs",
               "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Dbcontext.cs",
               "RelativeDocumentMoniker": "Dbcontext.cs",
@@ -178,18 +261,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-09T09:19:26.256Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T08:41:18.584Z"
             }
           ]
         }

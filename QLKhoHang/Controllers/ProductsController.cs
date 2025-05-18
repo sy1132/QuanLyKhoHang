@@ -51,13 +51,14 @@ namespace QLKhoHang.Controllers
                 Name = productModel.Name,
                 CategoryID = productModel.CategoryID,
                 Brand = productModel.Brand,
-                Num = productModel.Num,
+                Price = productModel.Price,
                 Cost = productModel.Cost,
                 Description = productModel.Description,
                 Status = productModel.Status,
                 WarehouseId = productModel.WarehouseId,
                 location = productModel.location,
-                createdDate = DateTime.Now // Gán thời gian hiện tại
+                createdDate = DateTime.Now, // Gán thời gian hiện tại
+                finaldDate = DateTime.Now.AddDays(90) // Gán thời gian hết hạn (nếu cần)
             };
 
             // Upload image if provided
@@ -90,13 +91,13 @@ namespace QLKhoHang.Controllers
             existingProduct.Name = productModel.Name;
             existingProduct.CategoryID = productModel.CategoryID;
             existingProduct.Brand = productModel.Brand;
-            existingProduct.Num = productModel.Num;
+            existingProduct.Price = productModel.Price;
             existingProduct.Cost = productModel.Cost;
             existingProduct.Description = productModel.Description;
             existingProduct.Status = productModel.Status;
             existingProduct.WarehouseId = productModel.WarehouseId;
             existingProduct.location = productModel.location;
-            existingProduct.modifiedDate = DateTime.Now; // Cập nhật thời gian
+            
 
             // Handle image update
             if (productModel.Image != null && productModel.Image.Length > 0)
@@ -166,13 +167,13 @@ namespace QLKhoHang.Controllers
                             Name = worksheet.Cell(row, 2).GetString(),
                             CategoryID = worksheet.Cell(row, 3).GetString(),
                             Brand = worksheet.Cell(row, 4).GetString(),
-                            Num = worksheet.Cell(row, 5).GetString(),
+                            Price = worksheet.Cell(row, 5).GetString(),
                             Cost = float.TryParse(worksheet.Cell(row, 6).GetString(), out float cost) ? cost : 0,
                             Description = worksheet.Cell(row, 7).GetString(),
                             Status = worksheet.Cell(row, 8).GetString(),
                             WarehouseId = int.TryParse(worksheet.Cell(row, 9).GetString(), out int wid) ? wid : 0,
-                            //Image = worksheet.Cell(row, 10).GetString(),
-                            //location = worksheet.Cell(row, 11).GetString(),
+                            location = worksheet.Cell(row, 11).GetString(),
+                            Image = worksheet.Cell(row, 10).GetString(),
                             createdDate = DateTime.Now // Gán thời gian import
                         };
                         products.Add(product);
@@ -193,43 +194,49 @@ namespace QLKhoHang.Controllers
             using (var workbook = new XLWorkbook())
             {
                 var worksheet = workbook.Worksheets.Add("Products");
+
                 // Header
                 worksheet.Cell(1, 1).Value = "Id";
                 worksheet.Cell(1, 2).Value = "Barcode";
                 worksheet.Cell(1, 3).Value = "Name";
                 worksheet.Cell(1, 4).Value = "CategoryID";
                 worksheet.Cell(1, 5).Value = "Brand";
-                worksheet.Cell(1, 6).Value = "Num";
+                worksheet.Cell(1, 6).Value = "Price";
                 worksheet.Cell(1, 7).Value = "Cost";
                 worksheet.Cell(1, 8).Value = "Description";
                 worksheet.Cell(1, 9).Value = "Status";
                 worksheet.Cell(1, 10).Value = "WarehouseId";
                 worksheet.Cell(1, 11).Value = "Image";
-                worksheet.Cell(1, 12).Value = "location";
+                worksheet.Cell(1, 12).Value = "Location";
+                worksheet.Cell(1, 13).Value = "Created Date";
+                worksheet.Cell(1, 14).Value = "Final Date";
 
                 // Data
                 for (int i = 0; i < products.Count; i++)
                 {
                     var p = products[i];
-                    worksheet.Cell(i + 2, 1).Value = p.Id;
-                    worksheet.Cell(i + 2, 2).Value = p.Barcode;
-                    worksheet.Cell(i + 2, 3).Value = p.Name;
-                    worksheet.Cell(i + 2, 4).Value = p.CategoryID;
-                    worksheet.Cell(i + 2, 5).Value = p.Brand;
-                    worksheet.Cell(i + 2, 6).Value = p.Num;
-                    worksheet.Cell(i + 2, 7).Value = p.Cost;
-                    worksheet.Cell(i + 2, 8).Value = p.Description;
-                    worksheet.Cell(i + 2, 9).Value = p.Status;
-                    worksheet.Cell(i + 2, 10).Value = p.WarehouseId;
-                    worksheet.Cell(i + 2, 11).Value = p.Image;
-                    worksheet.Cell(i + 2, 12).Value = p.location;
+                    int row = i + 2;
+                    worksheet.Cell(row, 1).Value = p.Id;
+                    worksheet.Cell(row, 2).Value = p.Barcode;
+                    worksheet.Cell(row, 3).Value = p.Name;
+                    worksheet.Cell(row, 4).Value = p.CategoryID;
+                    worksheet.Cell(row, 5).Value = p.Brand;
+                    worksheet.Cell(row, 6).Value = p.Price;
+                    worksheet.Cell(row, 7).Value = p.Cost;
+                    worksheet.Cell(row, 8).Value = p.Description;
+                    worksheet.Cell(row, 9).Value = p.Status;
+                    worksheet.Cell(row, 10).Value = p.WarehouseId;
+                    worksheet.Cell(row, 11).Value = p.Image;
+                    worksheet.Cell(row, 12).Value = p.location;
+                    worksheet.Cell(row, 13).Value = p.createdDate.ToString("yyyy-MM-dd HH:mm");
+                    worksheet.Cell(row, 14).Value = p.finaldDate.ToString("yyyy-MM-dd HH:mm");
                 }
 
                 using (var stream = new MemoryStream())
                 {
                     workbook.SaveAs(stream);
                     stream.Seek(0, SeekOrigin.Begin);
-                    var fileName = $"products_{DateTime.Now:yyyyMMddHHmmss}.xlsx";
+                    var fileName = $"products_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx";
                     return File(stream.ToArray(),
                                 "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
                                 fileName);

@@ -81,7 +81,7 @@
         "IsRequired": false
       },
       {
-        "Name": "Num",
+        "Name": "Price",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -271,7 +271,7 @@
         "IsRequired": false
       },
       {
-        "Name": "Num",
+        "Name": "Price",
         "Type": "System.String",
         "IsRequired": false
       },

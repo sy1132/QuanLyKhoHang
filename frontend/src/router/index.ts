@@ -3,6 +3,8 @@ import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import AddProduct from "@/views/Add-Product.vue";
 import ProductIndex from "@/views/ProductIndex.vue"; // Thêm dòng này
+import ProductAdd from "@/views/ProductAdd.vue"; // Thêm dòng này
+import ProductDetail from "@/views/ProductDetail.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +29,13 @@ const router = createRouter({
       name: "products",
       component: ProductIndex,
     },
+    {
+      path: "/ProductAdd", // Thêm route này
+      name: "products-add",
+      component: ProductAdd,
+    },
+    { path: '/ProductDetail/:id', component: ProductDetail },
+    
   ],
 });
 

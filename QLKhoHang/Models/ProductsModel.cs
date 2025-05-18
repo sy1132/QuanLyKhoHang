@@ -7,7 +7,7 @@
         public string Name { get; set; }
         public string CategoryID { get; set; }
         public string Brand { get; set; }
-        public string Num { get; set; }
+        public string Price { get; set; }
         public float Cost { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }

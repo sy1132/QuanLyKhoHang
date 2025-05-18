@@ -10,6 +10,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddScoped<CloudinaryService>();
@@ -110,9 +111,7 @@ builder.Services.AddSwaggerGen(c =>
 
 
 builder.Services.AddControllersWithViews();
-
 var app = builder.Build();
-
 
 if (app.Environment.IsDevelopment())
 {
@@ -123,10 +122,8 @@ if (app.Environment.IsDevelopment())
         c.RoutePrefix = string.Empty;
     });
 
-   
     app.MapGet("/", () => Results.Redirect("/swagger"));
 }
-
 
 app.Use(async (context, next) =>
 {
@@ -143,14 +140,10 @@ app.Use(async (context, next) =>
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseCors("AllowAll");
-
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();

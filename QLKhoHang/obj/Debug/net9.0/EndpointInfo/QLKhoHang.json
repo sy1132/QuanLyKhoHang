@@ -172,7 +172,7 @@
                   "Brand": {
                     "type": "string"
                   },
-                  "Num": {
+                  "Price": {
                     "type": "string"
                   },
                   "Cost": {
@@ -214,7 +214,7 @@
                 "Brand": {
                   "style": "form"
                 },
-                "Num": {
+                "Price": {
                   "style": "form"
                 },
                 "Cost": {
@@ -301,7 +301,7 @@
                   "Brand": {
                     "type": "string"
                   },
-                  "Num": {
+                  "Price": {
                     "type": "string"
                   },
                   "Cost": {
@@ -343,7 +343,7 @@
                 "Brand": {
                   "style": "form"
                 },
-                "Num": {
+                "Price": {
                   "style": "form"
                 },
                 "Cost": {
@@ -563,7 +563,7 @@
             "type": "string",
             "nullable": true
           },
-          "num": {
+          "price": {
             "type": "string",
             "nullable": true
           },
@@ -595,7 +595,7 @@
             "type": "string",
             "format": "date-time"
           },
-          "modifiedDate": {
+          "finaldDate": {
             "type": "string",
             "format": "date-time"
           }
