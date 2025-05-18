@@ -14,6 +14,7 @@
         public int WarehouseId { get; set; }
         public string Image { get; set; }
         public string location { get; set; }
-
+        public DateTime createdDate { get; set; }
+        public DateTime modifiedDate { get; set; }
     }
 }

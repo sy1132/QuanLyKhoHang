@@ -56,7 +56,8 @@ namespace QLKhoHang.Controllers
                 Description = productModel.Description,
                 Status = productModel.Status,
                 WarehouseId = productModel.WarehouseId,
-                location = productModel.location
+                location = productModel.location,
+                createdDate = DateTime.Now // Gán thời gian hiện tại
             };
 
             // Upload image if provided
@@ -71,6 +72,7 @@ namespace QLKhoHang.Controllers
 
             return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
         }
+
 
         // PUT: api/Products/update/5
         [HttpPut("update/{id}")]
@@ -94,6 +96,7 @@ namespace QLKhoHang.Controllers
             existingProduct.Status = productModel.Status;
             existingProduct.WarehouseId = productModel.WarehouseId;
             existingProduct.location = productModel.location;
+            existingProduct.modifiedDate = DateTime.Now; // Cập nhật thời gian
 
             // Handle image update
             if (productModel.Image != null && productModel.Image.Length > 0)
@@ -124,6 +127,7 @@ namespace QLKhoHang.Controllers
             return NoContent();
         }
 
+
         // DELETE: api/Products/delete/5
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
@@ -139,7 +143,7 @@ namespace QLKhoHang.Controllers
         }
 
         [HttpPost("import-excel")]
-        public async Task<IActionResult> ImportProductsFromExcel( IFormFile file)
+        public async Task<IActionResult> ImportProductsFromExcel(IFormFile file)
         {
             if (file == null || file.Length == 0)
                 return BadRequest("No file uploaded.");
@@ -168,7 +172,8 @@ namespace QLKhoHang.Controllers
                             Status = worksheet.Cell(row, 8).GetString(),
                             WarehouseId = int.TryParse(worksheet.Cell(row, 9).GetString(), out int wid) ? wid : 0,
                             //Image = worksheet.Cell(row, 10).GetString(),
-                            //location = worksheet.Cell(row, 11).GetString()
+                            //location = worksheet.Cell(row, 11).GetString(),
+                            createdDate = DateTime.Now // Gán thời gian import
                         };
                         products.Add(product);
                     }

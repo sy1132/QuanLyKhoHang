@@ -2,8 +2,8 @@
     <nav class="navbar">
         <div class="navbar-container">
             <div class="navbar-left">
-                <a class="nav-item" href="#"><i class="fas fa-eye"></i> Tổng quan</a>
-                <a class="nav-item" href="#"><i class="fas fa-th-list"></i> Danh mục</a>
+                <a class="nav-item" href=""><i class="fas fa-eye"></i> Tổng quan</a>
+                <router-link class="nav-item" to="/products"><i class="fas fa-th-list"></i> Danh mục</router-link>
                 <a class="nav-item" href="#"><i class="fas fa-download"></i> Nhập hàng</a>
                 <a class="nav-item" href="#"><i class="fas fa-users"></i> Đối tác</a>
             </div>
