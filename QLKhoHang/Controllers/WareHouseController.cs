@@ -16,20 +16,24 @@ namespace QLKhoHang.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        // Status constants
+        public const string STATUS_ACTIVE = "Active";
+        public const string STATUS_FULL = "Full";
+        public const string STATUS_INACTIVE = "Inactive";
+
         public WareHouseController(ApplicationDbContext context)
         {
             _context = context;
-    
         }
 
-       
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Warehouse>>> GetWarehouses()
         {
             return await _context.Warehouse.ToListAsync();
         }
 
-        
+
         [HttpGet("list")]
         public async Task<IActionResult> GetWarehouses(string searchString)
         {
@@ -72,6 +76,7 @@ namespace QLKhoHang.Controllers
 
             warehouse.CreatedAt = DateTime.Now;
             warehouse.UpdatedAt = DateTime.Now;
+            warehouse.status = STATUS_ACTIVE; // Set default status
 
             try
             {
@@ -147,9 +152,9 @@ namespace QLKhoHang.Controllers
             }
         }
 
-        // PATCH: Cập nhật trạng thái kho hàng
-        [HttpPatch("{id}/status")]
-        public async Task<IActionResult> UpdateWarehouseStatus(int id, [FromBody] bool isActive)
+        // PATCH: Cập nhật trạng thái hoạt động của kho hàng
+        [HttpPatch("{id}/active-status")]
+        public async Task<IActionResult> UpdateWarehouseActiveStatus(int id, [FromBody] bool isActive)
         {
             var warehouse = await _context.Warehouse.FindAsync(id);
 
@@ -160,11 +165,67 @@ namespace QLKhoHang.Controllers
 
             warehouse.IsActive = isActive;
             warehouse.UpdatedAt = DateTime.Now;
+            // Update status field to match IsActive
+            warehouse.status = isActive ? STATUS_ACTIVE : STATUS_INACTIVE;
 
             try
             {
                 await _context.SaveChangesAsync();
                 return Ok(new { Message = $"Cập nhật trạng thái kho hàng thành công: {(isActive ? "Hoạt động" : "Không hoạt động")}" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = $"Lỗi khi cập nhật trạng thái kho hàng: {ex.Message}" });
+            }
+        }
+
+        // PATCH: Cập nhật trạng thái kho hàng (Active, Full, Inactive)
+        [HttpPatch("{id}/status")]
+        public async Task<IActionResult> UpdateWarehouseStatus(int id, [FromBody] string status)
+        {
+            // Validate status
+            status = status?.Trim();
+            if (string.IsNullOrEmpty(status) ||
+                (status != STATUS_ACTIVE && status != STATUS_FULL && status != STATUS_INACTIVE))
+            {
+                return BadRequest(new { Message = "Trạng thái không hợp lệ. Trạng thái phải là 'Active', 'Full', hoặc 'Inactive'" });
+            }
+
+            var warehouse = await _context.Warehouse.FindAsync(id);
+
+            if (warehouse == null)
+            {
+                return NotFound(new { Message = "Không tìm thấy kho hàng với ID này" });
+            }
+
+            warehouse.status = status;
+            warehouse.UpdatedAt = DateTime.Now;
+
+            // Update IsActive to match status
+            warehouse.IsActive = status != STATUS_INACTIVE;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+
+                string statusMessage;
+                switch (status)
+                {
+                    case STATUS_ACTIVE:
+                        statusMessage = "Hoạt động";
+                        break;
+                    case STATUS_FULL:
+                        statusMessage = "Đầy hàng";
+                        break;
+                    case STATUS_INACTIVE:
+                        statusMessage = "Không hoạt động";
+                        break;
+                    default:
+                        statusMessage = status;
+                        break;
+                }
+
+                return Ok(new { Message = $"Cập nhật trạng thái kho hàng thành công: {statusMessage}" });
             }
             catch (Exception ex)
             {
