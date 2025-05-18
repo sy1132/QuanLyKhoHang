@@ -4,12 +4,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using QLKhoHang.Data;
+using QLKhoHang.Service;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
+builder.Services.AddScoped<CloudinaryService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
@@ -75,7 +79,7 @@ builder.Services.AddSwaggerGen(c =>
         Title = "QuanLyKhoHang API",
         Version = "v1"
     });
-    
+
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -103,7 +107,6 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 builder.Services.AddControllersWithViews();
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -133,14 +136,10 @@ app.Use(async (context, next) =>
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseCors("AllowAll");
-
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();
