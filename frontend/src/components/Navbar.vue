@@ -5,7 +5,7 @@
         <router-link class="nav-item" to="/"
           ><i class="fas fa-eye"></i> Tổng quan</router-link
         >
-        <router-link class="nav-item" to=""
+        <router-link class="nav-item" to="/products"
           ><i class="fas fa-th-list"></i> Danh mục</router-link
         >
         <router-link class="nav-item" to="/imports"

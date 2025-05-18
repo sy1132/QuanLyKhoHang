@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using QLKhoHang.Data;
 using QLKhoHang.Entities;
+using QLKhoHang.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,7 +13,7 @@ namespace QLKhoHang.Controllers
 {
     [Route("api/warehouse")]
     [ApiController]
-    public class WareHouseController : ControllerBase
+    public class WareHouseController : BaseController
     {
         private readonly ApplicationDbContext _context;
 
@@ -26,13 +27,12 @@ namespace QLKhoHang.Controllers
             _context = context;
         }
 
-
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Warehouse>>> GetWarehouses()
+        public async Task<IActionResult> GetWarehouses()
         {
-            return await _context.Warehouse.ToListAsync();
+            var warehouses = await _context.Warehouse.ToListAsync();
+            return Response(new ApiResult(warehouses));
         }
-
 
         [HttpGet("list")]
         public async Task<IActionResult> GetWarehouses(string searchString)
@@ -48,30 +48,31 @@ namespace QLKhoHang.Controllers
                     w.Manager.Contains(searchString));
             }
 
-            return Ok(await warehouses.ToListAsync());
+            var result = await warehouses.ToListAsync();
+            return Response(new ApiResult(result));
         }
 
         // GET: Lấy thông tin kho hàng theo Id
         [HttpGet("{id}")]
-        public async Task<ActionResult<Warehouse>> GetWarehouse(int id)
+        public async Task<IActionResult> GetWarehouse(int id)
         {
             var warehouse = await _context.Warehouse.FindAsync(id);
 
             if (warehouse == null)
             {
-                return NotFound(new { Message = "Không tìm thấy kho hàng với ID này" });
+                return Response(new ApiResult { Message = "Không tìm thấy kho hàng với ID này" }, 404);
             }
 
-            return warehouse;
+            return Response(new ApiResult(warehouse));
         }
 
         // POST: Thêm kho hàng mới
         [HttpPost("create")]
-        public async Task<ActionResult<Warehouse>> CreateWarehouse(Warehouse warehouse)
+        public async Task<IActionResult> CreateWarehouse(Warehouse warehouse)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return Response(new ApiResult { Message = "Dữ liệu không hợp lệ" }, 400);
             }
 
             warehouse.CreatedAt = DateTime.Now;
@@ -83,11 +84,11 @@ namespace QLKhoHang.Controllers
                 _context.Warehouse.Add(warehouse);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction(nameof(GetWarehouse), new { id = warehouse.Id }, warehouse);
+                return Response(new ApiResult(warehouse), 201);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = $"Lỗi khi tạo kho hàng: {ex.Message}" });
+                return Response(new ApiResult { Message = $"Lỗi khi tạo kho hàng: {ex.Message}" }, 500);
             }
         }
 
@@ -97,12 +98,12 @@ namespace QLKhoHang.Controllers
         {
             if (id != warehouse.Id)
             {
-                return BadRequest(new { Message = "ID không khớp" });
+                return Response(new ApiResult { Message = "ID không khớp" }, 400);
             }
 
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return Response(new ApiResult { Message = "Dữ liệu không hợp lệ" }, 400);
             }
 
             warehouse.UpdatedAt = DateTime.Now;
@@ -113,20 +114,19 @@ namespace QLKhoHang.Controllers
                 _context.Entry(warehouse).Property(x => x.CreatedAt).IsModified = false;
 
                 await _context.SaveChangesAsync();
+                return Response(new ApiResult(warehouse));
             }
             catch (DbUpdateConcurrencyException)
             {
                 if (!WarehouseExists(id))
                 {
-                    return NotFound(new { Message = "Không tìm thấy kho hàng với ID này" });
+                    return Response(new ApiResult { Message = "Không tìm thấy kho hàng với ID này" }, 404);
                 }
                 else
                 {
                     throw;
                 }
             }
-
-            return NoContent();
         }
 
         // DELETE: Xóa kho hàng
@@ -136,7 +136,7 @@ namespace QLKhoHang.Controllers
             var warehouse = await _context.Warehouse.FindAsync(id);
             if (warehouse == null)
             {
-                return NotFound(new { Message = "Không tìm thấy kho hàng với ID này" });
+                return Response(new ApiResult { Message = "Không tìm thấy kho hàng với ID này" }, 404);
             }
 
             try
@@ -144,11 +144,11 @@ namespace QLKhoHang.Controllers
                 _context.Warehouse.Remove(warehouse);
                 await _context.SaveChangesAsync();
 
-                return Ok(new { Message = "Xóa kho hàng thành công" });
+                return Response(new ApiResult { Message = "Xóa kho hàng thành công" });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = $"Lỗi khi xóa kho hàng: {ex.Message}" });
+                return Response(new ApiResult { Message = $"Lỗi khi xóa kho hàng: {ex.Message}" }, 500);
             }
         }
 
@@ -160,7 +160,7 @@ namespace QLKhoHang.Controllers
 
             if (warehouse == null)
             {
-                return NotFound(new { Message = "Không tìm thấy kho hàng với ID này" });
+                return Response(new ApiResult { Message = "Không tìm thấy kho hàng với ID này" }, 404);
             }
 
             warehouse.IsActive = isActive;
@@ -171,11 +171,12 @@ namespace QLKhoHang.Controllers
             try
             {
                 await _context.SaveChangesAsync();
-                return Ok(new { Message = $"Cập nhật trạng thái kho hàng thành công: {(isActive ? "Hoạt động" : "Không hoạt động")}" });
+                string statusText = isActive ? "Hoạt động" : "Không hoạt động";
+                return Response(new ApiResult { Message = $"Cập nhật trạng thái kho hàng thành công: {statusText}" });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = $"Lỗi khi cập nhật trạng thái kho hàng: {ex.Message}" });
+                return Response(new ApiResult { Message = $"Lỗi khi cập nhật trạng thái kho hàng: {ex.Message}" }, 500);
             }
         }
 
@@ -188,14 +189,14 @@ namespace QLKhoHang.Controllers
             if (string.IsNullOrEmpty(status) ||
                 (status != STATUS_ACTIVE && status != STATUS_FULL && status != STATUS_INACTIVE))
             {
-                return BadRequest(new { Message = "Trạng thái không hợp lệ. Trạng thái phải là 'Active', 'Full', hoặc 'Inactive'" });
+                return Response(new ApiResult { Message = "Trạng thái không hợp lệ. Trạng thái phải là 'Active', 'Full', hoặc 'Inactive'" }, 400);
             }
 
             var warehouse = await _context.Warehouse.FindAsync(id);
 
             if (warehouse == null)
             {
-                return NotFound(new { Message = "Không tìm thấy kho hàng với ID này" });
+                return Response(new ApiResult { Message = "Không tìm thấy kho hàng với ID này" }, 404);
             }
 
             warehouse.status = status;
@@ -225,11 +226,11 @@ namespace QLKhoHang.Controllers
                         break;
                 }
 
-                return Ok(new { Message = $"Cập nhật trạng thái kho hàng thành công: {statusMessage}" });
+                return Response(new ApiResult { Message = $"Cập nhật trạng thái kho hàng thành công: {statusMessage}" });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { Message = $"Lỗi khi cập nhật trạng thái kho hàng: {ex.Message}" });
+                return Response(new ApiResult { Message = $"Lỗi khi cập nhật trạng thái kho hàng: {ex.Message}" }, 500);
             }
         }
 
