@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using QLKhoHang.Data;
 
@@ -11,9 +12,11 @@ using QLKhoHang.Data;
 namespace QLKhoHang.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250518091735_werehouse1")]
+    partial class werehouse1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -344,7 +347,7 @@ namespace QLKhoHang.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Price")
+                    b.Property<string>("Num")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -354,12 +357,6 @@ namespace QLKhoHang.Migrations
 
                     b.Property<int>("WarehouseId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("createdDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("finaldDate")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("location")
                         .IsRequired()

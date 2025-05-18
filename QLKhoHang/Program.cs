@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -17,13 +17,11 @@ builder.Services.AddScoped<CloudinaryService>();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
-
 
 var jwtKey = builder.Configuration["Jwt:Key"];
 var jwtIssuer = builder.Configuration["Jwt:Issuer"];
@@ -73,7 +71,6 @@ builder.Services.AddCors(options =>
     });
 });
 
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -82,7 +79,7 @@ builder.Services.AddSwaggerGen(c =>
         Title = "QuanLyKhoHang API",
         Version = "v1"
     });
-    
+
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -108,7 +105,6 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-
 
 builder.Services.AddControllersWithViews();
 var app = builder.Build();
