@@ -29,3 +29,7 @@ QLKhoHang/obj/QLKhoHang.csproj.nuget.dgspec.json
 QLKhoHang/obj/Debug/net9.0/QLKhoHang.AssemblyInfoInputs.cache
 QLKhoHang/obj/Debug/net9.0/QLKhoHang.assets.cache
 QLKhoHang/obj/Debug/net9.0/QLKhoHang.AssemblyInfo.cs
+*.v2
+*.json
+QLKhoHang/.vs/QLKhoHang/v17/.suo
+QLKhoHang/.vs/QLKhoHang/v17/.suo
