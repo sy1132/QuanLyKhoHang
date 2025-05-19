@@ -7,6 +7,7 @@ import ProductIndex from "@/views/ProductIndex.vue";
 import ProductAdd from "@/views/ProductAdd.vue"; // Thêm dòng này
 import ProductDetail from "@/views/ProductDetail.vue";
 import ImportManagementView from "@/views/ImportManagementView.vue";
+import ImportReportView from '../views/ImportReportView.vue' // Thêm import cho component báo cáo
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,14 @@ const router = createRouter({
       path: "/import",
       name: "import",
       component: ImportManagementView,
+    },
+    {
+      path: '/import/report',
+      name: 'import-report',
+      component: ImportReportView,
+      meta: {
+        requiresAuth: true
+      }
     },
     
   ],

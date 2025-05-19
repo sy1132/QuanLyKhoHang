@@ -59,8 +59,9 @@ namespace QLKhoHang.Controllers
                 WarehouseId = productModel.WarehouseId,
                 location = productModel.location,
                 createdDate = DateTime.Now, // Gán thời gian hiện tại
-                finaldDate = DateTime.Now.AddDays(90) // Gán thời gian hết hạn (nếu cần)
-            };
+                finaldDate = DateTime.Now.AddDays(90),
+                Num = "0" // Gán thời gian hết hạn (nếu cần)
+            };  
 
             // Upload image if provided
             if (productModel.Image != null && productModel.Image.Length > 0)

@@ -87,6 +87,16 @@
 import axios from "axios";
 export default {
   name: "ProductAdd",
+  props: {
+    initialWarehouseId: {
+      type: [String, Number],
+      default: null
+    },
+    isModal: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       product: {
@@ -96,8 +106,8 @@ export default {
         cost: 0,
         brand: "",
         categoryID: "",
-        warehouseId: "",
-        status: "",
+        warehouseId: this.initialWarehouseId || "",  // Sử dụng giá trị từ props
+        status: "1", // Mặc định là 1 (Đang bán)
         description: "",
         image: null,
         location: ""
@@ -143,29 +153,48 @@ export default {
         this.imagePreview = URL.createObjectURL(file);
       }
     },
-    async submitForm() {
+    async submitForm(fromParent = false) {
       try {
         const formData = new FormData();
         formData.append("Barcode", this.product.barcode);
         formData.append("Name", this.product.name);
         formData.append("Price", String(this.product.price));
         formData.append("Cost", String(this.product.cost));
-        formData.append("Brand", this.product.brand);
-        formData.append("CategoryID", String(this.product.categoryID));
+        formData.append("Brand", this.product.brand || "Không có thương hiệu");
+        formData.append("CategoryID", String(this.product.categoryID || 1));
         formData.append("WarehouseId", String(this.product.warehouseId));
-        formData.append("Status", String(this.product.status));
-        formData.append("Description", this.product.description);
-        formData.append("location", this.product.location);
+        formData.append("Status", String(this.product.status || 1));
+        formData.append("Description", this.product.description || "Sản phẩm mới");
+        formData.append("location", this.product.location || "Kho chính");
+        
         if (this.product.image) {
           formData.append("Image", this.product.image);
         }
 
-        await axios.post("https://localhost:7189/api/Products/create", formData, {
+        const response = await axios.post("https://localhost:7189/api/Products/create", formData, {
           headers: { "Content-Type": "multipart/form-data" }
         });
-
-        alert("Đã thêm sản phẩm!");
-        this.$router.back();
+        
+        // Nếu được gọi từ component cha khi dùng làm modal
+        if (fromParent) {
+          const newProduct = {
+            id: response.data?.id || response.data?.Id,
+            barcode: this.product.barcode,
+            name: this.product.name,
+            price: this.product.price,
+            cost: this.product.cost,
+            // Các thuộc tính khác...
+          };
+          
+          this.$emit('product-created', newProduct);
+          return { success: true, product: newProduct };
+        } else {
+          // Xử lý khi được gọi trực tiếp từ form
+          alert("Đã thêm sản phẩm!");
+          if (!this.isModal) {
+            this.$router.back();
+          }
+        }
       } catch (err) {
         alert("Lỗi khi thêm sản phẩm!");
         if (err.response?.data?.errors) {
@@ -173,6 +202,7 @@ export default {
         } else {
           console.error(err);
         }
+        return { success: false };
       }
     }
   }
