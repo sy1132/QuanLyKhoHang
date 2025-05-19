@@ -14,5 +14,8 @@ namespace QLKhoHang.Data
         public DbSet <Products> Products { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet <Warehouse> Warehouse { get; set; }
+        public DbSet <ImportDetail> ImportDetails { get; set; }
+
+        
     }
 }

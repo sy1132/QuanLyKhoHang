@@ -7,13 +7,15 @@
         public string Name { get; set; }
         public string CategoryID { get; set; }
         public string Brand { get; set; }
-        public string Num { get; set; }
-        public float Cost { get; set; }
+        public string Price { get; set; }
+        public decimal Cost { get; set; } // Changed from float to decimal for consistency
         public string Description { get; set; }
         public string Status { get; set; }
         public int WarehouseId { get; set; }
         public string Image { get; set; }
         public string location { get; set; }
-
+        public string Num { get; set; } // Added missing property to store product quantity
+        public DateTime createdDate { get; set; }
+        public DateTime finaldDate { get; set; }
     }
 }
