@@ -438,8 +438,7 @@
                     "format": "date-time"
                   },
                   "Num": {
-                    "type": "integer",
-                    "format": "int32"
+                    "type": "string"
                   }
                 }
               },
@@ -588,8 +587,7 @@
                     "format": "date-time"
                   },
                   "Num": {
-                    "type": "integer",
-                    "format": "int32"
+                    "type": "string"
                   }
                 }
               },
