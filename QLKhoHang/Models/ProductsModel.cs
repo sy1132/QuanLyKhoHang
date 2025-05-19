@@ -16,6 +16,8 @@
         public string location { get; set; }
         public DateTime createdDate { get; set; }
         public DateTime finaldDate { get; set; }
+        public int Num { get; set; }
+
     }
 }
 
