@@ -35,12 +35,13 @@
     </div>
 
     <!-- Action buttons -->
-    <div class="d-flex justify-content-between mb-3">
-      <div>
-        <router-link to="/import-report" class="btn btn-info me-2">
-          <i class="fas fa-chart-bar"></i> Báo cáo nhập hàng
-        </router-link>
-      </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <!-- Nút báo cáo nhập hàng -->
+      <router-link to="/import/report" class="btn btn-primary">
+        <i class="fas fa-chart-bar me-1"></i> Báo cáo nhập hàng
+      </router-link>
+      
+      <!-- Nút tạo phiếu nhập mới -->
       <div>
         <ImportAdd @import-added="loadImports" />
       </div>
@@ -227,46 +228,60 @@
             <button type="button" class="btn-close" @click="showDetailsModal = false"></button>
           </div>
           <div class="modal-body">
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <p><strong>Kho nhập:</strong> {{ getWarehouseName(selectedImport.warehouseId) }}</p>
-                <p><strong>Ngày nhập:</strong> {{ formatDate(selectedImport.dateInput) }}</p>
+            <!-- Hiển thị loading khi đang tải dữ liệu -->
+            <div v-if="isLoading" class="text-center my-3">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Đang tải...</span>
               </div>
-              <div class="col-md-6">
-                <p>
-                  <strong>Trạng thái:</strong>
-                  <span :class="getStatusBadgeClass(selectedImport.status)">
-                    {{ getStatusText(selectedImport.status) }}
-                  </span>
-                </p>
-                <p><strong>Tổng giá trị:</strong> {{ formatCurrency(selectedImport.cost) }}</p>
-              </div>
+              <p class="mt-2">Đang tải chi tiết phiếu nhập...</p>
             </div>
             
-            <h5 class="mt-4">Danh sách sản phẩm</h5>
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <thead class="table-light">
-                  <tr>
-                    <th>Sản phẩm</th>
-                    <th>Nhà cung cấp</th>
-                    <th>Số lượng</th>
-                    <th>Đơn giá</th>
-                    <th>Thành tiền</th>
-                    <th>Ghi chú</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(detail, index) in importDetails" :key="index">
-                    <td>{{ getProductName(detail.idProduct) }}</td>
-                    <td>{{ getSupplierName(detail.idSupplier) }}</td>
-                    <td>{{ detail.quantity }}</td>
-                    <td>{{ formatCurrency(detail.cost) }}</td>
-                    <td>{{ formatCurrency(detail.quantity * detail.cost) }}</td>
-                    <td>{{ detail.note || '-' }}</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div v-else-if="importDetails.length === 0" class="alert alert-info">
+              <p>Phiếu nhập này không có chi tiết hoặc không thể tải được dữ liệu chi tiết.</p>
+            </div>
+            
+            <div v-else>
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <p><strong>Kho nhập:</strong> {{ getWarehouseName(selectedImport.warehouseId) }}</p>
+                  <p><strong>Ngày nhập:</strong> {{ formatDate(selectedImport.dateInput) }}</p>
+                </div>
+                <div class="col-md-6">
+                  <p>
+                    <strong>Trạng thái:</strong>
+                    <span :class="getStatusBadgeClass(selectedImport.status)">
+                      {{ getStatusText(selectedImport.status) }}
+                    </span>
+                  </p>
+                  <p><strong>Tổng giá trị:</strong> {{ formatCurrency(selectedImport.cost) }}</p>
+                </div>
+              </div>
+              
+              <h5 class="mt-4">Danh sách sản phẩm</h5>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead class="table-light">
+                    <tr>
+                      <th>Sản phẩm</th>
+                      <th>Nhà cung cấp</th>
+                      <th>Số lượng</th>
+                      <th>Đơn giá</th>
+                      <th>Thành tiền</th>
+                      <th>Ghi chú</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(detail, index) in importDetails" :key="index">
+                      <td>{{ getProductName(detail.idProduct) }}</td>
+                      <td>{{ getSupplierName(detail.idSupplier) }}</td>
+                      <td>{{ detail.quantity }}</td>
+                      <td>{{ formatCurrency(detail.cost) }}</td>
+                      <td>{{ formatCurrency(detail.quantity * detail.cost) }}</td>
+                      <td>{{ detail.note || '-' }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
           <div class="modal-footer">
@@ -360,23 +375,64 @@ export default {
     async loadImports() {
       try {
         this.isLoading = true;
-        let imports = [];
+        
+        // Lấy dữ liệu từ API
+        let response;
         
         if (this.filter.status || this.filter.fromDate || this.filter.toDate) {
-          imports = await importApi.getFilteredImports({
+          console.log('Loading filtered imports with:', this.filter);
+          response = await importApi.getFilteredImports({
             status: this.filter.status,
             fromDate: this.filter.fromDate,
             toDate: this.filter.toDate
           });
         } else {
-          imports = await importApi.getAllImports();
+          console.log('Loading all imports');
+          response = await importApi.getAllImports();
         }
         
-        this.imports = imports;
-        console.log('Imports loaded:', this.imports);
+        console.log('API response:', response);
+        
+        // Xử lý đa dạng cấu trúc phản hồi
+        let importData = [];
+        
+        if (Array.isArray(response)) {
+          // Nếu phản hồi là mảng trực tiếp
+          importData = response;
+        } else if (response && typeof response === 'object') {
+          // Nếu phản hồi là object
+          if (response.data && Array.isArray(response.data)) {
+            importData = response.data;
+          } else if (response.result && Array.isArray(response.result)) {
+            importData = response.result;
+          } else if (response.result && response.result.data && Array.isArray(response.result.data)) {
+            importData = response.result.data;
+          } else {
+            // Tìm bất kỳ mảng nào trong phản hồi
+            const possibleArrays = Object.values(response).filter(val => Array.isArray(val));
+            importData = possibleArrays.length > 0 ? possibleArrays[0] : [];
+          }
+        }
+        
+        // Đảm bảo các trường cần thiết tồn tại
+        this.imports = importData.map(item => {
+          return {
+            id: item.id || item.importId || item.Id,
+            warehouseId: item.warehouseId || item.WarehouseId,
+            dateInput: item.dateInput || item.DateInput || item.date || item.createdAt,
+            cost: item.cost || item.totalCost || item.amount || 0,
+            status: item.status || item.Status || 'Pending'
+          };
+        });
+        
+        console.log('Imports processed:', this.imports);
+        
+        if (this.imports.length === 0) {
+          console.log('No imports found after processing');
+        }
       } catch (error) {
         console.error('Error loading imports:', error);
-        alert('Không thể tải danh sách phiếu nhập');
+        alert('Không thể tải danh sách phiếu nhập: ' + (error.message || 'Unknown error'));
       } finally {
         this.isLoading = false;
       }
@@ -442,13 +498,161 @@ export default {
     // Details view methods
     async viewDetails(id) {
       try {
-        const response = await importApi.getImportDetails(id);
-        this.selectedImport = response.import;
-        this.importDetails = response.details;
-        this.showDetailsModal = true;
+        console.log('Fetching details for import ID:', id);
+        this.isLoading = true;
+        this.showDetailsModal = true; // Hiển thị modal ngay từ đầu với trạng thái loading
+        
+        // Thêm timeout để tránh lỗi mạng
+        const timeoutPromise = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error('Timeout fetching import details')), 10000)
+        );
+        
+        // Race giữa API call và timeout
+        const response = await Promise.race([
+          importApi.getImportDetails(id),
+          timeoutPromise
+        ]);
+        
+        console.log('Import details response:', response);
+        
+        // Không có phản hồi
+        if (!response) {
+          throw new Error('Không nhận được phản hồi từ server');
+        }
+        
+        // Xử lý dữ liệu trả về từ API
+        let importData = null;
+        let detailsData = [];
+        
+        // Kiểm tra xem response có phải là lỗi không
+        if (response.error || (response.success === false)) {
+          throw new Error(response.message || 'API trả về lỗi');
+        }
+        
+        // Truy cập trực tiếp vào các trường để tìm dữ liệu
+        if (response.import && response.details) {
+          importData = response.import;
+          detailsData = response.details;
+        } else if (response.data) {
+          // API có thể trả về nested data object
+          if (response.data.import && response.data.details) {
+            importData = response.data.import;
+            detailsData = response.data.details;
+          } else if (Array.isArray(response.data)) {
+            // Nếu data là mảng, có thể đây là chi tiết phiếu nhập
+            detailsData = response.data;
+            
+            // Cố gắng lấy thông tin phiếu nhập từ API riêng
+            const importResponse = await importApi.getImportById(id);
+            if (importResponse && importResponse.data) {
+              importData = importResponse.data;
+            }
+          } else {
+            // Nếu data là object, có thể đây là thông tin phiếu nhập
+            importData = response.data;
+            
+            // Kiểm tra xem object có thuộc tính details không
+            if (response.data.details) {
+              detailsData = response.data.details;
+            }
+          }
+        } else if (response.id) {
+          // Nếu response có id, giả sử đây là phiếu nhập
+          importData = response;
+          
+          // Kiểm tra xem object có thuộc tính details không
+          if (response.details) {
+            detailsData = response.details;
+          }
+        }
+        
+        // Nếu không tìm thấy dữ liệu phiếu nhập
+        if (!importData) {
+          // Cố gắng dùng response làm importData
+          importData = {
+            id: id,
+            warehouseId: response.warehouseId || null,
+            dateInput: response.dateInput || response.date || new Date().toISOString(),
+            cost: response.cost || response.amount || 0,
+            status: response.status || 'Pending'
+          };
+        }
+        
+        // Nếu vẫn không có chi tiết, thử gọi API riêng để lấy
+        if (detailsData.length === 0) {
+          try {
+            const detailsResponse = await axios.get(`${BASE_URL}/import/${id}/details`);
+            if (detailsResponse && detailsResponse.data) {
+              detailsData = Array.isArray(detailsResponse.data) ? 
+                detailsResponse.data : 
+                detailsResponse.data.data || detailsResponse.data.details || [];
+            }
+          } catch (detailsError) {
+            console.error('Error fetching details separately:', detailsError);
+            // Không throw lỗi, vẫn tiếp tục với phiếu nhập không có chi tiết
+          }
+        }
+        
+        // Thêm trước khi xử lý detailsData
+        console.log('Raw response:', response);
+        console.log('Type of response:', typeof response);
+        console.log('detailsData before processing:', detailsData);
+        console.log('Type of detailsData:', typeof detailsData);
+        if (detailsData) {
+          console.log('Is detailsData an array?', Array.isArray(detailsData));
+        }
+        
+        // Chuẩn hóa dữ liệu phiếu nhập
+        this.selectedImport = {
+          id: importData.id || id,
+          warehouseId: importData.warehouseId || null,
+          dateInput: importData.dateInput || importData.date || new Date().toISOString(),
+          cost: importData.cost || importData.amount || importData.totalCost || 0,
+          status: importData.status || 'Pending'
+        };
+        
+        // Đảm bảo detailsData là một mảng
+        if (!Array.isArray(detailsData)) {
+          console.error('detailsData is not an array:', detailsData);
+          // Kiểm tra xem detailsData có phải là object không
+          if (detailsData && typeof detailsData === 'object') {
+            // Nếu là object, kiểm tra xem có thuộc tính dạng mảng không
+            const possibleArrays = Object.values(detailsData).filter(val => Array.isArray(val));
+            if (possibleArrays.length > 0) {
+              detailsData = possibleArrays[0];
+            } else {
+              // Nếu không tìm thấy mảng, kiểm tra xem có phải là object đơn lẻ không
+              if (!Array.isArray(detailsData) && detailsData !== null && typeof detailsData === 'object') {
+                // Nếu là object đơn, chuyển thành mảng 1 phần tử
+                detailsData = [detailsData];
+              } else {
+                // Trường hợp không thể xử lý, sử dụng mảng rỗng
+                detailsData = [];
+              }
+            }
+          } else {
+            // Không phải object, sử dụng mảng rỗng
+            detailsData = [];
+          }
+        }
+        
+        // Chuẩn hóa dữ liệu chi tiết - giờ đã chắc chắn detailsData là mảng
+        this.importDetails = detailsData.map(detail => ({
+          idProduct: detail.idProduct || detail.productId || detail.ProductId || null,
+          idSupplier: detail.idSupplier || detail.supplierId || detail.SupplierId || null,
+          quantity: detail.quantity || 0,
+          cost: detail.cost || detail.price || 0,
+          note: detail.note || ''
+        }));
+        
+        console.log('Processed import:', this.selectedImport);
+        console.log('Processed details:', this.importDetails);
       } catch (error) {
-        console.error('Error loading import details:', error);
-        alert('Không thể tải chi tiết phiếu nhập');
+        console.error('Error in viewDetails:', error);
+        this.importDetails = [];
+        alert(`Không thể tải chi tiết phiếu nhập. Lỗi: ${error.message}`);
+      } finally {
+        this.isLoading = false;
       }
     },
     

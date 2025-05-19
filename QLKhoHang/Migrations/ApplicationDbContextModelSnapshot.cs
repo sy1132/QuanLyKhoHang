@@ -329,8 +329,8 @@ namespace QLKhoHang.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("Cost")
-                        .HasColumnType("real");
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -341,6 +341,10 @@ namespace QLKhoHang.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Num")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

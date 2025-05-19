@@ -52,14 +52,16 @@ namespace QLKhoHang.Controllers
                 CategoryID = productModel.CategoryID,
                 Brand = productModel.Brand,
                 Price = productModel.Price,
-                Cost = productModel.Cost,
+                // Fix for CS0266: Explicitly cast 'float' to 'decimal'.
+                Cost = (decimal)productModel.Cost,
                 Description = productModel.Description,
                 Status = productModel.Status,
                 WarehouseId = productModel.WarehouseId,
                 location = productModel.location,
                 createdDate = DateTime.Now, // Gán thời gian hiện tại
-                finaldDate = DateTime.Now.AddDays(90) // Gán thời gian hết hạn (nếu cần)
-            };
+                finaldDate = DateTime.Now.AddDays(90),
+                Num = "0" // Gán thời gian hết hạn (nếu cần)
+            };  
 
             // Upload image if provided
             if (productModel.Image != null && productModel.Image.Length > 0)
@@ -93,7 +95,7 @@ namespace QLKhoHang.Controllers
             existingProduct.CategoryID = productModel.CategoryID;
             existingProduct.Brand = productModel.Brand;
             existingProduct.Price = productModel.Price;
-            existingProduct.Cost = productModel.Cost;
+            existingProduct.Cost = (decimal)productModel.Cost;
             existingProduct.Description = productModel.Description;
             existingProduct.Status = productModel.Status;
             existingProduct.WarehouseId = productModel.WarehouseId;
@@ -170,7 +172,7 @@ namespace QLKhoHang.Controllers
                             CategoryID = worksheet.Cell(row, 3).GetString(),
                             Brand = worksheet.Cell(row, 4).GetString(),
                             Price = worksheet.Cell(row, 5).GetString(),
-                            Cost = float.TryParse(worksheet.Cell(row, 6).GetString(), out float cost) ? cost : 0,
+                            Cost = float.TryParse(worksheet.Cell(row, 6).GetString(), out float cost) ? (decimal)cost : 0,
                             Description = worksheet.Cell(row, 7).GetString(),
                             Status = worksheet.Cell(row, 8).GetString(),
                             WarehouseId = int.TryParse(worksheet.Cell(row, 9).GetString(), out int wid) ? wid : 0,
