@@ -46,6 +46,11 @@ const router = createRouter({
       name: "ProductDetail",
       component: ProductDetail,
     },
+    {
+      path: "/import",
+      name: "import",
+      component: ImportManagementView,
+    },
   ],
 });
 

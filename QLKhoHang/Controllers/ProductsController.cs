@@ -59,7 +59,8 @@ namespace QLKhoHang.Controllers
                 WarehouseId = productModel.WarehouseId,
                 location = productModel.location,
                 createdDate = DateTime.Now, // Gán thời gian hiện tại
-                finaldDate = DateTime.Now.AddDays(90) // Gán thời gian hết hạn (nếu cần)
+                finaldDate = DateTime.Now.AddDays(90), // Gán thời gian hết hạn (nếu cần)
+                Num = "0"
             };
 
             // Upload image if provided
@@ -177,6 +178,7 @@ namespace QLKhoHang.Controllers
                             WarehouseId = int.TryParse(worksheet.Cell(row, 9).GetString(), out int wid) ? wid : 0,
                             location = worksheet.Cell(row, 11).GetString(),
                             Image = worksheet.Cell(row, 10).GetString(),
+                            Num = worksheet.Cell(row, 12).GetString(),
                             createdDate = DateTime.Now // Gán thời gian import
                         };
                         products.Add(product);
