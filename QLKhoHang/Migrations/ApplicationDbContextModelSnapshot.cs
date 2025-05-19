@@ -251,65 +251,6 @@ namespace QLKhoHang.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("QLKhoHang.Entities.Export", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("exportDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("idWarehouseExport")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idWarehouseImport")
-                        .HasColumnType("int");
-
-                    b.Property<string>("note")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("productCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("Exports");
-                });
-
-            modelBuilder.Entity("QLKhoHang.Entities.ExportDetail", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<int>("idProduct")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idWareHouseExport")
-                        .HasColumnType("int");
-
-                    b.Property<int>("quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.ToTable("ExportDetails");
-                });
-
             modelBuilder.Entity("QLKhoHang.Entities.Import", b =>
                 {
                     b.Property<int>("Id")

@@ -67,85 +67,6 @@
         }
       }
     },
-    "/api/Export": {
-      "get": {
-        "tags": [
-          "Export"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Export/{id}": {
-      "get": {
-        "tags": [
-          "Export"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Export/create-transfer": {
-      "post": {
-        "tags": [
-          "Export"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TransferOrderJsonDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Export/confirm/{id}": {
-      "post": {
-        "tags": [
-          "Export"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/api/import": {
       "get": {
         "tags": [
@@ -1552,49 +1473,6 @@
             "format": "date-time"
           },
           "warehouseId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "TransferOrderJsonDto": {
-        "type": "object",
-        "properties": {
-          "idWarehouseExport": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "idWarehouseImport": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "note": {
-            "type": "string",
-            "nullable": true
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "details": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TransferOrderProductDto"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "TransferOrderProductDto": {
-        "type": "object",
-        "properties": {
-          "barcode": {
-            "type": "string",
-            "nullable": true
-          },
-          "quantity": {
             "type": "integer",
             "format": "int32"
           }

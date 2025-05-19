@@ -17,9 +17,6 @@
         <router-link class="nav-item" to="/warehouse"
           ><i class="fas fa-warehouse"></i> Nhà Kho</router-link
         >
-        <router-link class="nav-item" to="/export"
-          ><i class="fas fa-upload"></i> Xuất hàng</router-link 
-        >
       </div>
       <div class="navbar-right">
         <template v-if="userName">

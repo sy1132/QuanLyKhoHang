@@ -16,7 +16,6 @@
         public string location { get; set; }
         public DateTime createdDate { get; set; }
         public DateTime finaldDate { get; set; }
-        public string Num { get; set; } // Added missing property to fix CS1061  
     }
 }
 

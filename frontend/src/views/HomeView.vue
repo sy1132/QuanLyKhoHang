@@ -6,7 +6,38 @@
         Giải pháp quản lý kho hàng hiệu quả cho doanh nghiệp của bạn
       </p>
 
-
+      <div class="action-buttons">
+        <!-- Hiển thị nút dựa trên trạng thái đăng nhập -->
+        <template v-if="!userName">
+          <router-link to="/login" class="login-btn">Đăng nhập</router-link>
+          <router-link to="/register" class="register-btn">Đăng ký</router-link>
+        </template>
+        <template v-else>
+          <span style="margin-right: 12px; font-weight: 600;">
+            Xin chào, {{ userName }}
+          </span>
+          <router-link to="/dashboard" class="dashboard-btn">
+            <i class="fas fa-tachometer-alt"></i> Bảng điều khiển
+          </router-link>
+          <router-link to="/add-product" class="primary-btn">
+            <i class="fas fa-plus-circle"></i> Thêm sản phẩm
+          </router-link>
+          <router-link to="/products" class="secondary-btn">
+            <i class="fas fa-list"></i> Danh sách sản phẩm
+          </router-link>
+          <!-- Nút chuyển sang trang quản lý nhà cung cấp -->
+          <router-link to="/SupplierManagementView" class="primary-btn">
+            <i class="fas fa-truck"></i> Quản lý nhà cung cấp
+          </router-link>
+          <!-- Nút chuyển sang trang quản lý nhập hàng -->
+          <router-link to="/import" class="primary-btn">
+            <i class="fas fa-box"></i> Quản lý nhập hàng
+          </router-link>
+          <button @click="logout" class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i> Đăng xuất
+          </button>
+        </template>
+      </div>
     </div>
 
     <!-- Phần giới thiệu tính năng -->

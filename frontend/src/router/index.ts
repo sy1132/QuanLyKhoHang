@@ -8,7 +8,7 @@ import ProductAdd from "@/views/ProductAdd.vue"; // Thêm dòng này
 import ProductDetail from "@/views/ProductDetail.vue";
 import ImportManagementView from "@/views/ImportManagementView.vue";
 import ImportReportView from '../views/ImportReportView.vue' // Thêm import cho component báo cáo
-import ExportManagermentView from "@/views/ExportManagermentView.vue";
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -60,11 +60,7 @@ const router = createRouter({
         requiresAuth: true
       }
     },
-    {
-      path: "/export",
-      name: "export",
-      component: ExportManagermentView,
-    }
+    
   ],
 });
 

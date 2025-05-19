@@ -100,8 +100,6 @@ namespace QLKhoHang.Controllers
             existingProduct.Status = productModel.Status;
             existingProduct.WarehouseId = productModel.WarehouseId;
             existingProduct.location = productModel.location;
-            existingProduct.Num = productModel.Num;
-
 
             // ✅ Nếu có ảnh mới, thì cập nhật
             if (productModel.Image is IFormFile file && file.Length > 0)

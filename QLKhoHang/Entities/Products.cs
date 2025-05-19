@@ -14,7 +14,7 @@
         public int WarehouseId { get; set; }
         public string Image { get; set; }
         public string location { get; set; }
-        public string Num { get; set; }
+        public string Num { get; set; } // Added missing property to store product quantity
         public DateTime createdDate { get; set; }
         public DateTime finaldDate { get; set; }
     }
