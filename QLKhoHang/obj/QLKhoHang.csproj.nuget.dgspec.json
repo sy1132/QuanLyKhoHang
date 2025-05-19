@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj": {}
+    "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj": {}
   },
   "projects": {
-    "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj": {
+    "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj",
+        "projectUniqueName": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj",
         "projectName": "QLKhoHang",
-        "projectPath": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj",
-        "packagesPath": "C:\\Users\\nhatt\\.nuget\\packages\\",
-        "outputPath": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\obj\\",
+        "projectPath": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj",
+        "packagesPath": "C:\\Users\\VO VAN LUOM\\.nuget\\packages\\",
+        "outputPath": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\nhatt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\VO VAN LUOM\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -120,7 +120,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

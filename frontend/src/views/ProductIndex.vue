@@ -93,6 +93,7 @@
                 <th v-if="isColVisible('createdDate')">Ngày tạo</th>
                 <th v-if="isColVisible('finaldDate')">Ngày hết hạn</th>
                 <th v-if="isColVisible('description')">Mô tả</th>
+                <th v-if="isColVisible('num')">Số Lượng</th>
               </tr>
             </thead>
             <tbody>
@@ -122,6 +123,7 @@
                 <td v-if="isColVisible('createdDate')">{{ formatDate(product.createdDate) }}</td>
                 <td v-if="isColVisible('finaldDate')">{{ formatDate(product.finaldDate) }}</td>
                 <td v-if="isColVisible('description')">{{ product.description }}</td>
+                <td v-if="isColVisible('num')">{{ product.num }}</td>
               </tr>
             </tbody>
           </table>
@@ -161,6 +163,7 @@ export default {
         { key: "createdDate", label: "Ngày tạo", visible: false },
         { key: "finaldDate", label: "Ngày hết hạn", visible: false },
         { key: "description", label: "Mô tả", visible: false },
+        { key: "num", label: "Số Lượng", visible: true }
       ],
       filters: {
         productTypes: {

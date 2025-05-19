@@ -21,6 +21,7 @@
                         <div class="info-row"><span>Nhóm hàng:</span> <b>{{ product.categoryID }}</b></div>
                         <div class="info-row"><span>Thương hiệu:</span> <b>{{ product.brand }}</b></div>
                         <div class="info-row"><span>Vị trí:</span> <b>{{ product.location }}</b></div>
+                        <div class="info-row"><span>Số lượng:</span> <b>{{ product.num }}</b></div>
                     </div>
                     <div class="info-col">
                         <div class="info-row"><span>Giá bán:</span> <b>{{ formatCurrency(product.price) }}</b></div>
@@ -129,6 +130,10 @@
                                         :src="editProduct.image" class="image-preview" />
                                 </div>
                             </div>
+                             <div class="form-group">
+                                <label>Số lượng</label>
+                                <input type="number" v-model.number="editProduct.num" min="0" required />
+                            </div>
                         </div>
                     </div>
                     <div class="form-actions">
@@ -191,6 +196,7 @@ export default {
                     location: raw.location ?? "",
                     finaldDate: raw.finaldDate ?? "",
                     createdDate: raw.createdDate ?? "",
+                    num: raw.num ?? "",
                 };
                 this.product = data;
                 this.editProduct = { ...data };
@@ -241,6 +247,7 @@ export default {
                 formData.append("Status", String(this.editProduct.status));
                 formData.append("Description", this.editProduct.description);
                 formData.append("location", this.editProduct.location);
+                formData.append("num", String(this.editProduct.num));
 
                 // Chỉ gửi Image nếu là File
                 if (this.editProduct.image instanceof File) {

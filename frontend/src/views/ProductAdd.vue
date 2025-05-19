@@ -110,7 +110,8 @@ export default {
         status: "1", // Mặc định là 1 (Đang bán)
         description: "",
         image: null,
-        location: ""
+        location: "",
+        num: "0"
       },
       categories: [],
       warehouses: [],
@@ -166,7 +167,7 @@ export default {
         formData.append("Status", String(this.product.status || 1));
         formData.append("Description", this.product.description || "Sản phẩm mới");
         formData.append("location", this.product.location || "Kho chính");
-        
+
         if (this.product.image) {
           formData.append("Image", this.product.image);
         }
@@ -174,8 +175,10 @@ export default {
         const response = await axios.post("https://localhost:7189/api/Products/create", formData, {
           headers: { "Content-Type": "multipart/form-data" }
         });
-        
-        // Nếu được gọi từ component cha khi dùng làm modal
+
+        // ✅ Luôn hiển thị thông báo khi thêm thành công
+        alert("Đã thêm sản phẩm!");
+
         if (fromParent) {
           const newProduct = {
             id: response.data?.id || response.data?.Id,
@@ -183,25 +186,26 @@ export default {
             name: this.product.name,
             price: this.product.price,
             cost: this.product.cost,
-            // Các thuộc tính khác...
+            // Các thuộc tính khác nếu cần
           };
-          
+
           this.$emit('product-created', newProduct);
           return { success: true, product: newProduct };
-        } else {
-          // Xử lý khi được gọi trực tiếp từ form
-          alert("Đã thêm sản phẩm!");
-          if (!this.isModal) {
-            this.$router.back();
-          }
         }
+
+        // ✅ Nếu không phải gọi từ modal thì quay về danh sách
+        if (!this.isModal) {
+          this.$router.back();
+        }
+
       } catch (err) {
         alert("Lỗi khi thêm sản phẩm!");
+        console.error("Chi tiết lỗi:", err);
+
         if (err.response?.data?.errors) {
           console.error("Validation errors:", err.response.data.errors);
-        } else {
-          console.error(err);
         }
+
         return { success: false };
       }
     }
