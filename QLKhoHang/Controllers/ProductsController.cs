@@ -8,17 +8,16 @@ using ClosedXML.Excel;
 using System.IO;
 using QLKhoHang.Service;
 using QLKhoHang.Models;
-
 namespace QLKhoHang.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductsController : BaseController
+    public class ProductsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
         private readonly CloudinaryService _cloudiary;
 
-        public ProductsController(ApplicationDbContext context, CloudinaryService cloudinary)
+        public ProductsController(ApplicationDbContext context , CloudinaryService cloudinary)
         {
             _context = context;
             _cloudiary = cloudinary;
@@ -26,26 +25,25 @@ namespace QLKhoHang.Controllers
 
         // GET: api/Products/list
         [HttpGet("list")]
-        public async Task<IActionResult> GetProducts()
+        public async Task<ActionResult<IEnumerable<Products>>> GetProducts()
         {
-            var products = await _context.Products.ToListAsync();
-            return Response(new ApiResult(products));
+            return await _context.Products.ToListAsync();
         }
 
         // GET: api/Products/detail/5
         [HttpGet("detail/{id}")]
-        public async Task<IActionResult> GetProduct(int id)
+        public async Task<ActionResult<Products>> GetProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);
 
             if (product == null)
-                return Response(new ApiResult { Message = "Product not found." }, 404);
+                return NotFound();
 
-            return Response(new ApiResult(product));
+            return product;
         }
 
         [HttpPost("create")]
-        public async Task<IActionResult> CreateProduct([FromForm] ProductsModel productModel)
+        public async Task<ActionResult<Products>> CreateProduct([FromForm] ProductsModel productModel)
         {
             var product = new Products
             {
@@ -60,10 +58,11 @@ namespace QLKhoHang.Controllers
                 Status = productModel.Status,
                 WarehouseId = productModel.WarehouseId,
                 location = productModel.location,
-                createdDate = DateTime.Now,
-                finaldDate = DateTime.Now.AddDays(90)
+                createdDate = DateTime.Now, // Gán thời gian hiện tại
+                finaldDate = DateTime.Now.AddDays(90) // Gán thời gian hết hạn (nếu cần)
             };
 
+            // Upload image if provided
             if (productModel.Image != null && productModel.Image.Length > 0)
             {
                 string imageUrl = await _cloudiary.UploadImageAsync(productModel.Image);
@@ -73,20 +72,23 @@ namespace QLKhoHang.Controllers
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            return Response(new ApiResult(product), 201);
+            return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
         }
 
+
+        // PUT: api/Products/update/5
         // PUT: api/Products/update/5
         [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateProduct(int id, [FromForm] ProductsModel productModel)
         {
             if (id != productModel.Id)
-                return Response(new ApiResult { Message = "Id mismatch." }, 400);
+                return BadRequest("Id mismatch");
 
             var existingProduct = await _context.Products.FindAsync(id);
             if (existingProduct == null)
-                return Response(new ApiResult { Message = "Product not found." }, 404);
+                return NotFound("Product not found");
 
+            // Cập nhật các thuộc tính khác
             existingProduct.Barcode = productModel.Barcode;
             existingProduct.Name = productModel.Name;
             existingProduct.CategoryID = productModel.CategoryID;
@@ -98,15 +100,20 @@ namespace QLKhoHang.Controllers
             existingProduct.WarehouseId = productModel.WarehouseId;
             existingProduct.location = productModel.location;
 
-            if (productModel.Image != null && productModel.Image.Length > 0)
+            // ✅ Nếu có ảnh mới, thì cập nhật
+            if (productModel.Image is IFormFile file && file.Length > 0)
             {
+                // Xoá ảnh cũ nếu có
                 if (!string.IsNullOrEmpty(existingProduct.Image))
                 {
                     await _cloudiary.DeleteImageAsync(existingProduct.Image);
                 }
-                string imageUrl = await _cloudiary.UploadImageAsync(productModel.Image);
+
+                // Upload ảnh mới
+                string imageUrl = await _cloudiary.UploadImageAsync(file);
                 existingProduct.Image = imageUrl;
             }
+            // ❌ Nếu không có ảnh mới: giữ nguyên existingProduct.Image
 
             try
             {
@@ -115,13 +122,15 @@ namespace QLKhoHang.Controllers
             catch (DbUpdateConcurrencyException)
             {
                 if (!_context.Products.Any(e => e.Id == id))
-                    return Response(new ApiResult { Message = "Product not found." }, 404);
+                    return NotFound("Product not found");
                 else
                     throw;
             }
 
-            return Response(new ApiResult(existingProduct));
+            return Ok(new { Message = "Product updated successfully." });
         }
+
+
 
         // DELETE: api/Products/delete/5
         [HttpDelete("delete/{id}")]
@@ -129,19 +138,19 @@ namespace QLKhoHang.Controllers
         {
             var product = await _context.Products.FindAsync(id);
             if (product == null)
-                return Response(new ApiResult { Message = "Product not found." }, 404);
+                return NotFound();
 
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
-            return Response(new ApiResult { Message = "Product deleted successfully." });
+            return NoContent();
         }
 
         [HttpPost("import-excel")]
         public async Task<IActionResult> ImportProductsFromExcel(IFormFile file)
         {
             if (file == null || file.Length == 0)
-                return Response(new ApiResult { Message = "No file uploaded." }, 400);
+                return BadRequest("No file uploaded.");
 
             var products = new List<Products>();
 
@@ -150,10 +159,10 @@ namespace QLKhoHang.Controllers
                 await file.CopyToAsync(stream);
                 using (var workbook = new XLWorkbook(stream))
                 {
-                    var worksheet = workbook.Worksheet(1);
+                    var worksheet = workbook.Worksheet(1); // Lấy sheet đầu tiên
                     var rowCount = worksheet.LastRowUsed().RowNumber();
 
-                    for (int row = 2; row <= rowCount; row++)
+                    for (int row = 2; row <= rowCount; row++) // Bỏ qua dòng tiêu đề
                     {
                         var product = new Products
                         {
@@ -168,7 +177,7 @@ namespace QLKhoHang.Controllers
                             WarehouseId = int.TryParse(worksheet.Cell(row, 9).GetString(), out int wid) ? wid : 0,
                             location = worksheet.Cell(row, 11).GetString(),
                             Image = worksheet.Cell(row, 10).GetString(),
-                            createdDate = DateTime.Now
+                            createdDate = DateTime.Now // Gán thời gian import
                         };
                         products.Add(product);
                     }
@@ -178,9 +187,8 @@ namespace QLKhoHang.Controllers
             _context.Products.AddRange(products);
             await _context.SaveChangesAsync();
 
-            return Response(new ApiResult { Message = $"Imported {products.Count} products successfully." });
+            return Ok(new { Message = $"Imported {products.Count} products successfully." });
         }
-
         [HttpGet("export-excel")]
         public async Task<IActionResult> ExportProductsToExcel()
         {
@@ -190,6 +198,7 @@ namespace QLKhoHang.Controllers
             {
                 var worksheet = workbook.Worksheets.Add("Products");
 
+                // Header
                 worksheet.Cell(1, 1).Value = "Id";
                 worksheet.Cell(1, 2).Value = "Barcode";
                 worksheet.Cell(1, 3).Value = "Name";
@@ -205,6 +214,7 @@ namespace QLKhoHang.Controllers
                 worksheet.Cell(1, 13).Value = "Created Date";
                 worksheet.Cell(1, 14).Value = "Final Date";
 
+                // Data
                 for (int i = 0; i < products.Count; i++)
                 {
                     var p = products[i];
@@ -236,46 +246,52 @@ namespace QLKhoHang.Controllers
                 }
             }
         }
-
+        // POST: api/Products/upload-image/5
         [HttpPost("upload-image/{id}")]
         public async Task<IActionResult> UploadProductImage(int id, IFormFile image)
         {
             if (image == null || image.Length == 0)
-                return Response(new ApiResult { Message = "No image uploaded." }, 400);
+                return BadRequest("No image uploaded.");
 
             var product = await _context.Products.FindAsync(id);
             if (product == null)
-                return Response(new ApiResult { Message = "Product not found." }, 404);
+                return NotFound("Product not found.");
 
+            // Delete existing image if there is one
             if (!string.IsNullOrEmpty(product.Image))
             {
                 await _cloudiary.DeleteImageAsync(product.Image);
             }
 
+            // Upload the new image
             string imageUrl = await _cloudiary.UploadImageAsync(image);
             product.Image = imageUrl;
 
             await _context.SaveChangesAsync();
 
-            return Response(new ApiResult(new { ImageUrl = imageUrl }));
+            return Ok(new { ImageUrl = imageUrl });
         }
 
+        // DELETE: api/Products/delete-image/5
         [HttpDelete("delete-image/{id}")]
         public async Task<IActionResult> DeleteProductImage(int id)
         {
             var product = await _context.Products.FindAsync(id);
             if (product == null)
-                return Response(new ApiResult { Message = "Product not found." }, 404);
+                return NotFound("Product not found.");
 
+            // Check if product has an image
             if (string.IsNullOrEmpty(product.Image))
-                return Response(new ApiResult { Message = "Product does not have an image." }, 400);
+                return BadRequest("Product does not have an image.");
 
+            // Delete the image from Cloudinary
             await _cloudiary.DeleteImageAsync(product.Image);
 
+            // Update the product
             product.Image = null;
             await _context.SaveChangesAsync();
 
-            return Response(new ApiResult { Message = "Image deleted successfully." });
+            return Ok(new { Message = "Image deleted successfully." });
         }
     }
 }

@@ -267,9 +267,29 @@
         "Name": "location",
         "Type": "System.String",
         "IsRequired": false
+      },
+      {
+        "Name": "createdDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "finaldDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "QLKhoHang.Entities.Products",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "QLKhoHang.Controllers.ProductsController",
@@ -317,7 +337,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "QLKhoHang.Entities.Products",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "QLKhoHang.Controllers.ProductsController",
@@ -353,7 +383,17 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[QLKhoHang.Entities.Products, QLKhoHang, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "QLKhoHang.Controllers.ProductsController",
@@ -426,6 +466,16 @@
       {
         "Name": "location",
         "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "createdDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "finaldDate",
+        "Type": "System.DateTime",
         "IsRequired": false
       }
     ],

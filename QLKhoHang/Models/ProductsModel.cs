@@ -12,7 +12,10 @@
         public string Description { get; set; }
         public string Status { get; set; }
         public int WarehouseId { get; set; }
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
         public string location { get; set; }
+        public DateTime createdDate { get; set; }
+        public DateTime finaldDate { get; set; }
     }
 }
+

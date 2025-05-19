@@ -307,7 +307,33 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Products"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Products"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Products"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -330,7 +356,24 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products"
+                }
+              }
+            }
           }
         }
       }
@@ -385,6 +428,14 @@
                   },
                   "location": {
                     "type": "string"
+                  },
+                  "createdDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "finaldDate": {
+                    "type": "string",
+                    "format": "date-time"
                   }
                 }
               },
@@ -424,6 +475,12 @@
                 },
                 "location": {
                   "style": "form"
+                },
+                "createdDate": {
+                  "style": "form"
+                },
+                "finaldDate": {
+                  "style": "form"
                 }
               }
             }
@@ -431,7 +488,24 @@
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Products"
+                }
+              }
+            }
           }
         }
       }
@@ -497,6 +571,14 @@
                   },
                   "location": {
                     "type": "string"
+                  },
+                  "createdDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "finaldDate": {
+                    "type": "string",
+                    "format": "date-time"
                   }
                 }
               },
@@ -535,6 +617,12 @@
                   "style": "form"
                 },
                 "location": {
+                  "style": "form"
+                },
+                "createdDate": {
+                  "style": "form"
+                },
+                "finaldDate": {
                   "style": "form"
                 }
               }
@@ -1240,6 +1328,68 @@
           },
           "rememberMe": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Products": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "barcode": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "categoryID": {
+            "type": "string",
+            "nullable": true
+          },
+          "brand": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "string",
+            "nullable": true
+          },
+          "cost": {
+            "type": "number",
+            "format": "float"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "warehouseId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "image": {
+            "type": "string",
+            "nullable": true
+          },
+          "location": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "finaldDate": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
