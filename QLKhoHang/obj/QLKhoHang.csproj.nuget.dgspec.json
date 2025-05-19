@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj": {}
+    "D:\\save\\GitHub\\QuanLyKhoHang\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj": {}
   },
   "projects": {
-    "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj": {
+    "D:\\save\\GitHub\\QuanLyKhoHang\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj",
+        "projectUniqueName": "D:\\save\\GitHub\\QuanLyKhoHang\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj",
         "projectName": "QLKhoHang",
-        "projectPath": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj",
-        "packagesPath": "C:\\Users\\nhatt\\.nuget\\packages\\",
-        "outputPath": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\obj\\",
+        "projectPath": "D:\\save\\GitHub\\QuanLyKhoHang\\QuanLyKhoHang\\QLKhoHang\\QLKhoHang.csproj",
+        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+        "outputPath": "D:\\save\\GitHub\\QuanLyKhoHang\\QuanLyKhoHang\\QLKhoHang\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\nhatt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -120,7 +120,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
