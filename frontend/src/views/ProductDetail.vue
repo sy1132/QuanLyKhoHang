@@ -21,6 +21,7 @@
                         <div class="info-row"><span>Nhóm hàng:</span> <b>{{ product.categoryID }}</b></div>
                         <div class="info-row"><span>Thương hiệu:</span> <b>{{ product.brand }}</b></div>
                         <div class="info-row"><span>Vị trí:</span> <b>{{ product.location }}</b></div>
+                        <div class="info-row"><span>Số lượng:</span> <b>{{ product.num }}</b></div>
                     </div>
                     <div class="info-col">
                         <div class="info-row"><span>Giá bán:</span> <b>{{ formatCurrency(product.price) }}</b></div>
@@ -49,8 +50,16 @@
                         class="icon-save"></i> Cập nhật</button>
                 <button v-if="editMode" type="submit" class="btn green"><i class="icon-save"></i> Lưu</button>
                 <button v-if="editMode" type="button" class="btn gray" @click="cancelEdit">Bỏ qua</button>
-                <button type="button" class="btn red" @click="confirmDelete"><i class="icon-delete"></i> Xóa</button>
+                <button v-if="product.status == 1" type="button" class="btn red" @click="confirmChangeStatus">
+                    <i class="icon-ban"></i> Ngừng bán
+                </button>
+                <button v-else type="button" class="btn green" @click="confirmReactivate">
+                    <i class="icon-check"></i> Kích hoạt lại
+                </button>
                 <button type="button" class="btn" @click="$router.back()">Quay lại</button>
+                <button type="button" class="btn blue" @click="findInactiveProducts">
+                    <i class="icon-search"></i> Tìm SP ngừng bán
+                </button>
             </div>
         </form>
 
@@ -129,6 +138,10 @@
                                         :src="editProduct.image" class="image-preview" />
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label>Số lượng</label>
+                                <input type="number" v-model.number="editProduct.num" min="0" required />
+                            </div>
                         </div>
                     </div>
                     <div class="form-actions">
@@ -191,6 +204,8 @@ export default {
                     location: raw.location ?? "",
                     finaldDate: raw.finaldDate ?? "",
                     createdDate: raw.createdDate ?? "",
+                    num: raw.num ?? "",
+
                 };
                 this.product = data;
                 this.editProduct = { ...data };
@@ -241,6 +256,8 @@ export default {
                 formData.append("Status", String(this.editProduct.status));
                 formData.append("Description", this.editProduct.description);
                 formData.append("location", this.editProduct.location);
+                formData.append("num", String(this.editProduct.num));
+
 
                 // Chỉ gửi Image nếu là File
                 if (this.editProduct.image instanceof File) {
@@ -264,22 +281,132 @@ export default {
                 }
             }
         },
-        async confirmDelete() {
-            if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
+        async confirmChangeStatus() {
+            if (confirm("Bạn có chắc chắn muốn ngừng bán sản phẩm này?\n\nSản phẩm sẽ được lưu trong hệ thống và có thể kích hoạt lại sau.")) {
                 try {
-                    await axios.delete(`https://localhost:7189/api/Products/delete/${this.product.id}`);
-                    alert("Đã xóa sản phẩm!");
-                    this.$router.back();
-                } catch {
-                    alert("Lỗi khi xóa sản phẩm!");
+                    // Thay vì gọi DELETE, tạo formData để cập nhật trạng thái
+                    const formData = new FormData();
+                    formData.append("Id", String(this.product.id));
+                    formData.append("Barcode", this.product.barcode);
+                    formData.append("Name", this.product.name);
+                    formData.append("Price", String(this.product.price));
+                    formData.append("Cost", String(this.product.cost));
+                    formData.append("Brand", this.product.brand || "");
+                    formData.append("CategoryID", String(this.product.categoryID));
+                    formData.append("WarehouseId", String(this.product.warehouseId));
+                    formData.append("Status", "0"); // Đặt trạng thái ngừng bán
+                    formData.append("Description", this.product.description || "");
+                    formData.append("location", this.product.location || "");
+                    formData.append("num", String(this.product.num));
+                    
+                    // Nếu có ảnh, thêm vào request
+                    if (this.product.image && typeof this.product.image === 'string') {
+                        formData.append("ImagePath", this.product.image);
+                    }
+                    
+                    // Gọi API UPDATE thay vì DELETE
+                    await axios.put(
+                        `https://localhost:7189/api/Products/update/${this.product.id}`,
+                        formData,
+                        { headers: { "Content-Type": "multipart/form-data" } }
+                    );
+                    
+                    // Cập nhật trạng thái sản phẩm trong UI
+                    this.product.status = 0;
+                    this.editProduct.status = 0;
+                    
+                    alert("Đã chuyển sản phẩm sang trạng thái ngừng bán. Sản phẩm vẫn được lưu trong hệ thống.");
+                } catch (err) {
+                    console.error(err);
+                    alert("Lỗi khi cập nhật trạng thái sản phẩm!");
                 }
             }
+        },
+
+        async confirmReactivate() {
+            if (confirm("Bạn có chắc chắn muốn kích hoạt lại sản phẩm này?")) {
+                try {
+                    // Tạo formData để gửi request
+                    const formData = new FormData();
+                    formData.append("Id", String(this.product.id));
+                    formData.append("Barcode", this.product.barcode);
+                    formData.append("Name", this.product.name);
+                    formData.append("Price", String(this.product.price));
+                    formData.append("Cost", String(this.product.cost));
+                    formData.append("Brand", this.product.brand || "");
+                    formData.append("CategoryID", String(this.product.categoryID));
+                    formData.append("WarehouseId", String(this.product.warehouseId));
+                    formData.append("Status", "1"); // Đặt trạng thái về 1 (đang bán)
+                    formData.append("Description", this.product.description || "");
+                    formData.append("location", this.product.location || "");
+                    formData.append("num", String(this.product.num));
+                    
+                    // Nếu có ảnh, thêm vào request
+                    if (this.product.image && typeof this.product.image === 'string') {
+                        formData.append("ImagePath", this.product.image);
+                    }
+                    
+                    // Gọi API update
+                    await axios.put(
+                        `https://localhost:7189/api/Products/update/${this.product.id}`,
+                        formData,
+                        { headers: { "Content-Type": "multipart/form-data" } }
+                    );
+                    
+                    // Cập nhật trạng thái trong UI
+                    this.product.status = 1;
+                    this.editProduct.status = 1;
+                    
+                    this.showToastMessage("Đã kích hoạt lại sản phẩm thành công!");
+                } catch (err) {
+                    console.error(err);
+                    this.showToastMessage("Lỗi khi kích hoạt lại sản phẩm!", true);
+                }
+            }
+        },
+
+        showToastMessage(message, isError = false) {
+            // Nếu bạn đã có một hệ thống toast, sử dụng nó thay vì alert
+            alert(message);
         },
         cancelEdit() {
             this.editMode = false;
             this.editProduct = { ...this.product };
             this.imagePreview = this.product.image || null;
         },
+        async findInactiveProducts() {
+            try {
+                // Gọi API để tìm tất cả sản phẩm bao gồm sản phẩm ngừng bán
+                const response = await axios.get('https://localhost:7189/api/Products/list', {
+                    params: { 
+                        includeInactive: true // Thêm tham số để lấy cả sản phẩm ngừng bán
+                    }
+                });
+                
+                // Phân tích response để lấy danh sách sản phẩm
+                let products = [];
+                if (Array.isArray(response.data)) {
+                    products = response.data;
+                } else if (response.data.data && Array.isArray(response.data.data)) {
+                    products = response.data.data;
+                } else if (response.data.result && Array.isArray(response.data.result)) {
+                    products = response.data.result;
+                }
+                
+                // Lọc để tìm sản phẩm có status = 0
+                const inactiveProducts = products.filter(p => p.status == 0);
+                
+                if (inactiveProducts.length > 0) {
+                    alert(`Đã tìm thấy ${inactiveProducts.length} sản phẩm đã ngừng bán trong hệ thống.`);
+                    console.log('Danh sách sản phẩm ngừng bán:', inactiveProducts);
+                } else {
+                    alert('Không tìm thấy sản phẩm nào đã ngừng bán.');
+                }
+            } catch (error) {
+                console.error('Lỗi khi tìm kiếm sản phẩm ngừng bán:', error);
+                alert('Không thể tìm kiếm sản phẩm ngừng bán. Vui lòng thử lại sau.');
+            }
+        }
     },
     mounted() {
         this.fetchProduct();
@@ -464,6 +591,12 @@ export default {
 .btn.red:hover {
   background: #c0392b;
 }
+.btn.blue {
+  background: #1976d2;
+}
+.btn.blue:hover {
+  background: #1565c0;
+}
 .icon-save:before {
   content: "💾";
 }
@@ -472,6 +605,9 @@ export default {
 }
 .icon-delete:before {
   content: "🗑️";
+}
+.icon-search:before {
+  content: "🔍";
 }
 .loading {
   text-align: center;

@@ -49,27 +49,6 @@
             <label for="product-type-combo">Combo - Đóng gói</label>
           </div>
         </div>
-        <div class="filter-box">
-          <div class="filter-title">Nhóm hàng <span class="plus">+</span></div>
-          <input class="group-search" placeholder="Tìm kiếm nhóm hàng" />
-          <div class="group-list">
-            <div class="group-item active"><strong>Tất cả</strong></div>
-            <div class="group-item">Hàng mất nhãn</div>
-            <div class="group-item">Hàng mới</div>
-            <div class="group-item">Kỳ cựu</div>
-          </div>
-        </div>
-        <div class="filter-box">
-          <div class="filter-title">
-            Tồn kho <span class="arrow">&#9660;</span>
-          </div>
-          <div class="filter-option">
-            <input type="radio" name="tonkho" checked /> Tất cả
-          </div>
-          <div class="filter-option">
-            <input type="radio" name="tonkho" /> Dưới định mức tồn
-          </div>
-        </div>
       </div>
       <!-- Main content -->
       <div class="main-content">
@@ -93,6 +72,8 @@
                 <th v-if="isColVisible('createdDate')">Ngày tạo</th>
                 <th v-if="isColVisible('finaldDate')">Ngày hết hạn</th>
                 <th v-if="isColVisible('description')">Mô tả</th>
+                <th v-if="isColVisible('num')">Số Lượng</th>
+
               </tr>
             </thead>
             <tbody>
@@ -122,6 +103,7 @@
                 <td v-if="isColVisible('createdDate')">{{ formatDate(product.createdDate) }}</td>
                 <td v-if="isColVisible('finaldDate')">{{ formatDate(product.finaldDate) }}</td>
                 <td v-if="isColVisible('description')">{{ product.description }}</td>
+                <td v-if="isColVisible('num')">{{ product.num }}</td>
               </tr>
             </tbody>
           </table>
@@ -161,6 +143,7 @@ export default {
         { key: "createdDate", label: "Ngày tạo", visible: false },
         { key: "finaldDate", label: "Ngày hết hạn", visible: false },
         { key: "description", label: "Mô tả", visible: false },
+        { key: "num", label: "Số Lượng", visible: true }
       ],
       filters: {
         productTypes: {
