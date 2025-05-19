@@ -41,13 +41,11 @@ const router = createRouter({
       name: "products-add",
       component: ProductAdd,
     },
-    { path: "/ProductDetail/:id", component: ProductDetail },
     {
-      path: "/import",
-      name: "import",
-      component: ImportManagementView,
+      path: "/ProductDetail/:id",
+      name: "ProductDetail",
+      component: ProductDetail,
     },
-    
   ],
 });
 
