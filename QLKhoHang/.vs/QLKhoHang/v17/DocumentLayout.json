@@ -3,12 +3,25 @@
   "WorkspaceRootPath": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\entities\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> parent of 365e0b3 (FN)
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\models\\productsmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,12 +32,33 @@
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\entities\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\warehouse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\entities\\import.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\import.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\entities\\importdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\importdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\models\\importmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:models\\importmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> parent of 365e0b3 (FN)
     },
     {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,8 +69,17 @@
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:models\\registermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|d:\\qlkhang\\quanlykhohang\\qlkhohang\\entities\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:entities\\supplier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\controllers\\warehousecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:controllers\\warehousecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\migrations\\20250518150713_tanxd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:migrations\\20250518150713_tanxd.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> parent of 365e0b3 (FN)
     }
   ],
   "DocumentGroupContainers": [
@@ -45,6 +88,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
+<<<<<<< HEAD
           "DockedWidth": 200,
           "SelectedChildIndex": 0,
           "Children": [
@@ -60,6 +104,34 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-05-19T14:04:07.02Z",
               "EditorCaption": ""
+=======
+          "DockedWidth": 271,
+          "SelectedChildIndex": 15,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+>>>>>>> parent of 365e0b3 (FN)
             },
             {
               "$type": "Document",
@@ -71,6 +143,7 @@
               "RelativeToolTip": "Models\\ProductsModel.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAswBAAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< HEAD
               "WhenOpened": "2025-05-18T18:02:46.618Z"
             },
             {
@@ -84,6 +157,188 @@
               "ViewState": "AgIAALsAAAAAAAAAAAAwwLUAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-14T07:46:08.179Z"
+=======
+              "WhenOpened": "2025-05-19T12:44:49.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReportController.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ReportController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ReportController.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ReportController.cs",
+              "RelativeToolTip": "Controllers\\ReportController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T15:58:14.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Import.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Entities\\Import.cs",
+              "RelativeDocumentMoniker": "Entities\\Import.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Entities\\Import.cs",
+              "RelativeToolTip": "Entities\\Import.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T15:13:32.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ImportDetail.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Entities\\ImportDetail.cs",
+              "RelativeDocumentMoniker": "Entities\\ImportDetail.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Entities\\ImportDetail.cs",
+              "RelativeToolTip": "Entities\\ImportDetail.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T15:13:29.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20250518150713_TanXD.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250518150713_TanXD.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250518150713_TanXD.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250518150713_TanXD.cs",
+              "RelativeToolTip": "Migrations\\20250518150713_TanXD.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T15:07:14.077Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Dbcontext.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Dbcontext.cs",
+              "RelativeDocumentMoniker": "Dbcontext.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Dbcontext.cs",
+              "RelativeToolTip": "Dbcontext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAuwBIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T15:05:50.359Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-18T15:03:43.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ProductsController.cs*",
+              "RelativeToolTip": "Controllers\\ProductsController.cs*",
+              "ViewState": "AgIAADIAAAAAAAAAAAAcwD8AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T15:02:03.104Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Products.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Entities\\Products.cs",
+              "RelativeDocumentMoniker": "Entities\\Products.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Entities\\Products.cs",
+              "RelativeToolTip": "Entities\\Products.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAuwBAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T15:00:30.015Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ImportModels.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\ImportModels.cs",
+              "RelativeDocumentMoniker": "Models\\ImportModels.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\ImportModels.cs",
+              "RelativeToolTip": "Models\\ImportModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T04:15:33.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LoginModel.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\LoginModel.cs",
+              "RelativeDocumentMoniker": "Models\\LoginModel.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\LoginModel.cs",
+              "RelativeToolTip": "Models\\LoginModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T01:52:32.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ApiResult.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\ApiResult.cs",
+              "RelativeDocumentMoniker": "Models\\ApiResult.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\ApiResult.cs",
+              "RelativeToolTip": "Models\\ApiResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T01:52:31.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ImportController.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ImportController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ImportController.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ImportController.cs",
+              "RelativeToolTip": "Controllers\\ImportController.cs",
+              "ViewState": "AgIAAIwAAAAAAAAAAAAwwJEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T01:48:44.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "WareHouseController.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\WareHouseController.cs",
+              "RelativeDocumentMoniker": "Controllers\\WareHouseController.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\WareHouseController.cs",
+              "RelativeToolTip": "Controllers\\WareHouseController.cs",
+              "ViewState": "AgIAAKkAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T01:48:38.782Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 129,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+>>>>>>> parent of 365e0b3 (FN)
             },
             {
               "$type": "Document",

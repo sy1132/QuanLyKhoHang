@@ -16,8 +16,11 @@
         public string location { get; set; }
         public DateTime createdDate { get; set; }
         public DateTime finaldDate { get; set; }
+<<<<<<< HEAD
         public String  Num { get; set; }
 
+=======
+>>>>>>> parent of 365e0b3 (FN)
     }
 }
 
