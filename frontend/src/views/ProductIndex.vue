@@ -116,8 +116,8 @@
                 <td v-if="isColVisible('location')">{{ product.location }}</td>
                 <td v-if="isColVisible('warehouseId')">{{ getWarehouseName(product.warehouseId) }}</td>
                 <td v-if="isColVisible('status')">
-                  <span v-if="product.status == 1 || product.status == '1'" style="color:#19c37d;">Đang bán</span>
-                  <span v-else style="color:#e74c3c;">Ngừng bán</span>
+                  <span v-if="product.status == 1 || product.status == '1'" style="color:#19c37d;">Còn hàng</span>
+                  <span v-else style="color:#e74c3c;">Hết hàng</span>
                 </td>
                 <td v-if="isColVisible('createdDate')">{{ formatDate(product.createdDate) }}</td>
                 <td v-if="isColVisible('finaldDate')">{{ formatDate(product.finaldDate) }}</td>

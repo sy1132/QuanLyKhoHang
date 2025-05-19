@@ -36,8 +36,8 @@
           <label>Trạng thái</label>
           <select v-model.number="product.status" required>
             <option value="">---Chọn trạng thái---</option>
-            <option :value="1">Đang bán</option>
-            <option :value="0">Ngừng bán</option>
+            <option :value="1">Còn hàng </option>
+            <option :value="0">Hết hàng</option>
           </select>
         </div>
         <!-- Hàng 4 -->

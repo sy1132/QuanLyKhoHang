@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "Models\\ProductsModel.cs",
               "ToolTip": "D:\\QLKHang\\QuanLyKhoHang\\QLKhoHang\\Models\\ProductsModel.cs",
               "RelativeToolTip": "Models\\ProductsModel.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAuwBUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAA/wBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T18:02:46.618Z",
               "EditorCaption": ""
@@ -67,8 +67,7 @@
               "RelativeToolTip": "Controllers\\ProductsController.cs",
               "ViewState": "AgIAAEcAAAAAAAAAAAAAAFYAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T07:46:08.179Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T07:46:08.179Z"
             },
             {
               "$type": "Document",
@@ -80,8 +79,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAH4AAAAAAAAAAAAAAFcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T08:41:18.584Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T08:41:18.584Z"
             },
             {
               "$type": "Document",
@@ -93,8 +91,7 @@
               "RelativeToolTip": "Models\\RegisterModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T10:43:16.243Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-18T10:43:16.243Z"
             },
             {
               "$type": "Document",
@@ -106,8 +103,7 @@
               "RelativeToolTip": "Entities\\Category.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-18T10:42:52.523Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-18T10:42:52.523Z"
             },
             {
               "$type": "Document",
@@ -131,8 +127,7 @@
               "RelativeToolTip": "Entities\\Warehouse.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAowAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T06:34:52.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T06:34:52.7Z"
             },
             {
               "$type": "Document",
@@ -144,8 +139,7 @@
               "RelativeToolTip": "Dbcontext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-09T09:19:26.256Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T09:19:26.256Z"
             }
           ]
         }
