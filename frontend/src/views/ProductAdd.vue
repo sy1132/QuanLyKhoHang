@@ -12,7 +12,7 @@
           <input type="text" v-model="product.barcode" required />
         </div>
         <div class="form-group">
-          <label>Giá vốn</label>
+          <label>Giá xuất</label>
           <input type="number" v-model.number="product.cost" min="0" required />
         </div>
         <!-- Hàng 2 -->
@@ -21,7 +21,7 @@
           <input type="text" v-model="product.name" required />
         </div>
         <div class="form-group">
-          <label>Giá bán</label>
+          <label>Giá nhập</label>
           <input type="number" v-model.number="product.price" min="0" required />
         </div>
         <!-- Hàng 3 -->
@@ -114,7 +114,8 @@ export default {
       },
       categories: [],
       warehouses: [],
-      imagePreview: null
+      imagePreview: null,
+      isSubmitting: false
     };
   },
   mounted() {
@@ -155,9 +156,14 @@ export default {
     },
     async submitForm(fromParent = false) {
       try {
+        this.isSubmitting = true;
+        
+        console.log("Bắt đầu gửi form");
+        
         const formData = new FormData();
         formData.append("Barcode", this.product.barcode);
         formData.append("Name", this.product.name);
+        // Convert to string explicitly to avoid type issues
         formData.append("Price", String(this.product.price));
         formData.append("Cost", String(this.product.cost));
         formData.append("Brand", this.product.brand || "Không có thương hiệu");
@@ -166,14 +172,28 @@ export default {
         formData.append("Status", String(this.product.status || 1));
         formData.append("Description", this.product.description || "Sản phẩm mới");
         formData.append("location", this.product.location || "Kho chính");
-        
+        formData.append("Num", "0");
         if (this.product.image) {
           formData.append("Image", this.product.image);
         }
-
+        
+        // Hiển thị một thông báo đang xử lý
+        const loadingToast = document.createElement('div');
+        loadingToast.innerHTML = 'Đang xử lý...';
+        loadingToast.style = 'position: fixed; top: 20px; right: 20px; background: #ffc107; color: black; padding: 10px 20px; border-radius: 5px; z-index: 9999; box-shadow: 0 4px 8px rgba(0,0,0,0.2);';
+        document.body.appendChild(loadingToast);
+        
+        console.log("Đang gửi request API");
         const response = await axios.post("https://localhost:7189/api/Products/create", formData, {
           headers: { "Content-Type": "multipart/form-data" }
         });
+        
+        // Xóa thông báo đang xử lý
+        if (document.body.contains(loadingToast)) {
+          document.body.removeChild(loadingToast);
+        }
+        
+        console.log("Kết quả trả về:", response.data);
         
         // Nếu được gọi từ component cha khi dùng làm modal
         if (fromParent) {
@@ -189,21 +209,122 @@ export default {
           this.$emit('product-created', newProduct);
           return { success: true, product: newProduct };
         } else {
-          // Xử lý khi được gọi trực tiếp từ form
-          alert("Đã thêm sản phẩm!");
-          if (!this.isModal) {
-            this.$router.back();
-          }
+          // Tạo thông báo thành công tùy chỉnh thay vì dùng confirm
+          const successToast = document.createElement('div');
+          successToast.innerHTML = `
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="font-size: 16px; font-weight: bold;">✅ THÊM SẢN PHẨM THÀNH CÔNG!</div>
+              <div style="display: flex; gap: 10px; margin-top: 5px;">
+                <button id="successYes" style="background: #28a745; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">Quay lại danh sách</button>
+                <button id="successNo" style="background: #6c757d; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold;">Tiếp tục thêm</button>
+              </div>
+            </div>
+          `;
+          
+          // Cải thiện style của toast
+          successToast.style = `
+            position: fixed; 
+            top: 20px; 
+            right: 20px; 
+            background: #4CAF50; 
+            color: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            z-index: 99999; 
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+            min-width: 300px;
+          `;
+          
+          document.body.appendChild(successToast);
+          
+          // Thêm âm thanh thông báo (tùy chọn)
+          const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3');
+          audio.volume = 0.5;
+          audio.play().catch(e => console.log('Không phát được âm thanh:', e));
+          
+          // Xử lý sự kiện nút
+          document.getElementById('successYes').addEventListener('click', () => {
+            if (document.body.contains(successToast)) {
+              document.body.removeChild(successToast);
+            }
+            if (!this.isModal) {
+              this.$router.push('/products');
+            }
+          });
+          
+          document.getElementById('successNo').addEventListener('click', () => {
+            if (document.body.contains(successToast)) {
+              document.body.removeChild(successToast);
+            }
+            // Reset form để thêm sản phẩm mới
+            this.resetForm();
+          });
+          
+          // Tự động ẩn sau 8 giây (thời gian dài hơn)
+          setTimeout(() => {
+            if (document.body.contains(successToast)) {
+              document.body.removeChild(successToast);
+            }
+          }, 8000);
         }
+        
+        this.isSubmitting = false;
       } catch (err) {
-        alert("Lỗi khi thêm sản phẩm!");
-        if (err.response?.data?.errors) {
-          console.error("Validation errors:", err.response.data.errors);
-        } else {
-          console.error(err);
+        this.isSubmitting = false;
+        console.error("Chi tiết lỗi:", err);
+        
+        // Xóa thông báo loading nếu còn tồn tại
+        const existingLoadingToast = document.querySelector('div[style*="position: fixed"]');
+        if (existingLoadingToast && document.body.contains(existingLoadingToast)) {
+          document.body.removeChild(existingLoadingToast);
         }
+        
+        // Cải thiện thông báo lỗi
+        const errorToast = document.createElement('div');
+        errorToast.innerHTML = `
+          <div style="font-weight: bold; margin-bottom: 5px;">⚠️ LỖI KHI THÊM SẢN PHẨM</div>
+          <div>${err.response?.data?.title || err.message || "Lỗi không xác định"}</div>
+        `;
+        errorToast.style = `
+          position: fixed; 
+          top: 20px; 
+          right: 20px; 
+          background: #dc3545; 
+          color: white; 
+          padding: 20px; 
+          border-radius: 8px; 
+          z-index: 99999; 
+          box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+          min-width: 300px;
+        `;
+        document.body.appendChild(errorToast);
+        
+        // Tự động ẩn sau 8 giây
+        setTimeout(() => {
+          if (document.body.contains(errorToast)) {
+            document.body.removeChild(errorToast);
+          }
+        }, 8000);
+        
         return { success: false };
       }
+    },
+    // Thêm phương thức resetForm để dùng khi tiếp tục thêm sản phẩm
+    resetForm() {
+      this.product = {
+        barcode: "",
+        name: "",
+        price: 0,
+        cost: 0,
+        brand: "",
+        categoryID: "",
+        warehouseId: this.initialWarehouseId || "",
+        status: "1",
+        description: "",
+        image: null,
+        location: ""
+      };
+      this.imagePreview = null;
     }
   }
 };
