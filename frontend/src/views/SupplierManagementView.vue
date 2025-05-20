@@ -1,12 +1,8 @@
 <template>
   <div class="container mt-4">
     <!-- Header: Tiêu đề + tìm kiếm + nút chức năng cùng 1 hàng -->
-    <div
-      class="d-flex align-items-center gap-2 mb-4 flex-wrap justify-content-center"
-    >
-      <h1 class="title-black mb-0" style="font-size: 1.7rem; min-width: 220px">
-        Nhà cung cấp
-      </h1>
+    <div class="d-flex align-items-center gap-2 mb-4 flex-wrap justify-content-center">
+      <h1 class="title-black mb-0" style="font-size: 1.7rem; min-width: 220px;">Nhà cung cấp</h1>
       <input
         type="text"
         v-model="searchString"
@@ -15,28 +11,14 @@
         placeholder="Tìm kiếm theo tên, điện thoại, email..."
         @keyup.enter="searchSuppliers"
       />
-      <button
-        @click="searchSuppliers"
-        class="btn btn-info fw-bold custom-btn-size"
-      >
-        Tìm kiếm
-      </button>
-      <button
-        class="btn btn-primary custom-btn-size"
-        @click="showAddModal = true"
-      >
+      <button @click="searchSuppliers" class="btn btn-info fw-bold custom-btn-size">Tìm kiếm</button>
+      <button class="btn btn-primary custom-btn-size" @click="showAddModal = true">
         <i class="fa fa-plus"></i> Nhà cung cấp
       </button>
-      <button
-        class="btn btn-success custom-btn-size"
-        @click="showImportModal = true"
-      >
+      <button class="btn btn-success custom-btn-size" @click="showImportModal = true">
         <i class="fa fa-file-import"></i> Import
       </button>
-      <button
-        class="btn btn-secondary custom-btn-size"
-        @click="exportSuppliers"
-      >
+      <button class="btn btn-secondary custom-btn-size" @click="exportSuppliers">
         <i class="fa fa-file-export"></i> Xuất file
       </button>
     </div>
@@ -59,16 +41,8 @@
                 <label class="form-label mb-0">Đến ngày</label>
                 <input type="date" v-model="toDate" class="form-control" />
               </div>
-              <button type="submit" class="btn btn-info btn-sm me-2">
-                Lọc
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary btn-sm"
-                @click="resetDateFilter"
-              >
-                Xóa
-              </button>
+              <button type="submit" class="btn btn-info btn-sm me-2">Lọc</button>
+              <button type="button" class="btn btn-secondary btn-sm" @click="resetDateFilter">Xóa</button>
             </form>
           </div>
         </div>
@@ -84,25 +58,13 @@
                 <!-- Dropdown chọn kho -->
                 <select v-model="selectedWarehouse" class="form-select">
                   <option value="">Tất cả</option>
-                  <option
-                    v-for="w in uniqueWarehouses"
-                    :key="w.id"
-                    :value="w.id"
-                  >
+                  <option v-for="w in uniqueWarehouses" :key="w.id" :value="w.id">
                     {{ w.name }}
                   </option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-info btn-sm me-2">
-                Lọc
-              </button>
-              <button
-                type="button"
-                class="btn btn-secondary btn-sm"
-                @click="resetWarehouseFilter"
-              >
-                Xóa
-              </button>
+              <button type="submit" class="btn btn-info btn-sm me-2">Lọc</button>
+              <button type="button" class="btn btn-secondary btn-sm" @click="resetWarehouseFilter">Xóa</button>
             </form>
           </div>
         </div>
@@ -125,9 +87,7 @@
             </thead>
             <tbody>
               <tr v-if="suppliers.length === 0">
-                <td colspan="7" class="text-center text-muted">
-                  Không có nhà cung cấp nào phù hợp
-                </td>
+                <td colspan="7" class="text-center text-muted">Không có nhà cung cấp nào phù hợp</td>
               </tr>
               <tr v-for="s in suppliers" :key="s.id">
                 <td>{{ s.name }}</td>
@@ -146,22 +106,12 @@
     </div>
 
     <!-- Modal thêm nhà cung cấp -->
-    <div
-      class="modal fade"
-      :class="{ show: showAddModal }"
-      tabindex="-1"
-      style="display: block"
-      v-if="showAddModal"
-    >
+    <div class="modal fade" :class="{ show: showAddModal }" tabindex="-1" style="display: block;" v-if="showAddModal">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Thêm nhà cung cấp</h5>
-            <button
-              type="button"
-              class="btn-close"
-              @click="showAddModal = false"
-            ></button>
+            <button type="button" class="btn-close" @click="showAddModal = false"></button>
           </div>
           <form @submit.prevent="createSupplier">
             <div class="modal-body">
@@ -169,46 +119,21 @@
                 <div class="col-md-6">
                   <div class="mb-2">
                     <label for="name">Tên nhà cung cấp:</label>
-                    <input
-                      type="text"
-                      id="name"
-                      v-model="newSupplier.name"
-                      class="form-control"
-                      required
-                    />
+                    <input type="text" id="name" v-model="newSupplier.name" class="form-control" required />
                   </div>
                   <div class="mb-2">
                     <label for="phone">Điện thoại:</label>
-                    <input
-                      type="text"
-                      id="phone"
-                      v-model="newSupplier.phone"
-                      class="form-control"
-                    />
+                    <input type="text" id="phone" v-model="newSupplier.phone" class="form-control" />
                   </div>
                   <div class="mb-2">
                     <label for="address">Địa chỉ:</label>
-                    <input
-                      type="text"
-                      id="address"
-                      v-model="newSupplier.address"
-                      class="form-control"
-                    />
+                    <input type="text" id="address" v-model="newSupplier.address" class="form-control" />
                   </div>
                   <div class="mb-2">
                     <label for="warehouseId">Kho:</label>
-                    <select
-                      id="warehouseId"
-                      v-model="newSupplier.warehouseId"
-                      class="form-control"
-                      required
-                    >
+                    <select id="warehouseId" v-model="newSupplier.warehouseId" class="form-control" required>
                       <option value="" disabled>Chọn kho</option>
-                      <option
-                        v-for="w in uniqueWarehouses"
-                        :key="w.id"
-                        :value="w.id"
-                      >
+                      <option v-for="w in uniqueWarehouses" :key="w.id" :value="w.id">
                         {{ w.name }}
                       </option>
                     </select>
@@ -217,35 +142,17 @@
                 <div class="col-md-6">
                   <div class="mb-2">
                     <label for="email">Email:</label>
-                    <input
-                      type="email"
-                      id="email"
-                      v-model="newSupplier.email"
-                      class="form-control"
-                    />
+                    <input type="email" id="email" v-model="newSupplier.email" class="form-control" />
                   </div>
                 </div>
               </div>
-              <div
-                v-if="createMessage"
-                :class="[
-                  'alert',
-                  createSuccess ? 'alert-success' : 'alert-danger',
-                  'mt-2',
-                ]"
-              >
+              <div v-if="createMessage" :class="['alert', createSuccess ? 'alert-success' : 'alert-danger', 'mt-2']">
                 {{ createMessage }}
               </div>
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-success">Lưu</button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                @click="showAddModal = false"
-              >
-                Bỏ qua
-              </button>
+              <button type="button" class="btn btn-secondary" @click="showAddModal = false">Bỏ qua</button>
             </div>
           </form>
         </div>
@@ -253,54 +160,25 @@
     </div>
 
     <!-- Modal nhập Excel -->
-    <div
-      class="modal fade"
-      :class="{ show: showImportModal }"
-      tabindex="-1"
-      style="display: block"
-      v-if="showImportModal"
-    >
+    <div class="modal fade" :class="{ show: showImportModal }" tabindex="-1" style="display: block;" v-if="showImportModal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Nhập file Excel</h5>
-            <button
-              type="button"
-              class="btn-close"
-              @click="showImportModal = false"
-            ></button>
+            <button type="button" class="btn-close" @click="showImportModal = false"></button>
           </div>
           <form @submit.prevent="importSuppliers">
             <div class="modal-body">
               <div class="form-group mb-2">
-                <input
-                  type="file"
-                  ref="fileInput"
-                  @change="onFileChange"
-                  accept=".xlsx"
-                  class="form-control"
-                />
+                <input type="file" ref="fileInput" @change="onFileChange" accept=".xlsx" class="form-control" />
               </div>
-              <div
-                v-if="importMessage"
-                :class="[
-                  'alert',
-                  importSuccess ? 'alert-success' : 'alert-danger',
-                  'mt-2',
-                ]"
-              >
+              <div v-if="importMessage" :class="['alert', importSuccess ? 'alert-success' : 'alert-danger', 'mt-2']">
                 {{ importMessage }}
               </div>
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-success">Nhập Excel</button>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                @click="showImportModal = false"
-              >
-                Bỏ qua
-              </button>
+              <button type="button" class="btn btn-secondary" @click="showImportModal = false">Bỏ qua</button>
             </div>
           </form>
         </div>
@@ -339,42 +217,25 @@ export default {
   computed: {
     uniqueWarehouses() {
       return this.allWarehouses;
-    },
+    }
   },
   mounted() {
     this.loadSuppliers();
-    this.loadWarehouses(); // Gọi phương thức tải danh sách kho khi component được khởi tạo
+    this.loadWarehouses(); // <-- Thêm dòng này
   },
   methods: {
     async loadSuppliers(searchString = "") {
       try {
         let response;
         if (searchString) {
-          response = await axios.get(
-            "https://localhost:7189/api/supplier/search",
-            { params: { searchString } }
-          );
+          response = await axios.get("https://localhost:7189/api/supplier/search", { params: { searchString } });
         } else {
           response = await axios.get("https://localhost:7189/api/supplier");
         }
         this.suppliers = response.data.data || response.data;
-        // Lưu lại tất cả kho duy nhất (id + name)
-        if (!searchString) {
-          const warehouses = [];
-          this.suppliers.forEach((s) => {
-            if (s.warehouseId && s.warehouseName) {
-              if (!warehouses.some((w) => w.id === s.warehouseId)) {
-                warehouses.push({ id: s.warehouseId, name: s.warehouseName });
-              }
-            }
-          });
-          this.allWarehouses = warehouses;
-        }
+        // Không cần lấy allWarehouses ở đây nữa!
       } catch (error) {
-        alert(
-          "Lỗi khi tải danh sách nhà cung cấp: " +
-            (error.response?.data?.message || error.message)
-        );
+        alert("Lỗi khi tải danh sách nhà cung cấp: " + (error.response?.data?.message || error.message));
       }
     },
     async searchSuppliers() {
@@ -386,27 +247,17 @@ export default {
     },
     async createSupplier() {
       try {
-        const response = await axios.post(
-          "https://localhost:7189/api/supplier/create",
-          this.newSupplier
-        );
+        const response = await axios.post("https://localhost:7189/api/supplier/create", this.newSupplier);
         this.createMessage = response.data.message || "Thêm thành công!";
         this.createSuccess = true;
-        this.newSupplier = {
-          name: "",
-          address: "",
-          phone: "",
-          email: "",
-          warehouseId: 0,
-        };
+        this.newSupplier = { name: "", address: "", phone: "", email: "", warehouseId: 0 };
         await this.loadSuppliers();
         setTimeout(() => {
           this.showAddModal = false;
           this.createMessage = "";
         }, 1000);
       } catch (error) {
-        this.createMessage =
-          error.response?.data?.message || "Lỗi khi thêm nhà cung cấp.";
+        this.createMessage = error.response?.data?.message || "Lỗi khi thêm nhà cung cấp.";
         this.createSuccess = false;
       }
     },
@@ -422,13 +273,9 @@ export default {
       const formData = new FormData();
       formData.append("file", this.selectedFile);
       try {
-        const response = await axios.post(
-          "https://localhost:7189/api/supplier/import",
-          formData,
-          {
-            headers: { "Content-Type": "multipart/form-data" },
-          }
-        );
+        const response = await axios.post("https://localhost:7189/api/supplier/import", formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
         this.importMessage = response.data.message || "Nhập thành công!";
         this.importSuccess = true;
         this.selectedFile = null;
@@ -439,8 +286,7 @@ export default {
           this.importMessage = "";
         }, 1000);
       } catch (error) {
-        this.importMessage =
-          error.response?.data?.message || "Lỗi khi nhập file.";
+        this.importMessage = error.response?.data?.message || "Lỗi khi nhập file.";
         this.importSuccess = false;
       }
     },
@@ -449,18 +295,12 @@ export default {
     },
     async filterByDate() {
       try {
-        const response = await axios.get(
-          "https://localhost:7189/api/supplier/search-by-date",
-          {
-            params: { fromDate: this.fromDate, toDate: this.toDate },
-          }
-        );
+        const response = await axios.get("https://localhost:7189/api/supplier/search-by-date", {
+          params: { fromDate: this.fromDate, toDate: this.toDate },
+        });
         this.suppliers = response.data.data || response.data;
       } catch (error) {
-        alert(
-          "Lỗi khi lọc theo ngày: " +
-            (error.response?.data?.message || error.message)
-        );
+        alert("Lỗi khi lọc theo ngày: " + (error.response?.data?.message || error.message));
       }
     },
     resetDateFilter() {
@@ -468,78 +308,34 @@ export default {
       this.toDate = "";
       this.loadSuppliers();
     },
-    // Thêm phương thức này để tải danh sách kho từ API
-    async loadWarehouses() {
-      try {
-        const response = await axios.get(
-          "https://localhost:7189/api/warehouse"
-        );
-
-        if (
-          response.data &&
-          response.data.result &&
-          Array.isArray(response.data.result.data)
-        ) {
-          this.allWarehouses = response.data.result.data.map((w) => ({
-            id: w.id,
-            name: w.name,
-          }));
-          console.log("Đã tải được", this.allWarehouses.length, "kho hàng");
-        } else {
-          console.warn(
-            "Không tìm thấy dữ liệu kho hàng hoặc định dạng không đúng"
-          );
-          this.allWarehouses = [];
-        }
-      } catch (error) {
-        console.error("Lỗi khi tải danh sách kho:", error);
-        this.allWarehouses = [];
-      }
-    },
-
-    // Sửa phương thức filterByWarehouse để sử dụng ID kho thay vì tên kho
     async filterByWarehouse() {
       if (!this.selectedWarehouse) {
         this.loadSuppliers();
         return;
       }
-
+      // Tìm tên kho theo id đã chọn
+      const warehouse = this.allWarehouses.find(w => w.id == this.selectedWarehouse);
+      const warehouseName = warehouse ? warehouse.name : "";
       try {
-        // Gọi API lọc theo warehouseId
-        const response = await axios.get(
-          "https://localhost:7189/api/supplier/search-by-warehouse-id",
-          {
-            params: { warehouseId: this.selectedWarehouse },
-          }
-        );
-
+        const response = await axios.get("https://localhost:7189/api/supplier/search-by-warehouse-name", {
+          params: { warehouseName }
+        });
         this.suppliers = response.data.data || response.data;
       } catch (error) {
-        // Nếu API theo ID không tồn tại, thực hiện lọc theo tên kho (cách cũ)
-        const warehouse = this.allWarehouses.find(
-          (w) => w.id == this.selectedWarehouse
-        );
-        const warehouseName = warehouse ? warehouse.name : "";
-
-        try {
-          const response = await axios.get(
-            "https://localhost:7189/api/supplier/search-by-warehouse-name",
-            {
-              params: { warehouseName },
-            }
-          );
-          this.suppliers = response.data.data || response.data;
-        } catch (error) {
-          alert(
-            "Lỗi khi lọc theo kho: " +
-              (error.response?.data?.message || error.message)
-          );
-        }
+        alert("Lỗi khi lọc theo kho: " + (error.response?.data?.message || error.message));
       }
     },
     resetWarehouseFilter() {
       this.selectedWarehouse = "";
       this.loadSuppliers();
+    },
+    async loadWarehouses() {
+      try {
+        const response = await axios.get("https://localhost:7189/api/supplier/warehouses");
+        this.allWarehouses = response.data.data || response.data;
+      } catch (error) {
+        // Có thể xử lý lỗi nếu cần
+      }
     },
   },
 };
@@ -550,31 +346,40 @@ export default {
   padding: 20px;
 }
 .title-black {
-  color: var(--text-dark, #111) !important;
-}
-.modal-title {
-  color: #000000 !important;
-}
-.col-md-6 {
-  color: #000000 !important;
+  color: #111 !important;
 }
 .table-primary th {
-  background-color: var(--primary-color, #007bff) !important;
-  color: var(--text-white, #fff) !important;
+  background-color: #007bff !important;
+  color: #fff !important;
   text-align: center;
   vertical-align: middle;
 }
+.table-bordered th, .table-bordered td {
+  vertical-align: middle;
+}
+.gap-2 > * + * {
+  margin-left: 0.5rem;
+}
 .card {
-  border: 1px solid var(--border-light, #e3e3e3);
+  border: 1px solid #e3e3e3;
   border-radius: 6px;
-  box-shadow: var(--box-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.03));
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
 }
 .card-header {
-  background: var(--bg-light, #f8f9fa);
+  background: #f8f9fa;
   font-size: 1rem;
 }
+.badge {
+  font-size: 1rem;
+  padding: 0.5em 1em;
+}
 .modal {
-  background: rgba(0, 0, 0, 0.4);
+  display: block;
+  background: rgba(0,0,0,0.4);
+}
+.modal.fade:not(.show) {
+  opacity: 0;
+  pointer-events: none;
 }
 .custom-btn-size {
   min-width: 110px;

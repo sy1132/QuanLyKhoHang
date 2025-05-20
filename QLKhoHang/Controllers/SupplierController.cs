@@ -23,6 +23,19 @@ namespace QLKhoHang.Controllers
             _context = context;
         }
 
+        [HttpGet("warehouses")]
+        public async Task<IActionResult> GetWarehouses()
+        {
+            var warehouses = await _context.Warehouse
+                .Select(w => new
+                {
+                    w.Id,
+                    w.Name
+                })
+                .ToListAsync();
+
+            return Ok(new ApiResult { Data = warehouses });
+        }
         // GET: Lấy toàn bộ danh sách nhà cung cấp (hiện ra luôn khi vào trang)
         [HttpGet]
         public async Task<IActionResult> GetAllSuppliers()

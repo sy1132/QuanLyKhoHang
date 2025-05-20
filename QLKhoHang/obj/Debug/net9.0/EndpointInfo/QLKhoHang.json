@@ -932,6 +932,18 @@
         }
       }
     },
+    "/api/supplier/warehouses": {
+      "get": {
+        "tags": [
+          "Supplier"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/supplier": {
       "get": {
         "tags": [

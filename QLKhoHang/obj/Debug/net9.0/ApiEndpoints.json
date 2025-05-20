@@ -718,6 +718,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "QLKhoHang.Controllers.SupplierController",
+    "Method": "GetWarehouses",
+    "RelativePath": "api/supplier/warehouses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "QLKhoHang.Controllers.WareHouseController",
     "Method": "GetWarehouses",
     "RelativePath": "api/warehouse",
