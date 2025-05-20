@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\controllers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:controllers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|e:\\qlkh\\quanlykhohang\\qlkhohang\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DD4091F3-C69E-4288-BDB9-25426BE11D69}|QLKhoHang.csproj|solutionrelative:controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -74,7 +78,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 271,
-          "SelectedChildIndex": 15,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -102,7 +106,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "SupplierController.cs",
+              "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\SupplierController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SupplierController.cs",
+              "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\SupplierController.cs",
+              "RelativeToolTip": "Controllers\\SupplierController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-20T05:42:46.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ProductsModel.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\ProductsModel.cs",
               "RelativeDocumentMoniker": "Models\\ProductsModel.cs",
@@ -114,7 +131,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ExportController.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ExportController.cs",
               "RelativeDocumentMoniker": "Controllers\\ExportController.cs",
@@ -126,7 +143,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Report.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Entities\\Report.cs",
               "RelativeDocumentMoniker": "Entities\\Report.cs",
@@ -138,7 +155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "ReportController.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ReportController.cs",
               "RelativeDocumentMoniker": "Controllers\\ReportController.cs",
@@ -150,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Import.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Entities\\Import.cs",
               "RelativeDocumentMoniker": "Entities\\Import.cs",
@@ -162,7 +179,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "ImportDetail.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Entities\\ImportDetail.cs",
               "RelativeDocumentMoniker": "Entities\\ImportDetail.cs",
@@ -174,7 +191,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "20250518150713_TanXD.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Migrations\\20250518150713_TanXD.cs",
               "RelativeDocumentMoniker": "Migrations\\20250518150713_TanXD.cs",
@@ -186,7 +203,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "Dbcontext.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Dbcontext.cs",
               "RelativeDocumentMoniker": "Dbcontext.cs",
@@ -198,7 +215,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -210,20 +227,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ProductsController.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ProductsController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProductsController.cs",
               "ToolTip": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ProductsController.cs",
               "RelativeToolTip": "Controllers\\ProductsController.cs",
-              "ViewState": "AgIAAIIAAAAAAAAAAAAMwI8AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAWwE0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-18T15:02:03.104Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Products.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Entities\\Products.cs",
               "RelativeDocumentMoniker": "Entities\\Products.cs",
@@ -235,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "ImportModels.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\ImportModels.cs",
               "RelativeDocumentMoniker": "Models\\ImportModels.cs",
@@ -247,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "LoginModel.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\LoginModel.cs",
               "RelativeDocumentMoniker": "Models\\LoginModel.cs",
@@ -259,7 +276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "ApiResult.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Models\\ApiResult.cs",
               "RelativeDocumentMoniker": "Models\\ApiResult.cs",
@@ -271,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "ImportController.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\ImportController.cs",
               "RelativeDocumentMoniker": "Controllers\\ImportController.cs",
@@ -283,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "WareHouseController.cs",
               "DocumentMoniker": "E:\\QLKH\\QuanLyKhoHang\\QLKhoHang\\Controllers\\WareHouseController.cs",
               "RelativeDocumentMoniker": "Controllers\\WareHouseController.cs",
