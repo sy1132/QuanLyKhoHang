@@ -277,11 +277,6 @@
         "Name": "finaldDate",
         "Type": "System.DateTime",
         "IsRequired": false
-      },
-      {
-        "Name": "Num",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": [
@@ -481,11 +476,6 @@
       {
         "Name": "finaldDate",
         "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "Num",
-        "Type": "System.String",
         "IsRequired": false
       }
     ],
