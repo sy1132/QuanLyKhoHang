@@ -550,41 +550,31 @@ export default {
   padding: 20px;
 }
 .title-black {
-  color: #111 !important;
+  color: var(--text-dark, #111) !important;
+}
+.modal-title {
+  color: #000000 !important;
+}
+.col-md-6 {
+  color: #000000 !important;
 }
 .table-primary th {
-  background-color: #007bff !important;
-  color: #fff !important;
+  background-color: var(--primary-color, #007bff) !important;
+  color: var(--text-white, #fff) !important;
   text-align: center;
   vertical-align: middle;
 }
-.table-bordered th,
-.table-bordered td {
-  vertical-align: middle;
-}
-.gap-2 > * + * {
-  margin-left: 0.5rem;
-}
 .card {
-  border: 1px solid #e3e3e3;
+  border: 1px solid var(--border-light, #e3e3e3);
   border-radius: 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--box-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.03));
 }
 .card-header {
-  background: #f8f9fa;
+  background: var(--bg-light, #f8f9fa);
   font-size: 1rem;
-}
-.badge {
-  font-size: 1rem;
-  padding: 0.5em 1em;
 }
 .modal {
-  display: block;
   background: rgba(0, 0, 0, 0.4);
-}
-.modal.fade:not(.show) {
-  opacity: 0;
-  pointer-events: none;
 }
 .custom-btn-size {
   min-width: 110px;

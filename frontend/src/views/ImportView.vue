@@ -380,18 +380,13 @@ export default {
 
 <style scoped>
 .title-black {
-  color: #111 !important;
+  color: var(--text-dark, #111) !important;
 }
 
 .table-primary th {
-  background-color: #007bff !important;
-  color: #fff !important;
+  background-color: var(--primary-color, #007bff) !important;
+  color: var(--text-white, #fff) !important;
   text-align: center;
-  vertical-align: middle;
-}
-
-.table-bordered th, 
-.table-bordered td {
   vertical-align: middle;
 }
 
@@ -401,5 +396,22 @@ export default {
   font-size: 1rem;
   padding: 0.5rem 1.5rem;
   border-radius: 8px;
+}
+
+/* Card backgrounds */
+.bg-primary {
+  background-color: var(--primary-color, #007bff) !important;
+}
+
+.bg-success {
+  background-color: var(--success-color, #27ae60) !important;
+}
+
+.bg-warning {
+  background-color: var(--warning-color, #f39c12) !important;
+}
+
+.bg-danger {
+  background-color: var(--danger-color, #e74c3c) !important;
 }
 </style>

@@ -935,105 +935,42 @@ export default {
 
 <style scoped>
 .title-black {
-  color: #111 !important;
+  color: var(--text-dark, #111) !important;
   margin-bottom: 1rem;
 }
 
 .table-primary th {
-  background-color: #007bff !important;
-  color: #fff !important;
+  background-color: var(--primary-color, #007bff) !important;
+  color: var(--text-white, #fff) !important;
   text-align: center;
   vertical-align: middle;
 }
 
-.table-bordered th,
-.table-bordered td {
-  vertical-align: middle;
-}
-
 .card {
-  border: 1px solid #e3e3e3;
+  border: 1px solid var(--border-light, #e3e3e3);
   border-radius: 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--box-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.03));
 }
 
 .card-header {
-  background: #f8f9fa;
+  background: var(--bg-light, #f8f9fa);
   font-size: 1rem;
 }
 
-.badge {
-  padding: 0.5em 0.75em;
-  font-size: 85%;
-  font-weight: 600;
-  border-radius: 0.25rem;
+/* Badge styling */
+.badge.bg-warning {
+  background-color: var(--warning-color, #f39c12) !important;
 }
 
-/* Modal styling */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1050;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  outline: 0;
+.badge.bg-success {
+  background-color: var(--success-color, #27ae60) !important;
 }
 
-.modal-dialog {
-  position: relative;
-  width: auto;
-  margin: 1.75rem auto;
-  max-width: 800px;
+.badge.bg-danger {
+  background-color: var(--danger-color, #e74c3c) !important;
 }
 
 .modal-content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 0.3rem;
-  outline: 0;
-}
-
-.modal-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.modal-body {
-  position: relative;
-  flex: 1 1 auto;
-  padding: 1rem;
-  max-height: 70vh;
-  overflow-y: auto;
-}
-
-.modal-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 1rem;
-  border-top: 1px solid #dee2e6;
-}
-
-.btn-close {
-  background: transparent;
-  border: 0;
-  font-size: 1.5rem;
-  padding: 0.25rem;
-  color: #000;
-  opacity: 0.5;
-}
-
-.btn-close:hover {
-  opacity: 1;
+  background-color: var(--bg-white, #fff);
 }
 </style>

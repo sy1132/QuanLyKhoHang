@@ -180,7 +180,7 @@
               </div>
 
               <hr>
-              <h6>Sản phẩm chuyển kho</h6>
+              <h6 class="mb-3">Sản phẩm chuyển kho</h6>
               
               <!-- Chức năng tìm kiếm và thêm sản phẩm nâng cao -->
               <div class="mb-3" v-if="transferForm.idWarehouseExport">
@@ -1176,7 +1176,7 @@ export default {
 </script>
 
 <style scoped>
-/* Thêm CSS cho modal */
+/* Modal styling */
 .modal {
   position: fixed;
   top: 0;
@@ -1201,11 +1201,49 @@ export default {
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #fff;
+  background-color: var(--bg-white, #fff);
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
   outline: 0;
+}
+.my-4 {
+  color: #000000 !important;
+}
+
+.modal-title{
+  color: #000000 !important;
+}
+
+.mb-3{
+  color: #000000 !important;
+}
+/* Toast headers */
+.toast-header.bg-success {
+  background-color: var(--success-color, #27ae60) !important;
+}
+
+.toast-header.bg-danger {
+  background-color: var(--danger-color, #e74c3c) !important;
+}
+
+.toast-header.bg-warning {
+  background-color: var(--warning-color, #f39c12) !important;
+}
+
+.toast-header.bg-info {
+  background-color: var(--info-color, #00bcd4) !important;
+}
+
+/* Dropdown styling */
+.dropdown-item:hover, .dropdown-item:focus {
+  background-color: var(--bg-light, #f8f9fa);
+}
+
+.dropdown-header {
+  font-weight: 600;
+  color: var(--primary-color, #1976d2);
+  background-color: var(--bg-light, #f8f9fa);
 }
 
 /* Các style hiện tại */

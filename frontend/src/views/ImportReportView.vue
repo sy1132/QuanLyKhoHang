@@ -1044,23 +1044,51 @@ export default {
 </script>
 
 <style scoped>
-/* Màu chữ cho tiêu đề chính */
 .title-black {
-  color: #000000;
+  color: var(--text-dark, #000000);
   font-weight: 700;
   font-size: 1.8rem;
+}
+
+.mb-3 {
+  color: #000000 !important;
+}
+
+.table-primary th {
+  background-color: var(--primary-color, #0d6efd) !important;
+  color: var(--text-white, #ffffff) !important;
+  font-weight: 600;
+}
+
+.card {
+  border-radius: 0.375rem;
+  box-shadow: var(--box-shadow-sm, 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075));
+}
+
+.table-hover tbody tr:hover {
+  color: var(--text-dark, #000000);
+  background-color: var(--primary-light, rgba(13, 110, 253, 0.075));
+}
+
+.modal-title {
+  color: var(--text-dark, #111) !important;
+  font-weight: 600;
+}
+
+.table-light th {
+  background-color: var(--bg-light, #f8f9fa);
+  color: var(--text-dark, #333);
+  font-weight: 600;
+}
+
+.alert-info {
+  color: var(--text-dark, #000) !important;
+  background-color: var(--info-light, #e2f0fb);
 }
 
 /* Màu chữ cho bảng */
 .table {
   color: #000000;
-}
-
-/* Màu chữ cho header của bảng */
-.table-primary th {
-  background-color: #0d6efd !important;
-  color: #ffffff !important;
-  font-weight: 600;
 }
 
 /* Màu chữ cho các thẻ badge */
