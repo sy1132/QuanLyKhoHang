@@ -650,6 +650,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "QLKhoHang.Controllers.SupplierController",
+    "Method": "GetWarehouses",
+    "RelativePath": "api/supplier/warehouses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "QLKhoHang.Controllers.WareHouseController",
     "Method": "GetWarehouses",
     "RelativePath": "api/warehouse",
@@ -766,22 +776,6 @@
         "Name": "warehouse",
         "Type": "QLKhoHang.Entities.Warehouse",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "QLKhoHang.Controllers.WareHouseController",
-    "Method": "GetWarehouses",
-    "RelativePath": "api/warehouse/list",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "searchString",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []

@@ -925,6 +925,18 @@
         }
       }
     },
+    "/api/supplier/warehouses": {
+      "get": {
+        "tags": [
+          "Supplier"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/supplier/create": {
       "post": {
         "tags": [
@@ -1004,27 +1016,6 @@
       "get": {
         "tags": [
           "WareHouse"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/warehouse/list": {
-      "get": {
-        "tags": [
-          "WareHouse"
-        ],
-        "parameters": [
-          {
-            "name": "searchString",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
         ],
         "responses": {
           "200": {
@@ -1279,7 +1270,7 @@
             "format": "int32"
           },
           "cost": {
-            "minimum": 0.01,
+            "minimum": 0,01,
             "type": "number",
             "format": "double"
           },

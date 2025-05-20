@@ -142,7 +142,19 @@ namespace QLKhoHang.Controllers
 
             return Ok(new ApiResult { Data = suppliers });
         }
-        // POST: Thêm nhà cung cấp và lưu vào database
+        [HttpGet("warehouses")]
+        public async Task<IActionResult> GetWarehouses()
+        {
+            var warehouses = await _context.Warehouse
+                .Select(w => new
+                {
+                    w.Id,
+                    w.Name
+                })
+                .ToListAsync();
+
+            return Ok(new ApiResult { Data = warehouses });
+        }
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] Supplier supplier)
         {

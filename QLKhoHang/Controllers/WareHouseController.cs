@@ -34,23 +34,7 @@ namespace QLKhoHang.Controllers
             return Response(new ApiResult(warehouses));
         }
 
-        [HttpGet("list")]
-        public async Task<IActionResult> GetWarehouses(string searchString)
-        {
-            var warehouses = from w in _context.Warehouse
-                             select w;
-
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                warehouses = warehouses.Where(w =>
-                    w.Name.Contains(searchString) ||
-                    w.Address.Contains(searchString) ||
-                    w.Manager.Contains(searchString));
-            }
-
-            var result = await warehouses.ToListAsync();
-            return Response(new ApiResult(result));
-        }
+        
 
         // GET: Lấy thông tin kho hàng theo Id
         [HttpGet("{id}")]

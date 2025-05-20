@@ -1286,3 +1286,5 @@ E:\ThucHanhKIenTruc\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\CloudinaryDotNet.dl
 E:\ThucHanhKIenTruc\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\Newtonsoft.Json.dll
 E:\QLKH\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\CloudinaryDotNet.dll
 E:\QLKH\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\Newtonsoft.Json.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\CloudinaryDotNet.dll
+D:\save\GitHub\QuanLyKhoHang\QuanLyKhoHang\QLKhoHang\bin\Debug\net9.0\Newtonsoft.Json.dll
