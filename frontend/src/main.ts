@@ -6,6 +6,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 library.add(fas);
 import App from './App.vue'
 import router from './router'
+import './assets/css/variables.css';
 
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon);

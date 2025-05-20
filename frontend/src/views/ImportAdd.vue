@@ -1140,4 +1140,46 @@ label {
 small {
   color: #333;
 }
+
+/* Modal styling */
+.modal-content {
+  color: var(--text-dark, #000);
+}
+
+/* Form elements */
+input, select, textarea {
+  border: 1.5px solid var(--border-medium, #dfe6e9);
+  background: var(--bg-light, #f8fafc);
+  color: var(--text-dark, #000);
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary-color, #3498db);
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+  outline: none;
+}
+
+/* Labels */
+label {
+  color: var(--text-dark, #000);
+  font-weight: 500;
+}
+
+/* Table headers */
+.table-light th {
+  background-color: var(--bg-light, #f8f9fa);
+}
+
+/* Dropdown items */
+.dropdown-item strong {
+  color: var(--text-dark, #000);
+}
+
+.dropdown-item small {
+  color: var(--text-medium, #333);
+}
+
+.dropdown-item:hover {
+  background-color: var(--primary-light, #e3f2fd);
+}
 </style>
