@@ -139,23 +139,23 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f5f5f5;
-  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-color: var(--bg-light, #f5f5f5);
+  background-image: var(--bg-gradient, linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%));
 }
 
 .login-form {
   width: 100%;
   max-width: 400px;
   padding: 2.5rem;
-  background: white;
+  background: var(--bg-white, white);
   border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow, 0 8px 20px rgba(0, 0, 0, 0.1));
 }
 
 h1 {
   margin-bottom: 1.5rem;
   text-align: center;
-  color: #333;
+  color: var(--text-dark, #333);
   font-weight: 600;
 }
 
@@ -185,7 +185,7 @@ label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 500;
-  color: #444;
+  color: var(--text-medium, #444);
 }
 
 input {
@@ -199,7 +199,7 @@ input {
 
 input:focus {
   outline: none;
-  border-color: #4caf50;
+  border-color: var(--secondary-color, #4caf50);
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
 }
 
@@ -207,8 +207,8 @@ input:focus {
   position: relative;
   width: 100%;
   padding: 0.85rem;
-  background-color: #4caf50;
-  color: white;
+  background-color: var(--secondary-color, #4caf50);
+  color: var(--text-white, white);
   border: none;
   border-radius: 6px;
   font-size: 1rem;
@@ -222,7 +222,7 @@ input:focus {
 }
 
 .login-button:hover {
-  background-color: #3d9140;
+  background-color: var(--secondary-dark, #3d9140);
 }
 
 .login-button:disabled {
@@ -231,7 +231,7 @@ input:focus {
 }
 
 .error-message {
-  color: #f44336;
+  color: var(--danger-color, #f44336);
   font-size: 0.875rem;
   margin-top: 0.5rem;
   padding: 0.5rem;
@@ -249,14 +249,14 @@ input:focus {
 
 .register-link,
 .forgot-link {
-  color: #4caf50;
+  color: var(--secondary-color, #4caf50);
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .register-link:hover,
 .forgot-link:hover {
-  color: #3d9140;
+  color: var(--secondary-dark, #3d9140);
   text-decoration: underline;
 }
 

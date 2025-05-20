@@ -142,21 +142,21 @@ export default {
   text-align: center;
   padding: 3rem 1rem;
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: var(--bg-gradient, linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%));
   border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow, 0 8px 20px rgba(0, 0, 0, 0.1));
 }
 
 h1 {
   font-size: 2.8rem;
-  color: #2c3e50;
+  color: var(--text-dark, #2c3e50);
   margin-bottom: 1rem;
   font-weight: 700;
 }
 
 .hero-subtitle {
   font-size: 1.2rem;
-  color: #34495e;
+  color: var(--text-medium, #34495e);
   margin-bottom: 2.5rem;
 }
 
@@ -184,12 +184,12 @@ h1 {
 }
 
 .login-btn {
-  background-color: #3498db;
-  color: white;
+  background-color: var(--primary-color, #3498db);
+  color: var(--text-white, white);
 }
 
 .login-btn:hover {
-  background-color: #2980b9;
+  background-color: var(--primary-dark, #2980b9);
 }
 
 .register-btn {
@@ -250,7 +250,7 @@ h1 {
 
 .features-section h2 {
   font-size: 2rem;
-  color: #2c3e50;
+  color: var(--text-dark, #2c3e50);
   margin-bottom: 2.5rem;
 }
 
@@ -261,10 +261,10 @@ h1 {
 }
 
 .feature-card {
-  background-color: white;
+  background-color: var(--bg-white, white);
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow-sm, 0 4px 12px rgba(0, 0, 0, 0.1));
   transition: transform 0.3s ease;
 }
 
@@ -278,12 +278,12 @@ h1 {
 }
 
 .feature-card h3 {
-  color: #2c3e50;
+  color: var(--text-dark, #2c3e50);
   margin-bottom: 1rem;
 }
 
 .feature-card p {
-  color: #7f8c8d;
+  color: var(--text-light, #7f8c8d);
   line-height: 1.6;
 }
 
@@ -326,20 +326,20 @@ h1 {
 }
 
 .warning {
-  color: #e74c3c;
+  color: var(--danger-color, #e74c3c);
 }
 
 .success {
-  color: #27ae60;
+  color: var(--success-color, #27ae60);
 }
 
 /* Footer */
 .footer {
   margin-top: 3rem;
   text-align: center;
-  color: #7f8c8d;
+  color: var(--text-light, #7f8c8d);
   padding: 1.5rem 0;
-  border-top: 1px solid #ecf0f1;
+  border-top: 1px solid var(--border-light, #ecf0f1);
 }
 
 /* Responsive */

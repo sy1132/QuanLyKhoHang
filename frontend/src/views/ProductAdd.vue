@@ -244,7 +244,7 @@ export default {
 .add-product-header .title {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #1976d2;
+  color: var(--primary-color, #1976d2);
   letter-spacing: -1px;
 }
 
@@ -258,7 +258,7 @@ export default {
 }
 
 .close-btn:hover {
-  color: #1976d2;
+  color: var(--primary-color, #1976d2);
 }
 
 .add-product-form {
@@ -282,7 +282,7 @@ export default {
   min-width: 120px;
   font-size: 15px;
   font-weight: 600;
-  color: #1976d2;
+  color: var(--primary-color, #1976d2);
   margin-bottom: 0;
   letter-spacing: -0.5px;
   text-align: right;
@@ -295,10 +295,10 @@ export default {
   flex: 1;
   padding: 9px 14px;
   border-radius: 8px;
-  border: 1.5px solid #e3e8ee;
+  border: 1.5px solid var(--border-light, #e3e8ee);
   font-size: 16px;
-  background: #f8fafc;
-  color: #222;
+  background: var(--bg-light, #f8fafc);
+  color: var(--text-dark, #222);
   transition: border 0.2s, box-shadow 0.2s;
   outline: none;
   min-height: 38px;
@@ -310,6 +310,13 @@ export default {
   border: none;
   flex: unset;
   margin-right: 10px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border: 1.5px solid var(--primary-color, #1976d2);
+  background: var(--bg-white, #fff);
 }
 
 .full-width {
@@ -474,15 +481,15 @@ export default {
 }
 
 .btn.green {
-  background: #19c37d;
+  background: var(--success-color, #19c37d);
 }
 
 .btn.green:hover {
-  background: #13a76a;
+  background: var(--success-dark, #13a76a);
 }
 
 .btn.gray {
-  background: #b0b0b0;
+  background: var(--text-light, #b0b0b0);
 }
 
 .btn.gray:hover {

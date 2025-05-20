@@ -507,7 +507,7 @@ export default {
 .info-row span {
   width: 120px;
   min-width: 120px;
-  color: #1976d2;
+  color: var(--primary-color, #1976d2);
   font-weight: 600;
   font-size: 15px;
   text-align: left;
@@ -574,10 +574,10 @@ export default {
   gap: 9px;
 }
 .btn.green {
-  background: #19c37d;
+  background: var(--success-color, #19c37d);
 }
 .btn.green:hover {
-  background: #13a76a;
+  background: var(--success-dark, #13a76a);
 }
 .btn.gray {
   background: #b0b0b0;
@@ -586,16 +586,16 @@ export default {
   background: #888;
 }
 .btn.red {
-  background: #e74c3c;
+  background: var(--danger-color, #e74c3c);
 }
 .btn.red:hover {
-  background: #c0392b;
+  background: var(--danger-dark, #c0392b);
 }
 .btn.blue {
-  background: #1976d2;
+  background: var(--primary-color, #1976d2);
 }
 .btn.blue:hover {
-  background: #1565c0;
+  background: var(--primary-dark, #1565c0);
 }
 .icon-save:before {
   content: "💾";
@@ -651,7 +651,7 @@ export default {
 .edit-modal .add-product-header .title {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #1976d2;
+  color: var(--primary-color, #1976d2);
   letter-spacing: -1px;
 }
 .edit-modal .close-btn {
@@ -817,5 +817,14 @@ export default {
     flex-wrap: wrap;
     gap: 12px;
   }
+}
+
+/* Status colors */
+span[style*="color:#19c37d"] {
+  color: var(--success-color, #19c37d) !important;
+}
+
+span[style*="color:#e74c3c"] {
+  color: var(--danger-color, #e74c3c) !important;
 }
 </style>

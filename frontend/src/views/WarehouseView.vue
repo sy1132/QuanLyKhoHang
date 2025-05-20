@@ -586,12 +586,21 @@ export default {
   padding: 20px;
 }
 .title-black {
-  color: #111 !important;
+  color: var(--text-dark, #111) !important;
   font-weight: 700;
 }
+.modal-title {
+  color: #000000 !important;
+}
+.col-md-6 {
+  color: #000000 !important;
+}
+.mb-2 {
+  color: #000000 !important;
+}
 .table-primary th {
-  background-color: #007bff !important;
-  color: #fff !important;
+  background-color: var(--primary-color, #007bff) !important;
+  color: var(--text-white, #fff) !important;
   text-align: center;
   vertical-align: middle;
 }
@@ -603,15 +612,15 @@ export default {
   margin-left: 0.5rem;
 }
 .card {
-  border: 1px solid #e3e3e3;
+  border: 1px solid var(--border-light, #e3e3e3);
   border-radius: 6px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  box-shadow: var(--box-shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.03));
   margin-bottom: 1rem;
 }
 .card-header {
-  background: #f8f9fa;
+  background: var(--bg-light, #f8f9fa);
   font-size: 1rem;
-  border-bottom: 1px solid #e3e3e3;
+  border-bottom: 1px solid var(--border-light, #e3e3e3);
 }
 .modal {
   display: block;
@@ -634,9 +643,21 @@ export default {
 .table-responsive {
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow-sm, 0 0 10px rgba(0, 0, 0, 0.05));
 }
 .btn-group .btn {
   margin-right: 5px;
+}
+.bg-success {
+  background-color: var(--success-color, #27ae60) !important;
+}
+.bg-warning {
+  background-color: var(--warning-color, #f39c12) !important;
+}
+.bg-danger {
+  background-color: var(--danger-color, #e74c3c) !important;
+}
+.bg-secondary {
+  background-color: var(--text-light, #6c757d) !important;
 }
 </style>

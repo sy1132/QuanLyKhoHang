@@ -409,7 +409,7 @@ body {
 .page-title {
   font-size: 2.5rem;
   font-weight: 900;
-  color: #1976d2;
+  color: var(--primary-color, #1976d2);
   margin: 0;
   letter-spacing: -1px;
   flex-shrink: 0;
@@ -439,7 +439,7 @@ body {
 }
 
 .search-bar:focus {
-  border: 1.5px solid #1976d2;
+  border: 1.5px solid var(--primary-color, #1976d2);
   outline: none;
 }
 
@@ -473,25 +473,25 @@ body {
 }
 
 .btn.blue {
-  background: #1976d2;
+  background: var(--primary-color, #1976d2);
   color: #fff;
 }
 
 .btn.blue:hover {
-  background: #1565c0;
+  background: var(--primary-dark, #1565c0);
 }
 
 .btn.green {
-  background: #219653;
+  background: var(--success-color, #219653);
   color: #fff;
 }
 
 .btn.green:hover {
-  background: #1e874a;
+  background: var(--success-dark, #1e874a);
 }
 
 .btn.gray {
-  background: #757575;
+  background: var(--text-light, #757575);
   color: #fff;
 }
 
@@ -523,7 +523,7 @@ body {
   right: 0;
   top: 45px;
   background: #fff;
-  border: 1.5px solid #1976d2;
+  border: 1.5px solid var(--primary-color, #1976d2);
   border-radius: 14px;
   box-shadow: 0 8px 32px rgba(25, 118, 210, 0.13);
   padding: 1.3rem 1.7rem;
@@ -551,7 +551,7 @@ body {
 }
 
 .column-menu input[type="checkbox"] {
-  accent-color: #1976d2;
+  accent-color: var(--primary-color, #1976d2);
   width: 18px;
   height: 18px;
   margin-right: 0.5rem;
@@ -686,12 +686,12 @@ table {
 }
 
 th {
-  color: #1976d2;
+  color: var(--primary-color, #1976d2);
   font-weight: 700;
   font-size: 17px;
-  background: #e3f2fd;
+  background: var(--primary-light, #e3f2fd);
   padding: 13px 8px;
-  border-bottom: 2px solid #bbdefb;
+  border-bottom: 2px solid var(--primary-light, #bbdefb);
   text-align: left;
 }
 
@@ -713,7 +713,7 @@ tr:nth-child(even) {
 }
 
 tr:hover {
-  background: #e3f2fd;
+  background: var(--primary-light, #e3f2fd);
 }
 
 td img {
@@ -752,16 +752,16 @@ td[v-if*="num"] {
 }
 
 .styled-checkbox {
-  accent-color: #1976d2;
+  accent-color: var(--primary-color, #1976d2);
   width: 18px;
   height: 18px;
   border-radius: 4px;
-  border: 1.5px solid #1976d2;
+  border: 1.5px solid var(--primary-color, #1976d2);
   box-shadow: 0 1px 4px rgba(25, 118, 210, 0.08);
 }
 
 .selected {
-  background: #e3f2fd !important;
+  background: var(--primary-light, #e3f2fd) !important;
 }
 
 @media (max-width: 1200px) {
@@ -788,5 +788,14 @@ td[v-if*="num"] {
   .header-bar {
     padding: 18px 10px 0 10px;
   }
+}
+
+/* Status colors */
+span[style*="color:#19c37d"] {
+  color: var(--success-color, #19c37d) !important;
+}
+
+span[style*="color:#e74c3c"] {
+  color: var(--danger-color, #e74c3c) !important;
 }
 </style>

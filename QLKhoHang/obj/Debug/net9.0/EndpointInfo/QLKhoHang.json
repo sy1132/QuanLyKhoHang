@@ -515,6 +515,9 @@
                   "finaldDate": {
                     "type": "string",
                     "format": "date-time"
+                  },
+                  "Num": {
+                    "type": "string"
                   }
                 }
               },
@@ -559,6 +562,9 @@
                   "style": "form"
                 },
                 "finaldDate": {
+                  "style": "form"
+                },
+                "Num": {
                   "style": "form"
                 }
               }
@@ -658,6 +664,9 @@
                   "finaldDate": {
                     "type": "string",
                     "format": "date-time"
+                  },
+                  "Num": {
+                    "type": "string"
                   }
                 }
               },
@@ -702,6 +711,9 @@
                   "style": "form"
                 },
                 "finaldDate": {
+                  "style": "form"
+                },
+                "Num": {
                   "style": "form"
                 }
               }
